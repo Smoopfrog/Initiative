@@ -5,7 +5,7 @@ const Stat = props => {
 
   return (
     <div className="Stat">
-      <input type="number" /> <br />
+      <input type="number" />
       <label>{props.type}</label>
     </div>
   )

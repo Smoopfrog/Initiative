@@ -1,22 +1,13 @@
 import React from "react";
 import CharInfo from "./CharInfo";
-import Condition from "./Condition";
+import Conditions from "./Conditions";
 import './Character.scss';
 
 const Character = props => {
   return (
     <article className="Character">
       <CharInfo />
-      <div className="Conditions">
-        <h2>Conditions</h2>
-        <Condition />
-        <Condition />
-        <Condition />
-        <Condition />
-        <Condition />
-        <Condition />
-        <Condition />
-      </div>
+      <Conditions />
       <button>DEATH</button>
       <button>Trash</button>
 

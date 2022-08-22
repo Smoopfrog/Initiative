@@ -1,8 +1,12 @@
 import React from "react";
+import classNames from "classnames";
 import './Condition.scss'
+
 const Condition = props => {
+  const conditionClass = classNames('Condition', {'Condition': props.name});
+
   return (
-    <button className="Condition"><i class="fa-solid fa-eye-slash"></i></button>
+    <button className={conditionClass}>{props.icon}</button>
   )
 }
 

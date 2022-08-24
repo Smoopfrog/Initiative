@@ -4,10 +4,10 @@ import "./Stat.scss"
 const Stat = props => {
 
   return (
-    <div className="Stat">
-      <input type="number" />
+    <form className="Stat ">
+      <input type="number" data-tag={props.id} className={props.type} value={props.value} onChange={e => props.onChange(e, props.type)}/>
       <label>{props.type}</label>
-    </div>
+    </form>
   )
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Character/Button";
 
+
 const Tracker = props => {
   return (
     <div>

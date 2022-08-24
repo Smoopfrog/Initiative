@@ -7,7 +7,14 @@ import Button from "./Button";
 const Character = props => {
   return (
     <article className="Character">
-      <CharInfo />
+      <CharInfo 
+        id={props.id}
+        name={props.name}
+        hp={props.hp}
+        ac={props.ac}
+        initiative={props.initiative}
+        onChange={props.onChange}
+      />
       <Conditions />
       <Button name={"Death"}/>
       <Button name={"Trash"}/>

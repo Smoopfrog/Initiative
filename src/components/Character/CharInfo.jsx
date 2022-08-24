@@ -5,11 +5,11 @@ import './CharInfo.scss';
 const CharInfo = props => {
   return (
     <div className="char-info">
-      <h1>Character Name</h1>
+      <h1>{props.name}</h1>
       <div className="Stats">
-        <Stat type='Initiative'/>
-        <Stat type='HP'/>
-        <Stat type='AC'/>
+        <Stat type='Initiative' id={props.id} value={props.initiative} onChange={props.onChange}/>
+        <Stat type='HP' id={props.id} value={props.hp} onChange={props.onChange}/>
+        <Stat type='AC' id={props.id} value={props.ac} onChange={props.onChange}/>
       </div>
     </div>
   )

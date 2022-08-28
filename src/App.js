@@ -6,7 +6,7 @@ import useApplicationData from './hooks/useApplicationData';
 
 
 function App() {
-  const { state, statChange } = useApplicationData()
+  const { state, statChange, addChar, removeChar} = useApplicationData()
 
   const charArray = state.map(character => {
     return (
@@ -17,14 +17,15 @@ function App() {
         hp={character.hp}
         ac={character.ac}
         initiative={character.initiative}
-        onChange = {statChange}
+        statChange = {statChange}
+        removeChar={removeChar}
       />
     )
   })
 
   return (
     <div className="App">
-      <Tracker />
+      <Tracker addChar={addChar} />
       <section className='turnOrder'>
         {charArray}
       </section>

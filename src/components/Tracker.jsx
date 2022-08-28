@@ -8,7 +8,7 @@ const Tracker = props => {
       <h2>Turn: {props.charName}</h2>
       <Button name={"<"} />
       <Button name={">"} />
-      <Button name={"+"} />
+      <Button onClick={props.addChar} name={"+"} />
     </div>
   )
 }

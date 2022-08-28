@@ -19,7 +19,25 @@ const conditionsData = [
     name: "Deafened",
     icon: <i class="fa-solid fa-ear-deaf"></i>,
     description: [`A deafened creature can’t hear and automatically fails any ability check that requires hearing.`]
-  }, 
+  },
+  {
+    id: 4,
+    name: "Frightened",
+    icon: <i class="fa-solid fa-ghost"></i>,
+    description: ['A frightened creature has disadvantage on Ability Checks and Attack rolls while the source of its fear is within Line of Sight.', 'The creature can’t willingly move closer to the source of its fear.']
+  },
+  {
+    id: 5, 
+    name: "Grappled",
+    icon: <i class="fa-solid fa-handshake-simple"></i>,
+    description: ['A grappled creature’s speed becomes 0, and it can’t benefit from any bonus to its speed.', 'The condition ends if the Grappler is incapacitated (see the condition).', 'The condition also ends if an Effect removes the grappled creature from the reach of the Grappler or Grappling Effect, such as when a creature is hurled away by the Thunderwave spell.']
+  },
+  {
+    id: 6,
+    name: "Incapacitated",
+    icon: <i class="fa-solid fa-face-spiral-eyes"></i>,
+    description: ['An incapacitated creature can’t take Actions or Reactions.']
+  }
 ];
 
 const Conditions = props => {

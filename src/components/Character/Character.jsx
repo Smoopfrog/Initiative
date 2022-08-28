@@ -13,11 +13,12 @@ const Character = props => {
         hp={props.hp}
         ac={props.ac}
         initiative={props.initiative}
-        onChange={props.onChange}
+        statChange={props.statChange}
+        
       />
       <Conditions />
-      <Button name={"Death"}/>
-      <Button name={"Trash"}/>
+      <Button onClick={(event) => props.statChange(event, 'hp', 0)} id={props.id} name={"Death"}/>
+      <Button onClick={props.removeChar} id={props.id} name={"Trash"}/>
     </article>
   )
 }

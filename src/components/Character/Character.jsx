@@ -18,7 +18,7 @@ const Character = props => {
       />
       <Conditions />
       <Button onClick={(event) => props.statChange(event, 'hp', 0)} id={props.id} name={"Death"}/>
-      <Button onClick={props.removeChar} id={props.id} name={"Trash"}/>
+      <Button onClick={props.removeChar} id={props.id} type={'trash'} name={<i className="fa-solid fa-trash-can"></i>}/>
     </article>
   )
 }

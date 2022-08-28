@@ -31,6 +31,7 @@ const useApplicationData = () => {
   const [state, setState] = useState(sortedOrder);
 
   const statChange = (event, type, value) => {
+
     const charId = event.target.dataset.tag;
     const char = state.find(char => char.id == charId)
 
@@ -68,14 +69,10 @@ const useApplicationData = () => {
     const charId = Number(event.target.dataset.tag);
 
     const newState = state.filter(object => {
-      console.log('object.id', object.id)
-      console.log('charId', charId)
-
       return object.id !== charId;
     });
 
-    console.log('newState', newState)
-    setState(sortByInitiative(newState))
+    setState(sortByInitiative(newState));
   }
 
   return { state, statChange, addChar, removeChar };

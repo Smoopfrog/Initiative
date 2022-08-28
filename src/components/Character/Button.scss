@@ -1,5 +1,18 @@
 .trash {
   background-color: red;
+  color: white  ;
   height: 3vh;
+  border: 0;
+  border-radius: 20%;
 }
 
+.death {
+  background-image: url('../../images/skull.png');
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: 50% 50%;
+  background-color: white;
+
+  border-radius: 25px;
+  width: 12%;
+}

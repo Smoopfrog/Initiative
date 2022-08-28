@@ -35,8 +35,14 @@ const conditionsData = [
   {
     id: 6,
     name: "Incapacitated",
-    icon: <i className="fa-solid fa-face-spiral-eyes"></i>,
+    icon: <i className="fa-solid fa-face-dizzy"></i>,
     description: ['An incapacitated creature can’t take Actions or Reactions.']
+  },
+  {
+    id: 7,
+    name: "Invisible",
+    icon: <i class="fa-brands fa-snapchat"></i>,
+    description: ['An invisible creature is impossible to see without the aid of magic or a Special sense. For the Purpose of Hiding, the creature is heavily obscured. The creature’s Location can be detected by any noise it makes or any tracks it leaves.', 'Attack rolls against the creature have disadvantage, and the creature’s Attack rolls have advantage.']
   }
 ];
 

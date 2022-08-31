@@ -3,10 +3,16 @@ import CharInfo from "./CharInfo";
 import Conditions from "./Conditions";
 import './Character.scss';
 import Button from "./Button";
+import classNames from "classnames";
 
 const Character = props => {
+  const characterClass = classNames(
+    "Character",
+    {'character-selected': props.selected}
+  );
+
   return (
-    <article className="Character">
+    <article className={characterClass}>
       <CharInfo 
         id={props.id}
         name={props.name}

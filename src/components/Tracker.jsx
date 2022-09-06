@@ -11,8 +11,9 @@ const Tracker = props => {
     }
     return <h1>Prepare for battle!</h1>
   }
+
   return (
-    <div>
+    <div className="tracker">
       {playerTurn(props)}
       <Button onClick={props.prevChar} name={"<"} />
       <Button onClick={props.nextChar} name={">"} />

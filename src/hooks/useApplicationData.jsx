@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import sortByInitiative from "../helpers/helpers";
 
 const testData = [
@@ -35,11 +35,10 @@ const useApplicationData = () => {
   const statChange = (event, type, value) => {
     const charId = event.target.dataset.tag;
     const char = state.find(char => char.id == charId)
-
     // change the stat to the new input value
     char[type.toLowerCase()] = event.target.value;
 
-    if (value) {
+    if (value === 0) {
       char[type.toLowerCase()] = Number(value);
     }
 
@@ -48,7 +47,6 @@ const useApplicationData = () => {
       if (character.id == char.id) return char
       return character
     })
-
     setState(sortByInitiative(newState))
   }
   

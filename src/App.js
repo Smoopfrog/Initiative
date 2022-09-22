@@ -2,6 +2,7 @@ import './styles/App.scss'
 import Character from './components/Character/Character';
 import Tracker from './components/Tracker';
 import Navbar from './components/Navbar';
+import { Grid } from '@mui/material';
 import useApplicationData from './hooks/useApplicationData';
 
 
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
+      {/* <Navbar/>
       <Tracker 
         addChar={addChar} 
         nextChar={nextChar} 
@@ -36,7 +37,21 @@ function App() {
       />
       <section className='turn-order'>
         {charArray}
-      </section>
+      </section> */}
+      <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
     </div>
   );
 }

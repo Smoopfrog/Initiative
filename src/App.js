@@ -1,6 +1,7 @@
 import './styles/App.scss'
 import Character from './components/Character/Character';
 import Tracker from './components/Tracker';
+import Navbar from './components/Navbar';
 import useApplicationData from './hooks/useApplicationData';
 
 
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar/>
       <Tracker 
         addChar={addChar} 
         nextChar={nextChar} 

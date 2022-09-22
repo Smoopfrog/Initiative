@@ -3,8 +3,9 @@ import Character from './components/Character/Character';
 import Tracker from './components/Tracker';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
+import Signup from './components/Signup';
 import useApplicationData from './hooks/useApplicationData';
-import background from './images/dnd3.jpg';
+import background from './images/orcus.jpeg';
 import { Box } from '@mui/material';
 
 
@@ -31,7 +32,7 @@ function App() {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'row', height: '100vh' }} >
       <Box
-        item
+        
         sx={{
           height: '100vh',
           width: { xs: '0vw', md: '60vw' },
@@ -41,7 +42,8 @@ function App() {
           backgroundPosition: 'center',
         }}
       />
-      <Login />
+      {/* <Login /> */}
+      <Signup />
     </Box>
   );
 }

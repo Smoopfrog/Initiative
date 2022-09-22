@@ -1,9 +1,8 @@
 import React from "react";
-import chest from '../images/treasure.png'
-import { Box, TextField, Typography, FormControlLabel, Button } from '@mui/material';
-import { CheckBox } from '@mui/icons-material';
+import chest from '../images/treasureOpen.png'
+import { Box, TextField, Typography,  Button } from '@mui/material';
 
-const Login = () => {
+const Signup = () => {
   return (
     <Box
       component="form"
@@ -19,7 +18,7 @@ const Login = () => {
     >
       <img src={chest} width="50" height="50" />
       <Typography margin="10px" component="h1" variant="h4">
-        Sign in
+        Sign up
       </Typography>
       <TextField
         margin="normal"
@@ -40,15 +39,22 @@ const Login = () => {
         type="password"
         id="password"
       />
-      <FormControlLabel control={<CheckBox defaultChecked />} label="Remember me" sx={{ margin: "10px" }} />
-      <Button variant="contained" sx={{ margin: "10px" }}>Sign in</Button>
-      <Box width="100%" display="flex" justifyContent='space-between'>
-        <Button sx={{ textTransform: 'none'}}>Forgot your password?</Button>
-        <Button sx={{ textTransform: 'none'}}>Don't have an account? Sign Up</Button>
+      <TextField
+        margin="normal"
+        required
+        fullWidth
+        name="confirmPassword"
+        label="Confirm Password"
+        type="password"
+        id="confirmPassword"
+      />
+      <Button variant="contained" sx={{ margin: "10px" }}>Sign Up</Button>
+      <Box width="100%" display="flex" justifyContent='center'>
+        <Button sx={{ textTransform: 'none' }}>Already have an account? Sign In</Button>
       </Box>
 
     </Box>
   )
 };
 
-export default Login;
+export default Signup;

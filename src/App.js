@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 function App() {
   const { state, statChange, addChar, removeChar, nextChar, prevChar } = useApplicationData()
-  const [homepage, setHomepage] = useState('login');
+  const [homepage, setHomepage] = useState('signup');
 
   const charArray = state.map(character => {
     return (

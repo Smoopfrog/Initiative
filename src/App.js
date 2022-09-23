@@ -7,11 +7,11 @@ import Signup from './components/Signup';
 import useApplicationData from './hooks/useApplicationData';
 import background from './images/orcus.jpeg';
 import { Box } from '@mui/material';
-
-
+import { useState } from 'react';
 
 function App() {
   const { state, statChange, addChar, removeChar, nextChar, prevChar } = useApplicationData()
+  const [homepage, setHomepage] = useState('login');
 
   const charArray = state.map(character => {
     return (
@@ -42,8 +42,8 @@ function App() {
           backgroundPosition: 'center',
         }}
       />
-      {/* <Login /> */}
-      <Signup />
+      {homepage === 'login' && <Login setHomepage={setHomepage}/>}
+      {homepage === 'signup' && <Signup setHomepage={setHomepage}/>}
     </Box>
   );
 }

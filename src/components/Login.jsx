@@ -3,7 +3,7 @@ import chest from '../images/treasure.png'
 import { Box, TextField, Typography, FormControlLabel, Button } from '@mui/material';
 import { CheckBox } from '@mui/icons-material';
 
-const Login = () => {
+const Login = ({ setHomepage }) => {
   return (
     <Box
       component="form"
@@ -44,7 +44,7 @@ const Login = () => {
       <Button variant="contained" sx={{ margin: "10px" }}>Sign in</Button>
       <Box width="100%" display="flex" justifyContent='space-between'>
         <Button sx={{ textTransform: 'none'}}>Forgot your password?</Button>
-        <Button sx={{ textTransform: 'none'}}>Don't have an account? Sign Up</Button>
+        <Button onClick={()=> setHomepage('signup')} sx={{ textTransform: 'none'}}>Don't have an account? Sign Up</Button>
       </Box>
 
     </Box>

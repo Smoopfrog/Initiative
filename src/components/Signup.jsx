@@ -2,7 +2,7 @@ import React from "react";
 import chest from '../images/treasureOpen.png'
 import { Box, TextField, Typography,  Button } from '@mui/material';
 
-const Signup = () => {
+const Signup = ({ setHomepage }) => {
   return (
     <Box
       component="form"
@@ -50,7 +50,7 @@ const Signup = () => {
       />
       <Button variant="contained" sx={{ margin: "10px" }}>Sign Up</Button>
       <Box width="100%" display="flex" justifyContent='center'>
-        <Button sx={{ textTransform: 'none' }}>Already have an account? Sign In</Button>
+        <Button onClick={()=> setHomepage('login')} sx={{ textTransform: 'none' }}>Already have an account? Sign In</Button>
       </Box>
 
     </Box>

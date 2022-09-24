@@ -14,7 +14,7 @@ axios.defaults.baseURL = 'http://localhost:7001';
 
 function App() {
   const { state, statChange, addChar, removeChar, nextChar, prevChar } = useApplicationData()
-  const [homepage, setHomepage] = useState('signup');
+  const [homepage, setHomepage] = useState('signin');
 
   const charArray = state.map(character => {
     return (
@@ -45,7 +45,7 @@ function App() {
           backgroundPosition: 'center',
         }}
       />
-      {homepage === 'login' && <Login setHomepage={setHomepage}/>}
+      {homepage === 'signin' && <Login setHomepage={setHomepage}/>}
       {homepage === 'signup' && <Signup setHomepage={setHomepage}/>}
     </Box>
   );

@@ -1,10 +1,8 @@
-import React from "react";
-import chest from '../images/treasureOpen.png'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Box, TextField, Typography, Button, Alert, Collapse, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from "react";
-import axios from "axios";
-import { useEffect } from "react";
+import chest from '../images/treasureOpen.png'
 
 const Signup = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
@@ -148,7 +146,7 @@ const Signup = ({ setHomepage }) => {
       </Collapse>
       <Button type='submit' variant="contained" sx={{ margin: "10px" }}>Sign Up</Button>
       <Box width="100%" display="flex" justifyContent='center'>
-        <Button onClick={() => setHomepage('login')} sx={{ textTransform: 'none' }}>Already have an account? Sign In</Button>
+        <Button onClick={() => setHomepage('signin')} sx={{ textTransform: 'none' }}>Already have an account? Sign In</Button>
       </Box>
 
     </Box>

@@ -10,7 +10,9 @@ const Signup = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
   const [password, setpassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [usernameError, setUsernameError] = useState(false)
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
 
   useEffect(() => {
     setUsernameError(false)
@@ -18,6 +20,11 @@ const Signup = ({ setHomepage }) => {
 
   const onSignUp = e => {
     e.preventDefault()
+
+    if (password !== confirmPassword) {
+      setPasswordError(true);
+      return;
+    }
 
     const userData = {
       username: username,
@@ -83,20 +90,21 @@ const Signup = ({ setHomepage }) => {
       />
       <Collapse in={usernameError}>
         <Alert severity="error" action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-                setUsernameError(false);
-              }}
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-          }
-          sx={{ mb: 2 }}
+          <IconButton
+            aria-label="close"
+            color="inherit"
+            size="small"
+            onClick={() => {
+              setUsernameError(false);
+            }}
           >
-            Username taken!</Alert>
+            <CloseIcon fontSize="inherit" />
+          </IconButton>
+        }
+          sx={{ mb: 2 }}
+        >
+          Username taken!
+        </Alert>
       </Collapse>
       <TextField
         value={password}
@@ -120,6 +128,24 @@ const Signup = ({ setHomepage }) => {
         type="password"
         id="confirmPassword"
       />
+      <Collapse in={passwordError}>
+        <Alert severity="error" action={
+          <IconButton
+            aria-label="close"
+            color="inherit"
+            size="small"
+            onClick={() => {
+              setPasswordError(false);
+            }}
+          >
+            <CloseIcon fontSize="inherit" />
+          </IconButton>
+        }
+          sx={{ mb: 2 }}
+        >
+          Passwords do not match!
+        </Alert>
+      </Collapse>
       <Button type='submit' variant="contained" sx={{ margin: "10px" }}>Sign Up</Button>
       <Box width="100%" display="flex" justifyContent='center'>
         <Button onClick={() => setHomepage('login')} sx={{ textTransform: 'none' }}>Already have an account? Sign In</Button>

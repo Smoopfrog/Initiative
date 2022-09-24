@@ -9,8 +9,8 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users WHERE username = $1`, [username])
       .then(data => {
         const users = data.rows;
-
-        if (users) {
+        
+        if (users.length) {
           res.send(users);
         } else {
           db.query(`INSERT INTO users (username, password) VALUES ($1, $2)`, [username, password]);

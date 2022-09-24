@@ -1,17 +1,42 @@
 import React from "react";
 import chest from '../images/treasureOpen.png'
-import { Box, TextField, Typography, Button } from '@mui/material';
+import { Box, TextField, Typography, Button, Alert, Collapse, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Signup = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
   const [password, setpassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [usernameError, setUsernameError] = useState(false)
 
+  useEffect(() => {
+    setUsernameError(false)
+  }, [username])
 
   const onSignUp = e => {
     e.preventDefault()
-    console.log("hello")
+
+    const userData = {
+      username: username,
+      password: password
+    }
+
+    axios.post('/users', userData)
+      .then(function (response) {
+        console.log(response.data);
+        if (response.data.length) {
+          console.log('Username taken')
+          setUsernameError(true)
+        } else {
+          console.log('sign in')
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const handleUsernameChange = e => {
@@ -56,6 +81,23 @@ const Signup = ({ setHomepage }) => {
         autoComplete="username"
         autoFocus
       />
+      <Collapse in={usernameError}>
+        <Alert severity="error" action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setUsernameError(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+          >
+            Username taken!</Alert>
+      </Collapse>
       <TextField
         value={password}
         onChange={handlePasswordChange}

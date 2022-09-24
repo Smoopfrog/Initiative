@@ -2,18 +2,11 @@ const { Pool } = require('pg');
 require('dotenv').config()
 
 const pool = new Pool ({
-  host: "localhost",
+  host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  port: 5432,
+  port: process.env.DB_PORT,
   password: process.env.DB_PASSWORD,
-  database: "initiative"
+  database: process.env.DB
 })
 
-pool.query(`Select * from characters`, (err, res) => {
-  if(!err) {
-    console.log(res.rows);
-  } else {
-    console.log(err.message)
-  }
-  pool.end()
-})
+module.exports = pool;

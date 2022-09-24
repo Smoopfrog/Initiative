@@ -8,6 +8,9 @@ import useApplicationData from './hooks/useApplicationData';
 import background from './images/orcus.jpeg';
 import { Box } from '@mui/material';
 import { useState } from 'react';
+const axios = require('axios').default;
+
+axios.defaults.baseURL = 'http://localhost:7001';
 
 function App() {
   const { state, statChange, addChar, removeChar, nextChar, prevChar } = useApplicationData()

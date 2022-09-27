@@ -4,12 +4,15 @@ import { Box, TextField, Typography, FormControlLabel, Button, Collapse, IconBut
 import CloseIcon from '@mui/icons-material/Close';
 import { CheckBox } from '@mui/icons-material';
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { logIn } from "../slices/userSlice";
 
 const Login = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
   const [password, setpassword] = useState("");
   const [credentialsError, setCredentialsError] = useState(false);
-  
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setCredentialsError(false)
   }, [username, password])
@@ -34,6 +37,14 @@ const Login = ({ setHomepage }) => {
       .then(function (response) {
         if (response.data.length) {
           console.log('login')
+  
+          dispatch(
+            logIn({
+              username: username,
+              password: password,
+              loggedIn: true
+            })
+          )
           return
         }
         console.log('invalid credentials')

@@ -3,6 +3,8 @@ import axios from "axios";
 import { Box, TextField, Typography, Button, Alert, Collapse, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import chest from '../images/treasureOpen.png'
+import { useDispatch } from "react-redux";
+import { logIn } from "../slices/userSlice";
 
 const Signup = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
@@ -10,7 +12,8 @@ const Signup = ({ setHomepage }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-
+  const dispatch = useDispatch();
+  
 
   useEffect(() => {
     setUsernameError(false)
@@ -36,6 +39,13 @@ const Signup = ({ setHomepage }) => {
           setUsernameError(true)
         } else {
           console.log('sign in')
+          dispatch(
+            logIn({
+              username: username,
+              password: password,
+              loggedIn: true
+            })
+          )
         }
       })
       .catch(function (error) {

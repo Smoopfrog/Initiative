@@ -14,24 +14,7 @@ const axios = require('axios').default;
 axios.defaults.baseURL = 'http://localhost:7001';
 
 function App() {
-  // const { state, statChange, addChar, removeChar, nextChar, prevChar } = useApplicationData()
   const [homepage, setHomepage] = useState('signin');
-
-  // const charArray = state.map(character => {
-  //   return (
-  //     <Character
-  //       key={character.id}
-  //       id={character.id}
-  //       name={character.name}
-  //       hp={character.hp}
-  //       ac={character.ac}
-  //       initiative={character.initiative}
-  //       selected={character.selected}
-  //       statChange={statChange}
-  //       removeChar={removeChar}
-  //     />
-  //   )
-  // })
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'row', height: '100vh' }} >

@@ -1,10 +1,15 @@
 import { useState } from "react";
 import sortByInitiative from "../helpers/helpers";
+import halfling from "../images/Ivan_Kaslov-0.webp"
 
 const testData = [
   {
     id: 1,
     name: "Gortis Billabong",
+    level: 4,
+    race: 'Halfling',
+    class: 'Rogue',
+    charSheetUrl: "https://www.dndbeyond.com/characters/13662564",
     hp: 32,
     ac: 15,
     initiative: 18,
@@ -13,6 +18,9 @@ const testData = [
   {
     id: 2,
     name: "Kappa \"Turbo\" Turtletaub",
+    level: 5,
+    race: 'Tortle',
+    class: 'Druid',
     hp: 40,
     ac: 19,
     initiative: 10,
@@ -20,7 +28,10 @@ const testData = [
   },
   {
     id: 3,
-    name: "S'moop Frog",
+    name: "S'moop Frog",    
+    level: 3,
+    race: 'Grung',
+    class: 'Ranger',
     hp: 32,
     ac: 13,
     initiative: 17,

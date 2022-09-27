@@ -1,11 +1,9 @@
 import './styles/App.scss'
-import Character from './components/Character/Character';
 import Tracker from './components/Tracker';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Menu from './components/Menu/Menu';
-import useApplicationData from './hooks/useApplicationData';
 import background from './images/orcus.jpeg';
 import { Box } from '@mui/material';
 import { useState } from 'react';

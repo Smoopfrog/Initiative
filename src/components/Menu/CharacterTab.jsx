@@ -5,21 +5,23 @@ import useApplicationData from "../../hooks/useApplicationData";
 import { Box, Stack } from "@mui/material";
 
 const CharacterTab = () => {
-  const { state, statChange, addChar, removeChar, nextChar, prevChar } = useApplicationData()
+  const { state } = useApplicationData()
 
-    const charArray = state.map(character => {
-      console.log(character)
+  const charArray = state.map(character => {
+    console.log(character)
     return (
-      <Character
+      <PlayerCharacter
         key={character.id}
         id={character.id}
+        img={character.img}
         name={character.name}
+        level={character.level}
+        race={character.race}
+        class={character.class}
+        charSheetUrl={character.charSheetUrl}
         hp={character.hp}
         ac={character.ac}
         initiative={character.initiative}
-        selected={character.selected}
-        statChange={statChange}
-        removeChar={removeChar}
       />
     )
   })
@@ -27,7 +29,6 @@ const CharacterTab = () => {
     <Box>
       <Stack>
         {charArray}
-        <PlayerCharacter />
       </Stack>
     </Box>
   )

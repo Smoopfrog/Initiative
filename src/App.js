@@ -4,6 +4,7 @@ import Tracker from './components/Tracker';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Menu from './components/Menu/Menu';
 import useApplicationData from './hooks/useApplicationData';
 import background from './images/orcus.jpeg';
 import { Box } from '@mui/material';
@@ -47,6 +48,7 @@ function App() {
       />
       {homepage === 'signin' && <Login setHomepage={setHomepage}/>}
       {homepage === 'signup' && <Signup setHomepage={setHomepage}/>}
+      {homepage === 'signedIn' && <Menu />}
     </Box>
   );
 }

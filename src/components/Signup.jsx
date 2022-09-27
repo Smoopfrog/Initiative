@@ -46,6 +46,7 @@ const Signup = ({ setHomepage }) => {
               loggedIn: true
             })
           )
+          setHomepage('signedIn')
         }
       })
       .catch(function (error) {

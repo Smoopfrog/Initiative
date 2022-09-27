@@ -36,8 +36,7 @@ const Login = ({ setHomepage }) => {
     axios.get('/users', { params })
       .then(function (response) {
         if (response.data.length) {
-          console.log('login')
-  
+          console.log('login');
           dispatch(
             logIn({
               username: username,
@@ -45,6 +44,7 @@ const Login = ({ setHomepage }) => {
               loggedIn: true
             })
           )
+          setHomepage('signedIn')
           return
         }
         console.log('invalid credentials')

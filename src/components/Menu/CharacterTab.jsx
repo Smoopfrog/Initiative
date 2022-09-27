@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import PlayerCharacter from "../PlayerCharacter";
 import useApplicationData from "../../hooks/useApplicationData";
-import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField } from "@mui/material";
+import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Input } from "@mui/material";
 
 const CharacterTab = () => {
   const { state } = useApplicationData()
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openNewChar, setOpenNewChar] = useState(false)
   // const [sortOrder, setSortOrder] = useState('level');
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  
+
+  const handleAddNewChar = () => {
+    setOpenNewChar(!openNewChar)
+  }
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   const charArray = state.map(character => {
-    console.log(character)
     return (
       <PlayerCharacter
         key={character.id}
@@ -64,7 +68,70 @@ const CharacterTab = () => {
 
         </Menu>
       </Box>
-      
+      <Button variant="outlined" onClick={handleAddNewChar}>
+        Open form dialog
+      </Button>
+      <Dialog open={openNewChar} onClose={handleAddNewChar}>
+        <DialogTitle>Create a new character</DialogTitle>
+        <DialogContent sx={{display:'flex', flexWrap:'wrap', justifyContent:'space-between'}}>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Name"
+            type="text"
+            variant="standard"
+          />
+          <TextField
+            margin="dense"
+            id="name"
+            label="Level"
+            type="number"
+            variant="standard"
+          />
+          <TextField
+            margin="dense"
+            id="name"
+            label="Race"
+            type="text"
+            variant="standard"
+          />
+          <TextField
+            margin="dense"
+            id="name"
+            label="Class"
+            type="text"
+            variant="standard"
+          />
+         
+          <TextField
+            margin="dense"
+            id="name"
+            label="HP"
+            type="number"
+            variant="standard"
+          />
+          <TextField
+            margin="dense"
+            id="name"
+            label="AC"
+            type="number"
+            variant="standard"
+          />
+          <TextField
+            margin="dense"
+            id="name"
+            label="Character Sheet Link"
+            type="url"
+            fullWidth
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Create</Button>
+          <Button onClick={handleAddNewChar}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
       <Stack>
         {charArray}
       </Stack>

@@ -1,14 +1,12 @@
 import React from "react";
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../slices/userSlice';
+
 import { Box, Tabs, Tab } from '@mui/material';
 import ServerTab from "./ServerTab";
 import CharacterTab from "./CharacterTab";
 import ProfileTab from "./ProfileTab";
 
-const Menu = () => {
-  const user = useSelector(selectUser);
-  const [value, setValue] = React.useState("0");
+const Menu = ({ setHomepage }) => {
+  const [value, setValue] = React.useState("2");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -25,7 +23,7 @@ const Menu = () => {
       </Box>
       {value === "0" && <ServerTab />}
       {value === "1" && <CharacterTab />}
-      {value === "2" && <ProfileTab />}
+      {value === "2" && <ProfileTab setHomepage={setHomepage}/>}
 
     </Box>
   )

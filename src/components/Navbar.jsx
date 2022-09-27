@@ -24,8 +24,6 @@ const navbar = () => {
       </AppBar>
     </Box>
   )
-
-
 };
 
 export default navbar;

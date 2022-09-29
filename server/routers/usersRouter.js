@@ -5,10 +5,11 @@ module.exports = (db) => {
   router.get('/users', (req, res) => {
     const username = req.query.username;
     const password = req.query.password;
-
+ 
     db.query(`SELECT * FROM users WHERE username = $1 AND password = $2`, [username, password])
       .then(data => {
         const users = data.rows;
+        console.log(users)
         res.send(users);
       })
       .catch(err => {

@@ -3,6 +3,8 @@ import PlayerCharacter from "../PlayerCharacter";
 import useApplicationData from "../../hooks/useApplicationData";
 import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Input } from "@mui/material";
 import axios from "axios";
+import { selectUser } from '../../slices/userSlice';
+import { useSelector } from "react-redux";
 
 const CharacterTab = () => {
   const { state } = useApplicationData()
@@ -15,7 +17,7 @@ const CharacterTab = () => {
   const [newCharHp, setNewCharHp] = useState('')
   const [newCharAc, setNewCharAc] = useState('')
   const [newCharSheet, setNewCharSheet] = useState('')
-
+  const user = useSelector(selectUser);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -31,6 +33,7 @@ const CharacterTab = () => {
   };
 
   const submitNewChar = () => {
+    console.log(user[0].id)
     const newChar = {
       newCharName,
       newCharLevel,
@@ -38,12 +41,13 @@ const CharacterTab = () => {
       newCharClass,
       newCharHp,
       newCharAc,
-      newCharSheet
+      newCharSheet,
+      userId: user[0].id
     }
     
     axios.post('/characters', newChar)
       .then(res => {
-        console.log(res)
+        console.log(res.data)
       })
       .catch(error => {
         console.log(error);

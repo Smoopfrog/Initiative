@@ -38,11 +38,7 @@ const Login = ({ setHomepage }) => {
         if (response.data.length) {
           console.log('login');
           dispatch(
-            logIn({
-              username: username,
-              password: password,
-              loggedIn: true
-            })
+            logIn(response.data)
           )
           setHomepage('signedIn')
           return

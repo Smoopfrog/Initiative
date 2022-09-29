@@ -6,6 +6,9 @@ import { CheckBox } from '@mui/icons-material';
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../slices/userSlice";
+import { setCharacters } from "../slices/charactersSlice";
+
+
 
 const Login = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
@@ -25,6 +28,21 @@ const Login = ({ setHomepage }) => {
     setpassword(e.target.value)
   };
 
+  const getUserCharacters = id => {
+    const params = {
+      userId: id
+    }
+
+    axios.get('/characters', {params})
+      .then(res => {
+        console.log(res.data)
+        dispatch(
+          setCharacters(res.data)
+        )
+      })
+      .catch(err => {console.log(err)})
+  }
+
   const login = (e) => {
     e.preventDefault();
 
@@ -36,14 +54,13 @@ const Login = ({ setHomepage }) => {
     axios.get('/users', { params })
       .then(function (response) {
         if (response.data.length) {
-          console.log('login');
           dispatch(
-            logIn(response.data)
+            logIn(response.data[0])
           )
+          getUserCharacters(response.data[0].id)
           setHomepage('signedIn')
           return
         }
-        console.log('invalid credentials')
         setCredentialsError(true)
       })
       .catch(function (error) {

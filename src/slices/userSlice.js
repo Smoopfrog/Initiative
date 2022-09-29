@@ -13,7 +13,6 @@ export const userSlice = createSlice({
       state.user = null;
     }
   }
-
 })
 
 export const {logIn, logOut} = userSlice.actions;

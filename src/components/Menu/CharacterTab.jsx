@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import PlayerCharacter from "../PlayerCharacter";
-import useApplicationData from "../../hooks/useApplicationData";
 import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Input } from "@mui/material";
 import axios from "axios";
 import { selectUser } from '../../slices/userSlice';
-import { useSelector } from "react-redux";
+import { selectCharacters } from '../../slices/charactersSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { setCharacters } from "../../slices/charactersSlice";
+
 
 const CharacterTab = () => {
-  const { state } = useApplicationData()
   const [anchorEl, setAnchorEl] = useState(null);
   const [openNewChar, setOpenNewChar] = useState(false)
   const [newCharName, setNewCharName] = useState('')
@@ -17,13 +18,17 @@ const CharacterTab = () => {
   const [newCharHp, setNewCharHp] = useState('')
   const [newCharAc, setNewCharAc] = useState('')
   const [newCharSheet, setNewCharSheet] = useState('')
+  const dispatch = useDispatch();
+
   const user = useSelector(selectUser);
+  const characters = useSelector(selectCharacters)
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  
   const handleCharDialog = () => {
     setOpenNewChar(!openNewChar)
   }
@@ -32,8 +37,8 @@ const CharacterTab = () => {
     setAnchorEl(null);
   };
 
+
   const submitNewChar = () => {
-    console.log(user[0].id)
     const newChar = {
       newCharName,
       newCharLevel,
@@ -42,35 +47,41 @@ const CharacterTab = () => {
       newCharHp,
       newCharAc,
       newCharSheet,
-      userId: user[0].id
+      userId: user.id
     }
-    
+
     axios.post('/characters', newChar)
       .then(res => {
-        console.log(res.data)
+        dispatch(
+          setCharacters(res.data)
+        )
+        handleCharDialog()
       })
       .catch(error => {
         console.log(error);
       });
   }
 
-  const charArray = state.map(character => {
-    return (
-      <PlayerCharacter
-        key={character.id}
-        id={character.id}
-        img={character.img}
-        name={character.name}
-        level={character.level}
-        race={character.race}
-        class={character.class}
-        charSheetUrl={character.charSheetUrl}
-        hp={character.hp}
-        ac={character.ac}
-        initiative={character.initiative}
-      />
-    )
-  })
+  let charArray;
+  if (characters) {
+    charArray = characters.map(character => {
+      return (
+        <PlayerCharacter
+          key={character.id}
+          id={character.id}
+          img={character.img}
+          name={character.charname}
+          level={character.level}
+          race={character.race}
+          class={character.class}
+          charSheetUrl={character.charsheet}
+          hp={character.hp}
+          ac={character.ac}
+          initiative={character.initiative}
+        />
+      )
+    })
+  }
 
   return (
     <Box>
@@ -99,13 +110,13 @@ const CharacterTab = () => {
           <MenuItem onClick={handleClose}>Race</MenuItem>
 
         </Menu>
-      <Button variant="outlined" onClick={handleCharDialog}>
-        Create character
-      </Button>
+        <Button variant="outlined" onClick={handleCharDialog}>
+          Create character
+        </Button>
       </Box>
       <Dialog open={openNewChar} onClose={handleCharDialog}>
         <DialogTitle>Create a new character</DialogTitle>
-        <DialogContent type='form' sx={{display:'flex', flexWrap:'wrap', justifyContent:'space-between'}}>
+        <DialogContent type='form' sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
           <TextField
             autoFocus
             margin="dense"
@@ -143,7 +154,7 @@ const CharacterTab = () => {
             value={newCharClass}
             onChange={(e) => setNewCharClass(e.target.value)}
           />
-         
+
           <TextField
             margin="dense"
             id="name"

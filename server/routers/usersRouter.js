@@ -9,7 +9,6 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users WHERE username = $1 AND password = $2`, [username, password])
       .then(data => {
         const users = data.rows;
-        console.log(users)
         res.send(users);
       })
       .catch(err => {

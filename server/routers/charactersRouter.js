@@ -2,8 +2,17 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
+  router.get('/characters', (req, res) =>{
+    const userId = req.query.userId;
+    
+    db.query(`SELECT * FROM characters WHERE user_id = $1`, [userId])
+      .then(data => {
+        const characters = data.rows;
+        res.send(characters)
+      }) 
+  })
+
   router.post('/characters', (req, res) => {
-    console.log('req.body', req.body)
     const character = req.body;
 
     db.query(`INSERT INTO characters (user_id, charname, level, race, class, hp, ac, charsheet) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, 
@@ -18,7 +27,6 @@ module.exports = (db) => {
         .status(500)
         .json({ error: err.message });
     });
-    // res.send(req.body)
   })
 
   return router;

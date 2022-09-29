@@ -2,25 +2,53 @@ import React, { useState } from "react";
 import PlayerCharacter from "../PlayerCharacter";
 import useApplicationData from "../../hooks/useApplicationData";
 import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Input } from "@mui/material";
+import axios from "axios";
 
 const CharacterTab = () => {
   const { state } = useApplicationData()
   const [anchorEl, setAnchorEl] = useState(null);
   const [openNewChar, setOpenNewChar] = useState(false)
-  // const [sortOrder, setSortOrder] = useState('level');
+  const [newCharName, setNewCharName] = useState('')
+  const [newCharLevel, setNewCharLevel] = useState('')
+  const [newCharRace, setNewCharRace] = useState('')
+  const [newCharClass, setNewCharClass] = useState('')
+  const [newCharHp, setNewCharHp] = useState('')
+  const [newCharAc, setNewCharAc] = useState('')
+  const [newCharSheet, setNewCharSheet] = useState('')
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleAddNewChar = () => {
+  
+  const handleCharDialog = () => {
     setOpenNewChar(!openNewChar)
   }
 
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const submitNewChar = () => {
+    const newChar = {
+      newCharName,
+      newCharLevel,
+      newCharRace,
+      newCharClass,
+      newCharHp,
+      newCharAc,
+      newCharSheet
+    }
+    
+    axios.post('/characters', newChar)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   const charArray = state.map(character => {
     return (
@@ -67,13 +95,13 @@ const CharacterTab = () => {
           <MenuItem onClick={handleClose}>Race</MenuItem>
 
         </Menu>
-      </Box>
-      <Button variant="outlined" onClick={handleAddNewChar}>
-        Open form dialog
+      <Button variant="outlined" onClick={handleCharDialog}>
+        Create character
       </Button>
-      <Dialog open={openNewChar} onClose={handleAddNewChar}>
+      </Box>
+      <Dialog open={openNewChar} onClose={handleCharDialog}>
         <DialogTitle>Create a new character</DialogTitle>
-        <DialogContent sx={{display:'flex', flexWrap:'wrap', justifyContent:'space-between'}}>
+        <DialogContent type='form' sx={{display:'flex', flexWrap:'wrap', justifyContent:'space-between'}}>
           <TextField
             autoFocus
             margin="dense"
@@ -81,6 +109,8 @@ const CharacterTab = () => {
             label="Name"
             type="text"
             variant="standard"
+            value={newCharName}
+            onChange={(e) => setNewCharName(e.target.value)}
           />
           <TextField
             margin="dense"
@@ -88,6 +118,8 @@ const CharacterTab = () => {
             label="Level"
             type="number"
             variant="standard"
+            value={newCharLevel}
+            onChange={(e) => setNewCharLevel(e.target.value)}
           />
           <TextField
             margin="dense"
@@ -95,6 +127,8 @@ const CharacterTab = () => {
             label="Race"
             type="text"
             variant="standard"
+            value={newCharRace}
+            onChange={(e) => setNewCharRace(e.target.value)}
           />
           <TextField
             margin="dense"
@@ -102,6 +136,8 @@ const CharacterTab = () => {
             label="Class"
             type="text"
             variant="standard"
+            value={newCharClass}
+            onChange={(e) => setNewCharClass(e.target.value)}
           />
          
           <TextField
@@ -110,6 +146,8 @@ const CharacterTab = () => {
             label="HP"
             type="number"
             variant="standard"
+            value={newCharHp}
+            onChange={(e) => setNewCharHp(e.target.value)}
           />
           <TextField
             margin="dense"
@@ -117,6 +155,8 @@ const CharacterTab = () => {
             label="AC"
             type="number"
             variant="standard"
+            value={newCharAc}
+            onChange={(e) => setNewCharAc(e.target.value)}
           />
           <TextField
             margin="dense"
@@ -125,11 +165,13 @@ const CharacterTab = () => {
             type="url"
             fullWidth
             variant="standard"
+            value={newCharSheet}
+            onChange={(e) => setNewCharSheet(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Create</Button>
-          <Button onClick={handleAddNewChar}>Cancel</Button>
+          <Button onClick={submitNewChar}>Create</Button>
+          <Button onClick={handleCharDialog}>Cancel</Button>
         </DialogActions>
       </Dialog>
       <Stack>

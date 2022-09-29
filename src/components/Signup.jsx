@@ -35,10 +35,8 @@ const Signup = ({ setHomepage }) => {
     axios.post('/users', userData)
       .then(function (response) {
         if (response.data.length) {
-          console.log('Username taken')
           setUsernameError(true)
         } else {
-          console.log('sign in')
           dispatch(
             logIn({
               username: username,

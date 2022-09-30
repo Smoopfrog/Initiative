@@ -6,6 +6,7 @@ import { selectUser } from '../../slices/userSlice';
 import { selectCharacters } from '../../slices/charactersSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { setCharacters } from "../../slices/charactersSlice";
+import { useEffect } from "react";
 
 
 const CharacterTab = () => {
@@ -62,6 +63,10 @@ const CharacterTab = () => {
       });
   }
 
+  // useEffect(()=>{
+  //   console.log('hello')
+  // }, [characters])
+  
   let charArray;
   if (characters) {
     charArray = characters.map(character => {
@@ -69,6 +74,7 @@ const CharacterTab = () => {
         <PlayerCharacter
           key={character.id}
           id={character.id}
+          userId={character.user_id}
           img={character.img}
           name={character.charname}
           level={character.level}

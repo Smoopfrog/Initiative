@@ -10,6 +10,11 @@ module.exports = (db) => {
         const characters = data.rows;
         res.send(characters)
       }) 
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   })
 
   router.post('/characters', (req, res) => {
@@ -29,5 +34,23 @@ module.exports = (db) => {
     });
   })
 
+  router.delete('/characters', (req, res) => {
+    const userId = req.query.userId;
+    const charId = req.query.charId;
+
+    db.query(`DELETE FROM characters WHERE user_id = $1 AND id = $2`, [userId, charId]);
+
+    db.query(`SELECT * FROM characters WHERE user_id = $1`, [userId])
+    .then(data => {
+      const characters = data.rows;
+      res.send(characters)
+    }) 
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  })
+
   return router;
-}
+};

@@ -1,4 +1,3 @@
-import './styles/App.scss'
 import Tracker from './components/Tracker';
 import Navbar from './components/Navbar';
 import Login from './components/Login';

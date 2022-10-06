@@ -13,7 +13,7 @@ const Signup = ({ setHomepage }) => {
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const dispatch = useDispatch();
-  
+
 
   useEffect(() => {
     setUsernameError(false)
@@ -78,6 +78,10 @@ const Signup = ({ setHomepage }) => {
         justifyContent: 'center'
       }}
     >
+      <Typography margin="10px" component="h1" variant="h2">
+        Initiative
+      </Typography>
+      <br />
       <img src={chest} width="50" height="50" />
       <Typography margin="10px" component="h1" variant="h4">
         Sign up

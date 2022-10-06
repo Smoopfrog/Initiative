@@ -11,7 +11,10 @@ const Menu = ({ setHomepage }) => {
     setValue(newValue);
   };
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{
+      width: { xs: '100vw', md: '40vw' },
+      margin: '20px'
+    }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Game" value="0" />
@@ -21,7 +24,7 @@ const Menu = ({ setHomepage }) => {
       </Box>
       {value === "0" && <ServerTab />}
       {value === "1" && <CharacterTab />}
-      {value === "2" && <ProfileTab setHomepage={setHomepage}/>}
+      {value === "2" && <ProfileTab setHomepage={setHomepage} />}
     </Box>
   )
 };

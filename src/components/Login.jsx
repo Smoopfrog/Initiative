@@ -77,11 +77,15 @@ const Login = ({ setHomepage }) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        margin: '20px',
+        padding: '20px',
         height: '70vh',
         justifyContent: 'center'
       }}
     >
+      <Typography margin="10px" component="h1" variant="h2">
+        Initiative
+      </Typography>
+      <br />
       <img src={chest} width="50" height="50" />
       <Typography margin="10px" component="h1" variant="h4">
         Sign in

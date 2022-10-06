@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, render } from "react";
 import PlayerCharacter from "../PlayerCharacter";
 import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Input } from "@mui/material";
 import axios from "axios";
@@ -6,7 +6,6 @@ import { selectUser } from '../../slices/userSlice';
 import { selectCharacters } from '../../slices/charactersSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { setCharacters } from "../../slices/charactersSlice";
-import { useEffect } from "react";
 
 
 const CharacterTab = () => {
@@ -63,10 +62,6 @@ const CharacterTab = () => {
       });
   }
 
-  // useEffect(()=>{
-  //   console.log('hello')
-  // }, [characters])
-  
   let charArray;
   if (characters) {
     charArray = characters.map(character => {

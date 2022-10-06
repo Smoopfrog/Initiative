@@ -1,9 +1,8 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../slices/userSlice';
+import { selectUser, logOut } from '../../slices/userSlice';
 import { useDispatch } from "react-redux";
-import { logOut } from "../../slices/userSlice";
 
 const ProfileTab = ({ setHomepage }) => {
   const user = useSelector(selectUser);

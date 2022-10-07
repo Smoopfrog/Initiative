@@ -46,6 +46,12 @@ io.on("connection", (socket) => {
     socket.leave(data);
     console.log(`User with ID: ${socket.id} has left room: ${data}`);
   });
+
+  socket.on("add_character", (data) => {
+    console.log('data', data)
+    socket.to(data.room).emit("receive_character", data);
+  });
+
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
   });

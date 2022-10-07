@@ -1,11 +1,10 @@
-import React, { useState, render } from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCharacters, setCharacters } from '../../slices/charactersSlice';
+import { selectUser } from '../../slices/userSlice';
 import PlayerCharacter from "../PlayerCharacter";
 import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Input } from "@mui/material";
 import axios from "axios";
-import { selectUser } from '../../slices/userSlice';
-import { selectCharacters } from '../../slices/charactersSlice';
-import { useDispatch, useSelector } from "react-redux";
-import { setCharacters } from "../../slices/charactersSlice";
 
 
 const CharacterTab = () => {
@@ -22,7 +21,6 @@ const CharacterTab = () => {
 
   const user = useSelector(selectUser);
   const characters = useSelector(selectCharacters)
-
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -69,9 +67,10 @@ const CharacterTab = () => {
         <PlayerCharacter
           key={character.id}
           id={character.id}
+          userName={user.username}
           userId={character.user_id}
           img={character.img}
-          name={character.charname}
+          charName={character.charname}
           level={character.level}
           race={character.race}
           class={character.class}

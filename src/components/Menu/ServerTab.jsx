@@ -2,9 +2,10 @@ import { Box, Button, Collapse, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import GameRoom from "../GameRoom.jsx";
 import { useSelector } from 'react-redux';
-import { selectUser, joinGame, leaveGame } from '../../slices/userSlice';
-import io from "socket.io-client";
+import { selectUser, joinGame, leaveGame, inGame } from '../../slices/userSlice';
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");
 
 const ServerTab = () => {
@@ -13,27 +14,29 @@ const ServerTab = () => {
   const [roomName, setRoomName] = useState('')
   const [showGame, setShowGame] = useState(false)
   const user = useSelector(selectUser);
-  const dispatch = useDispatch()
+  const userInGame = useSelector(inGame);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    setShowGame(userInGame)
+  }, [])
 
   const joinRoom = () => {
     if (roomName !== "") {
       socket.emit("join_room", roomName);
       setShowGame(true);
       dispatch(
-        joinGame()
+        joinGame(roomName)
       );
     }
   };
 
   const leaveRoom = () => {
-    if (roomName !== "") {
-      socket.emit("leave", roomName);
-      setShowGame(false);
-      dispatch(
-        leaveGame()
-      );
-    }
+    socket.emit("leave", roomName);
+    dispatch(
+      leaveGame()
+    );
+    setShowGame(false);
   };
 
   const joinServerForm = () => {
@@ -72,10 +75,10 @@ const ServerTab = () => {
           </Box>
         </Box>
       ) : (
-        
+
         <Box>
           <Button onClick={leaveRoom}>Leave Game</Button>
-          <GameRoom/>
+          <GameRoom />
         </Box>
       )}
     </Box>

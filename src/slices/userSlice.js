@@ -13,15 +13,16 @@ export const userSlice = createSlice({
     logOut: (state) => {
       state.user = null;
     },
-    joinGame: (state) => {
-      state.inGame = true;
+    joinGame: (state, action) => {
+      state.inGame = action.payload;
     },
     leaveGame: (state) => {
-      state.inGame = false;
+      state.inGame = null;
     }
   }
 })
 
 export const {logIn, logOut, joinGame, leaveGame} = userSlice.actions;
 export const selectUser = state => state.user.user;
+export const inGame = state => state.user.inGame
 export default userSlice.reducer;

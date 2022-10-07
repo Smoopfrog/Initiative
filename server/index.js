@@ -42,6 +42,10 @@ io.on("connection", (socket) => {
     console.log(`User with ID: ${socket.id} joined room: ${data}`);
   });
 
+  socket.on("leave", (data) => {
+    socket.leave(data);
+    console.log(`User with ID: ${socket.id} has left room: ${data}`);
+  });
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
   });

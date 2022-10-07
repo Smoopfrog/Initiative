@@ -1,22 +1,30 @@
 import { Box, Button, Collapse, TextField, Typography } from "@mui/material";
-import React from "react";
-import { useState } from "react";
-import io from "socket.io-client";
+import React, { useState } from "react";
+import GameRoom from "../GameRoom.jsx";
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../slices/userSlice';
+import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");
 
 const ServerTab = () => {
   const [openJoinServer, setOpenJoinServer] = useState(false);
   const [openHostServer, setOpenHostServer] = useState(false);
   const [roomName, setRoomName] = useState('')
+  const [showGame, setShowGame] = useState(false)
   const user = useSelector(selectUser);
 
 
   const joinRoom = () => {
     if (roomName !== "") {
       socket.emit("join_room", roomName);
-      // setShowChat(true);
+      setShowGame(true);
+    }
+  };
+
+  const leaveRoom = () => {
+    if (roomName !== "") {
+      socket.emit("leave", roomName);
+      setShowGame(false);
     }
   };
 
@@ -33,21 +41,12 @@ const ServerTab = () => {
   }
 
   return (
-    <Box sx={{marginTop:'10px'}}>
-      <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <Button variant="contained" onClick={joinServerForm}>
-          Join Game
-        </Button>
-        <Button variant="contained" onClick={hostServerForm}>
-          Host Game
-        </Button>
-      </Box>
-      <Collapse in={openJoinServer} sx={{marginTop:'10px'}}>
-        <Box sx={{ border: '10px grey' }}>
+    <Box sx={{ marginTop: '10px' }}>
+      {!showGame ? (
+        <Box>
           <Typography>
             Join a Server
           </Typography>
-
           <Box sx={{ display: 'flex' }}>
             <TextField
               autoFocus
@@ -64,27 +63,13 @@ const ServerTab = () => {
             </Button>
           </Box>
         </Box>
-
-      </Collapse>
-
-      <Collapse in={openHostServer}>
-        <Typography>
-          Host a Server
-        </Typography>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Server Name"
-          type="text"
-          variant="standard"
-          value={roomName}
-          onChange={(e) => setRoomName(e.target.value)}
-        />
-        <Button variant="contained">
-          Host
-        </Button>
-      </Collapse>
+      ) : (
+        
+        <Box>
+          <Button onClick={leaveRoom}>Leave Game</Button>
+          <GameRoom/>
+        </Box>
+      )}
     </Box>
   )
 }

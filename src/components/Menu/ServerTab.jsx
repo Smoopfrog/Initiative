@@ -2,8 +2,9 @@ import { Box, Button, Collapse, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import GameRoom from "../GameRoom.jsx";
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../slices/userSlice';
+import { selectUser, joinGame, leaveGame } from '../../slices/userSlice';
 import io from "socket.io-client";
+import { useDispatch } from "react-redux";
 const socket = io.connect("http://localhost:3001");
 
 const ServerTab = () => {
@@ -12,12 +13,16 @@ const ServerTab = () => {
   const [roomName, setRoomName] = useState('')
   const [showGame, setShowGame] = useState(false)
   const user = useSelector(selectUser);
+  const dispatch = useDispatch()
 
 
   const joinRoom = () => {
     if (roomName !== "") {
       socket.emit("join_room", roomName);
       setShowGame(true);
+      dispatch(
+        joinGame()
+      );
     }
   };
 
@@ -25,6 +30,9 @@ const ServerTab = () => {
     if (roomName !== "") {
       socket.emit("leave", roomName);
       setShowGame(false);
+      dispatch(
+        leaveGame()
+      );
     }
   };
 

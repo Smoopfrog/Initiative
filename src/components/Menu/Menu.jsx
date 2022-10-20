@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Tabs, Tab } from '@mui/material';
 import ServerTab from "./ServerTab";
 import CharacterTab from "./CharacterTab";
 import ProfileTab from "./ProfileTab";
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:3001");
 
 const Menu = ({ setHomepage }) => {
   const [value, setValue] = React.useState("1");
+  const [gameCharacters, setGameCharacters] = useState([])
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -22,8 +25,8 @@ const Menu = ({ setHomepage }) => {
           <Tab label="Profile" value="2" />
         </Tabs>
       </Box>
-      {value === "0" && <ServerTab />}
-      {value === "1" && <CharacterTab />}
+      {value === "0" && <ServerTab gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} socket={socket} />}
+      {value === "1" && <CharacterTab gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} socket={socket} />}
       {value === "2" && <ProfileTab setHomepage={setHomepage} />}
     </Box>
   )

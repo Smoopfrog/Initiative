@@ -5,15 +5,29 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setCharacters } from "../slices/charactersSlice";
 import { inGame } from "../slices/userSlice";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3001");
 
 const PlayerCharacter = (props) => {
   const dispatch = useDispatch();
   const room = useSelector(inGame);
+  console.log(props)
+  const char = {
+    id: props.id,
+    ac: props.as,
+    charName: props.charName,
+    charSheetUrl: props.charSheetUrl,
+    class: props.class,
+    hp: props.hp,
+    id: props.id,
+    img: props.img,
+    initiative: props.initiative,
+    level: props.level,
+    race: props.race,
+    userId: props.userId,
+    userName: props.userName
+  };
 
-  const addCharacter = async () => {
-    await socket.emit("add_character", {...props, room});
+  const addCharacter =  () => {
+    props.socket.emit("add_character", {...char, room});
   }
 
   const deleteChar = async () => {

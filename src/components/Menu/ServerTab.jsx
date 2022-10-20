@@ -5,20 +5,19 @@ import { useSelector } from 'react-redux';
 import { selectUser, joinGame, leaveGame, inGame } from '../../slices/userSlice';
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3001");
 
-const ServerTab = () => {
+const ServerTab = ({gameCharacters, setGameCharacters, socket}) => {
   const [openJoinServer, setOpenJoinServer] = useState(false);
   const [openHostServer, setOpenHostServer] = useState(false);
   const [roomName, setRoomName] = useState('')
   const [showGame, setShowGame] = useState(false)
+
   const user = useSelector(selectUser);
   const userInGame = useSelector(inGame);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setShowGame(userInGame)
+    setShowGame(userInGame )
   }, [])
 
   const joinRoom = () => {
@@ -31,6 +30,14 @@ const ServerTab = () => {
     }
   };
 
+  useEffect(() => {
+    socket.on("receive_character",  (data) => {
+      console.log('socket data received', data)
+      setGameCharacters((prev) => [...prev, data])
+    });
+  },[socket])
+
+  console.log(' outside socket gameCharacters', gameCharacters )
   const leaveRoom = () => {
     socket.emit("leave", roomName);
     dispatch(
@@ -78,7 +85,7 @@ const ServerTab = () => {
 
         <Box>
           <Button onClick={leaveRoom}>Leave Game</Button>
-          <GameRoom />
+          <GameRoom gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} socket={socket} />
         </Box>
       )}
     </Box>

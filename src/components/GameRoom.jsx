@@ -1,28 +1,20 @@
 import { Box } from "@mui/system";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3001");
+import InGameCharacter from "./InGameCharacter";
+// import io from "socket.io-client";
+// const socket = io.connect("http://localhost:3001");
 
-const GameRoom = () => {
-  const [gameCharacters, setGameCharacters] = useState([])
-  console.log(socket)
-  useEffect(() => {
-    socket.on("receive_character", (data) => {
-      console.log('socket data received', data)
-      setGameCharacters((list) => [...list, data]);
-    });
-  }, [socket])
-
-  socket.on("receive_character", (data) => {
-    console.log('hello')
-    console.log('socket data received', data)
-    gameCharacters((list) => [...list, data]);
-  });
-  // console.log(gameCharacters)
+const GameRoom = ({setGameCharacters, gameCharacters}) => {
+  console.log('gameCharacters in game room', gameCharacters)
+  const inGameChars = gameCharacters.map(character => {
+    return (
+      <InGameCharacter />
+    )
+  })
   return (
-    <Box>
-      Hello
+    <Box> 
+      {inGameChars}
     </Box>
   )
 }

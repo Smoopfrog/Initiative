@@ -7,7 +7,7 @@ import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions,
 import axios from "axios";
 
 
-const CharacterTab = () => {
+const CharacterTab = ({gameCharacters, setGameCharacters, socket}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openNewChar, setOpenNewChar] = useState(false)
   const [newCharName, setNewCharName] = useState('')
@@ -78,6 +78,7 @@ const CharacterTab = () => {
           hp={character.hp}
           ac={character.ac}
           initiative={character.initiative}
+          socket={socket}
         />
       )
     })

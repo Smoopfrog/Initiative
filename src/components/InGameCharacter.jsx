@@ -1,22 +1,27 @@
 import { Box, Card, Typography, Input, Button } from "@mui/material";
 import React from "react";
 
-const inGameCharacter = ({character}) => {
+const inGameCharacter = ({character, gameCharacters, setGameCharacters}) => {
+  const removeChar = () => {
+    let newChars = gameCharacters.filter(newCharacters => newCharacters.id != character.id )
+    setGameCharacters(newChars)
+  }
+
   return (
-    <Card>
+    <Card sx={{display: 'flex', padding: '10px', margin: '10px' }}>
       <Box>
-        <img></img>
+        <img />
       </Box>
       <Box>
         <Box>
-          <Typography>
+          <Typography variant='h3'>
             {character.charName}
           </Typography>
-          <Typography>
+          <Typography variant='subtitle'>
             Lv. {character.level} {character.race} {character.class} 
           </Typography>
         </Box>
-        <Box>
+        <Box sx={{display:'flex'}}>
           <Input value={character.initiative}>
           </Input>
           <Input value={character.hp}>
@@ -26,7 +31,7 @@ const inGameCharacter = ({character}) => {
         </Box>
       </Box>
       <Box>
-        <Button>X</Button>
+        <Button onClick={removeChar}>X</Button>
         <Button>?</Button>
       </Box>
     </Card>

@@ -1,5 +1,6 @@
 import React from "react";
-import Button from "./Character/Button";
+// import Button from "./Character/Button";
+import { Button } from "@mui/material";
 
 
 const Tracker = props => {
@@ -15,9 +16,8 @@ const Tracker = props => {
   return (
     <div className="tracker">
       {playerTurn(props)}
-      <Button onClick={props.prevChar} name={"<"} />
-      <Button onClick={props.nextChar} name={">"} />
-      <Button onClick={props.addChar} name={"+"} />
+      <Button ><i class="fa-solid fa-arrow-left"></i></Button>
+      <Button ><i class="fa-solid fa-arrow-right"></i></Button>
     </div>
   )
 }

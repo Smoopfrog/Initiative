@@ -4,12 +4,11 @@ import halfling from "../images/Ivan_Kaslov-0.webp"
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setCharacters } from "../slices/charactersSlice";
-import { inGame } from "../slices/userSlice";
+// import { inGame } from "../slices/userSlice";
 
 const PlayerCharacter = (props) => {
   const dispatch = useDispatch();
   // const room = useSelector(inGame);
-  // console.log(props)
 
   const char = {
     id: props.id,

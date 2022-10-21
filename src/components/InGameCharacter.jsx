@@ -1,14 +1,15 @@
 import { Box, Card, Typography, Input, Button } from "@mui/material";
 import React from "react";
 
-const inGameCharacter = ({character, gameCharacters, setGameCharacters}) => {
+const inGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
+
   const removeChar = () => {
-    let newChars = gameCharacters.filter(newCharacters => newCharacters.id != character.id )
+    let newChars = gameCharacters.filter(newCharacters => newCharacters.id != character.id)
     setGameCharacters(newChars)
   }
 
   return (
-    <Card sx={{display: 'flex', padding: '10px', margin: '10px' }}>
+    <Card sx={{ display: 'flex', padding: '10px', margin: '10px' }}>
       <Box>
         <img />
       </Box>
@@ -18,20 +19,25 @@ const inGameCharacter = ({character, gameCharacters, setGameCharacters}) => {
             {character.charName}
           </Typography>
           <Typography variant='subtitle'>
-            Lv. {character.level} {character.race} {character.class} 
+            Lv. {character.level} {character.race} {character.class}
           </Typography>
         </Box>
-        <Box sx={{display:'flex'}}>
-          <Input value={character.initiative}>
+        <Box sx={{ display: 'flex' }}>
+          <label>Initiative</label>
+          <Input sx={{ width: '30px' }} value={character.initiative}>
           </Input>
-          <Input value={character.hp}>
+
+          <label>HP</label>
+          <Input sx={{ width: '30px' }} value={character.hp}>
           </Input>
-          <Input value={character.ac}>
+          
+          <label>AC</label>
+          <Input sx={{ width: '30px' }} value={character.ac}>
           </Input>
         </Box>
       </Box>
-      <Box>
-        <Button onClick={removeChar}>X</Button>
+      <Box sx={{display:'flex', flexDirection:'column'}}>
+        <Button onClick={removeChar} variant="contained" color="error" type={'trash'}><i className="fa-solid fa-trash-can"></i></Button>
         <Button>?</Button>
       </Box>
     </Card>

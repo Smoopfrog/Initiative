@@ -8,18 +8,19 @@ import { inGame } from "../slices/userSlice";
 
 const PlayerCharacter = (props) => {
   const dispatch = useDispatch();
-  const room = useSelector(inGame);
-  console.log(props)
+  // const room = useSelector(inGame);
+  // console.log(props)
+
   const char = {
     id: props.id,
-    ac: props.as,
+    ac: props.ac,
     charName: props.charName,
     charSheetUrl: props.charSheetUrl,
     class: props.class,
     hp: props.hp,
     id: props.id,
     img: props.img,
-    initiative: props.initiative,
+    initiative: 0,
     level: props.level,
     race: props.race,
     userId: props.userId,

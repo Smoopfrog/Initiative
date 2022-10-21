@@ -23,11 +23,12 @@ const PlayerCharacter = (props) => {
     level: props.level,
     race: props.race,
     userId: props.userId,
-    userName: props.userName
+    userName: props.userName,
+    selected: false
   };
 
-  const addCharacter =  () => {
-    props.socket.emit("add_character", {...char, room});
+  const addCharacter = () => {
+    props.setGameCharacters(prev => [...prev, char])
   }
 
   const deleteChar = async () => {
@@ -36,7 +37,7 @@ const PlayerCharacter = (props) => {
       charId: props.id
     }
 
-    await axios.delete('/characters', {params})
+    await axios.delete('/characters', { params })
       .then(res => {
         dispatch(
           setCharacters(res.data)
@@ -46,9 +47,9 @@ const PlayerCharacter = (props) => {
   }
 
   return (
-    <Card sx={{ display: 'flex', justifyContent:'space-between', width: '90%', margin: '10px', padding: '10px', background: 'oldlace' }}>
-      <Box sx={{display:'flex'}}>
-        <img src={halfling} width='20%'/>
+    <Card sx={{ display: 'flex', justifyContent: 'space-between', width: '90%', margin: '10px', padding: '10px', background: 'oldlace' }}>
+      <Box sx={{ display: 'flex' }}>
+        <img src={halfling} width='20%' />
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <Typography variant="h5" >{props.charName}</Typography>
           <Typography variant="h12">Lv.{props.level} {props.race} {props.class}</Typography>
@@ -57,9 +58,7 @@ const PlayerCharacter = (props) => {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         <Button variant="contained" sx={{ backgroundColor: "light-blue", color: "white" }}><i class="fa-solid fa-pen-to-square"></i></Button>
-        {room &&
-          <Button onClick={addCharacter} variant="contained" sx={{ backgroundColor: "Green", color: "white" }}><i class="fa-solid fa-plus"></i></Button>
-        }
+        <Button onClick={addCharacter} variant="contained" sx={{ backgroundColor: "Green", color: "white" }}><i class="fa-solid fa-plus"></i></Button>
         <Button onClick={deleteChar} variant="contained" color="error" type={'trash'}><i className="fa-solid fa-trash-can"></i></Button>
       </Box>
     </Card>

@@ -5,7 +5,7 @@ import Button from "./Character/Button";
 const Tracker = props => {
 
   const playerTurn = props => {
-    const selectedIndex = props.charArray.findIndex(char => char.selected)
+    const selectedIndex = props.gameCharacters.findIndex(char => char.selected)
     if (selectedIndex !== -1){
       return <h1>Turn: {props.charArray[selectedIndex].name}</h1>
     }

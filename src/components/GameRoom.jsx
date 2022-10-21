@@ -9,7 +9,7 @@ const GameRoom = ({setGameCharacters, gameCharacters}) => {
   console.log('gameCharacters in game room', gameCharacters)
   const inGameChars = gameCharacters.map(character => {
     return (
-      <InGameCharacter />
+      <InGameCharacter charName={character.charName} />
     )
   })
   return (

@@ -16,50 +16,51 @@ const ServerTab = ({gameCharacters, setGameCharacters, socket}) => {
   const userInGame = useSelector(inGame);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setShowGame(userInGame )
-  }, [])
-
+  
   const joinRoom = () => {
     if (roomName !== "") {
       socket.emit("join_room", roomName);
       setShowGame(true);
       dispatch(
         joinGame(roomName)
-      );
-    }
-  };
-
-  useEffect(() => {
-    socket.on("receive_character",  (data) => {
-      console.log('socket data received', data)
-      setGameCharacters((prev) => [...prev, data])
-    });
-  },[socket])
-
-  console.log(' outside socket gameCharacters', gameCharacters )
+        );
+      }
+    };
+    
   const leaveRoom = () => {
     socket.emit("leave", roomName);
     dispatch(
       leaveGame()
-    );
-    setShowGame(false);
-  };
+      );
+      setShowGame(false);
+    };
+    
+    const joinServerForm = () => {
+      setOpenJoinServer(!openJoinServer)
+      setOpenHostServer(false)
+      setRoomName('')
+    }
+    
+    const hostServerForm = () => {
+      setOpenHostServer(!openHostServer)
+      setOpenJoinServer(false)
+      setRoomName('')
+    }
+    
+    // useEffect(() => {
+      socket.on("receive_character",  (data) => {
+        console.log('socket data received', data)
+        setGameCharacters((prev) => { console.log('prev', prev)
+        return [...prev, data]})
+      });
+    // },[socket])
+    
+    useEffect(() => {
+      setShowGame(userInGame)
+    }, [])
 
-  const joinServerForm = () => {
-    setOpenJoinServer(!openJoinServer)
-    setOpenHostServer(false)
-    setRoomName('')
-  }
-
-  const hostServerForm = () => {
-    setOpenHostServer(!openHostServer)
-    setOpenJoinServer(false)
-    setRoomName('')
-  }
-
-  return (
-    <Box sx={{ marginTop: '10px' }}>
+    return (
+      <Box sx={{ marginTop: '10px' }}>
       {!showGame ? (
         <Box>
           <Typography>

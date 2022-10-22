@@ -8,23 +8,27 @@ import Tracker from "./Tracker";
 
 const GameRoom = ({setGameCharacters, gameCharacters}) => {
   console.log('gameCharacters in game room', gameCharacters)
+
   const sortByInitiative = characters => {
     return characters.sort((a, b) => b.initiative - a.initiative)
   }
+  
   // console.log(gameCharacters)
   // let sortedCharacters;
-  let sortedCharacters = sortByInitiative(gameCharacters)
-  // useEffect(()=> {
-  //   console.log('hello')
-  //   const sortedCharacters = gameCharacters.sort((a, b) => b.intiative - a.intiative)
-  // }, [gameCharacters])
-  const inGameChars = sortedCharacters.map(character => {
+
+  // let sortedCharacters = sortByInitiative(gameCharacters)
+
+  useEffect(()=> {
+    // console.log('hello')
+    // const sortedCharacters = gameCharacters.sort((a, b) => b.intiative - a.intiative)
+    setGameCharacters(sortByInitiative(gameCharacters))
+  }, [gameCharacters])
+
+  const inGameChars = gameCharacters.map(character => {
     return (
       <InGameCharacter character={character} gameCharacters={gameCharacters} setGameCharacters={setGameCharacters}/>
     )
   })
-
-  
 
   return (
     <Box> 

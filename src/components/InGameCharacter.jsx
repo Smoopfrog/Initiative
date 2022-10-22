@@ -1,4 +1,4 @@
-import { Box, Card, Typography, Input, Button, Link } from "@mui/material";
+import { Box, Card, Typography, Input, Button, Link, TextField } from "@mui/material";
 import React, { useState } from "react";
 import halfling from "../images/Ivan_Kaslov-0.webp"
 
@@ -44,15 +44,15 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
         <Box sx={{ display: 'flex', width: '40%' }}>
             <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', border: '10px black'}}>
               <label>Initiative</label>
-              <Input value={initiative} onChange={changeInitiative} sx={{ width: '30px', textAlignLast: 'center'  }} />
+              <TextField value={initiative} onChange={changeInitiative} sx={{ width: '50px', textAlignLast: 'center'  }} />
             </Box>
             <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlignLast: 'center'}}>
               <label>HP</label>
-              <Input value={hp} onChange={changeHp} sx={{ width: '30px' }} />
+              <TextField value={hp} onChange={changeHp} sx={{ width: '50px' }} />
             </Box>
             <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlignLast: 'center'}}>
               <label>AC</label>
-              <Input value={ac} onChange={changeAc} sx={{ width: '30px' }} />
+              <TextField value={ac} onChange={changeAc} sx={{ width: '50px' }} />
             </Box>
           </Box>
       </Box>

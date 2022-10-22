@@ -3,6 +3,7 @@ import { Box, Tabs, Tab } from '@mui/material';
 import CharacterTab from "./CharacterTab.jsx";
 import ProfileTab from "./ProfileTab.jsx";
 import GameRoomTab from "../GameRoomTab";
+import MonsterManualTab from "./MonsterManualTab.jsx";
 // import ServerTab from "./ServerTab";
 // import io from "socket.io-client";
 // const socket = io.connect("http://localhost:3001");
@@ -14,6 +15,7 @@ const Menu = ({ setHomepage }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   return (
     <Box sx={{
       width: { xs: '100vw', md: '40vw' },
@@ -23,12 +25,15 @@ const Menu = ({ setHomepage }) => {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Game" value="0" />
           <Tab label="Characters" value="1" />
-          <Tab label="Profile" value="2" />
+          <Tab label="Monster Manual" value="2" />
+          <Tab label="Profile" value="3" />
+
         </Tabs>
       </Box>
       {value === "0" && <GameRoomTab gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} />}
       {value === "1" && <CharacterTab gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} />}
-      {value === "2" && <ProfileTab setHomepage={setHomepage} />}
+      {value === "2" && <MonsterManualTab />}
+      {value === "3" && <ProfileTab setHomepage={setHomepage} />}
     </Box>
   )
 };

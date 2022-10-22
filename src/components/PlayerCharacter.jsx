@@ -17,7 +17,6 @@ const PlayerCharacter = (props) => {
     charSheetUrl: props.charSheetUrl,
     class: props.class,
     hp: props.hp,
-    id: props.id,
     img: props.img,
     initiative: 0,
     level: props.level,

@@ -15,6 +15,7 @@ const MonsterManualTab = () => {
     const monster = searchText.trim().replace(/\s+/g, '-').toLowerCase();
     const response = await fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
     const data = await response.json();
+    console.log(data)
     setSearchResults(data)
   };
 

@@ -31,7 +31,7 @@ const Menu = ({ setHomepage }) => {
         </Tabs>
       </Box>
       {value === "0" && <GameRoomTab gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} />}
-      {value === "1" && <CharacterTab gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} />}
+        {value === "1" && <CharacterTab gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} />}
       {value === "2" && <MonsterManualTab />}
       {value === "3" && <ProfileTab setHomepage={setHomepage} />}
     </Box>

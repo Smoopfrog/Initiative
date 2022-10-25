@@ -35,7 +35,6 @@ const Login = ({ setHomepage }) => {
 
     axios.get('/characters', {params})
       .then(res => {
-        console.log(res.data)
         dispatch(
           setCharacters(res.data)
         )

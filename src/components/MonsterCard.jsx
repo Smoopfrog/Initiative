@@ -5,7 +5,13 @@ import React from "react";
 
 const MonsterCard = ({ monster }) => {
   console.log(monster)
-  const modifierCalculator = stat => Math.floor((stat - 10) / 2)
+  const modifierCalculator = stat => {
+    let modifier = Math.floor((stat - 10) / 2);
+    if (modifier > 0) {
+      return `+${modifier}`;
+    }
+    return modifier;
+  };
 
   const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -19,29 +25,31 @@ const MonsterCard = ({ monster }) => {
           Armor Class {monster.armor_class}
         </Typography>
         <Typography>
-          Hit Points {monster.hit_points} ({monster.hit_dice})
+          Hit Points {monster.hit_points} ({monster.hit_points_roll})
         </Typography>
         <Typography>
           Speed {monster.speed.walk}
         </Typography>
       </Box>
-      <Box>
-        STR {monster.strength} ({modifierCalculator(monster.strength)})
-      </Box>
-      <Box>
-        DEX {monster.dexterity} ({modifierCalculator(monster.dexterity)})
-      </Box>
-      <Box>
-        CON {monster.constitution} ({modifierCalculator(monster.constitution)})
-      </Box>
-      <Box>
-        INT {monster.intelligence} ({modifierCalculator(monster.intelligence)})
-      </Box>
-      <Box>
-        WIS {monster.wisdom} ({modifierCalculator(monster.wisdom)})
-      </Box>
-      <Box>
-        CHA {monster.charisma} ({modifierCalculator(monster.charisma)})
+      <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Box>
+          STR {monster.strength} ({modifierCalculator(monster.strength)})
+        </Box>
+        <Box>
+          DEX {monster.dexterity} ({modifierCalculator(monster.dexterity)})
+        </Box>
+        <Box>
+          CON {monster.constitution} ({modifierCalculator(monster.constitution)})
+        </Box>
+        <Box>
+          INT {monster.intelligence} ({modifierCalculator(monster.intelligence)})
+        </Box>
+        <Box>
+          WIS {monster.wisdom} ({modifierCalculator(monster.wisdom)})
+        </Box>
+        <Box>
+          CHA {monster.charisma} ({modifierCalculator(monster.charisma)})
+        </Box>
       </Box>
     </Card>
   )

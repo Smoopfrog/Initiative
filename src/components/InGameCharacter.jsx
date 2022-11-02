@@ -17,8 +17,8 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
     setInitiative(event.target.value)
     character.initiative = event.target.value;
     console.log(character)
-    let newChars = gameCharacters.filter(gameCharacter => gameCharacter.id != character.id)
-    setGameCharacters([...newChars, character])
+    // let newChars = gameCharacters.filter(gameCharacter => gameCharacter.id != character.id)
+    // setGameCharacters([...newChars, character])
   }
 
   const changeHp = event => {

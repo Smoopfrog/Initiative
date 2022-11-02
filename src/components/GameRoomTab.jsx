@@ -1,4 +1,4 @@
-import { Box } from "@mui/system";
+import { Box, Button } from "@mui/material";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import InGameCharacter from "./InGameCharacter";
@@ -6,33 +6,26 @@ import Tracker from "./Tracker";
 // import io from "socket.io-client";
 // const socket = io.connect("http://localhost:3001");
 
-const GameRoom = ({setGameCharacters, gameCharacters}) => {
-  console.log('gameCharacters in game room', gameCharacters)
-
-  const sortByInitiative = characters => {
-    return characters.sort((a, b) => b.initiative - a.initiative)
-  }
+const GameRoom = ({ setGameCharacters, gameCharacters }) => {
   
-  // console.log(gameCharacters)
-  // let sortedCharacters;
-
-  // let sortedCharacters = sortByInitiative(gameCharacters)
-
-  useEffect(()=> {
-    // console.log('hello')
-    // const sortedCharacters = gameCharacters.sort((a, b) => b.intiative - a.intiative)
-    setGameCharacters(sortByInitiative(gameCharacters))
-  }, [gameCharacters])
+  const sortByInitiative = characters => {
+    return characters.sort((a, b) => b.initiative - a.initiative);
+  };
 
   const inGameChars = gameCharacters.map(character => {
     return (
-      <InGameCharacter character={character} gameCharacters={gameCharacters} setGameCharacters={setGameCharacters}/>
+      <InGameCharacter key={character.id} character={character} gameCharacters={gameCharacters} setGameCharacters={setGameCharacters} />
     )
   })
 
   return (
-    <Box> 
-      <Tracker gameCharacters={gameCharacters} />
+    <Box>
+      <div className="tracker">
+        {/* {playerTurn(props)} */}
+        <Button ><i class="fa-solid fa-arrow-left"></i></Button>
+        <Button onClick={() => setGameCharacters(sortByInitiative(gameCharacters))} >Sort</Button>
+        <Button ><i class="fa-solid fa-arrow-right"></i></Button>
+      </div>
       {inGameChars}
     </Box>
   )

@@ -17,15 +17,88 @@ const GameRoom = ({ setGameCharacters, gameCharacters, sortByInitiative }) => {
     sortByInitiative(gameCharacters);
   };
 
+  const nextChar = () => {
+    // get selected char and index
+
+    let selectedIndex = gameCharacters.findIndex((char) => char.selected);
+    let selectedChar = {};
+
+    // check if any are selected
+    if (selectedIndex !== -1) {
+      selectedChar = gameCharacters.find(
+        (char, index) => index === selectedIndex
+      );
+      selectedChar.selected = false;
+    } else {
+      selectedIndex = -1;
+    }
+
+    // Check if at end of order
+    if (selectedIndex == gameCharacters.length - 1) {
+      selectedIndex = -1;
+    }
+
+    let nextUp = gameCharacters.find(
+      (char, index) => index === selectedIndex + 1
+    );
+
+    nextUp.selected = true;
+
+    // replace the char obj by finding the id
+    const newState = gameCharacters.map((character) => {
+      if (character.id == nextUp.id) return nextUp;
+      if (character.id == selectedChar.id) return selectedChar;
+      return character;
+    });
+
+    setGameCharacters(newState);
+  };
+
+  const prevChar = () => {
+    // get selected char and index
+    let selectedIndex = gameCharacters.findIndex((char) => char.selected);
+    let selectedChar = {};
+
+    // check if any are selected
+    if (selectedIndex !== -1) {
+      selectedChar = gameCharacters.find(
+        (char, index) => index === selectedIndex
+      );
+      selectedChar.selected = false;
+    } else {
+      selectedIndex = 1;
+    }
+
+    // Check if at top of order
+    if (selectedIndex == 0) {
+      selectedIndex = gameCharacters.length;
+    }
+
+    let nextUp = gameCharacters.find(
+      (char, index) => index === selectedIndex - 1
+    );
+
+    nextUp.selected = true;
+
+    // replace the char obj by finding the id
+    const newState = gameCharacters.map((character) => {
+      if (character.id == nextUp.id) return nextUp;
+      if (character.id == selectedChar.id) return selectedChar;
+      return character;
+    });
+
+    setGameCharacters(newState);
+  };
+
   return (
     <Box>
       <div className="tracker">
-        <Button>
-          <i class="fa-solid fa-arrow-left"></i>
+        <Button onClick={prevChar}>
+          <i className="fa-solid fa-arrow-left"></i>
         </Button>
         <Button onClick={sortButtonHandler}>Sort</Button>
-        <Button>
-          <i class="fa-solid fa-arrow-right"></i>
+        <Button onClick={nextChar}>
+          <i className="fa-solid fa-arrow-right"></i>
         </Button>
       </div>
       {inGameChars}

@@ -1,6 +1,6 @@
 import { Box, Card, Typography, Input, Button, Link, TextField } from "@mui/material";
 import React, { useState } from "react";
-import halfling from "../images/Ivan_Kaslov-0.webp"
+import monsterSilhouette from "../images/MonsterSilhouette.png"
 
 const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
   const [initiative, setInitiative] = useState(character.initiative);
@@ -30,10 +30,10 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
     <Card sx={{ display: 'flex', justifyContent: 'space-between', padding: '10px', margin: '10px' }}>
       <Box sx={{display: 'flex'}}>
         <Box sx={{ display: 'flex' }}>
-          <img src={halfling} width='25%' />
+          {character.img ? <img src={character.img} width='25%' /> : <img src={monsterSilhouette} width='25%' />}
           <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <Typography variant="h5" >{character.charName}</Typography>
-            <Typography variant="h12">Lv.{character.level} {character.race} {character.class}</Typography>
+            <Typography variant="h12">{character.level && ` Lv. ${character.level}`} {character.race} {character.class}</Typography>
             {character.charSheetUrl && <Link href={character.charSheetUrl} target="_blank" rel="noopener noreferrer">Character Sheet</Link>}
           </Box>
 

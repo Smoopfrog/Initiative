@@ -2,17 +2,30 @@ import { Box, Button, Card, Link, Typography } from "@mui/material";
 import React from "react";
 
 const MonsterCard = ({ monster, setGameCharacters }) => {
-  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-  const rollTwentyLink = `https://roll20.net/compendium/dnd5e/${monster.name}`
+  const capitalize = (str) => {
+    if (str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    return "";
+  };
+
+  let subtype = monster.subtype;
+
+  if (subtype) {
+    subtype = `(${capitalize(subtype)})`;
+  }
+
+  const rollTwentyLink = `https://roll20.net/compendium/dnd5e/${monster.name}`;
   const char = {
-    id: monster.id,
+    id: Math.random(),
     ac: monster.armor_class,
     charName: monster.name,
     charSheetUrl: rollTwentyLink,
     hp: monster.hit_points,
-    img: monster.image,
+    img: `https://www.dnd5eapi.co${monster.image}`,
     initiative: 0,
     race: capitalize(monster.type),
+    class: subtype,
     selected: false,
   };
 
@@ -20,9 +33,8 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
     setGameCharacters((prev) => [...prev, char]);
   };
 
-
   return (
-    <Card sx={{ display: "flex" }} >
+    <Card sx={{ display: "flex" }}>
       <Box sx={{ display: "flex" }}>
         {monster.image && (
           <img
@@ -44,22 +56,18 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
           <Typography>
             Hit Points {monster.hit_points} ({monster.hit_points_roll})
           </Typography>
-          <Link
-            href={rollTwentyLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href={rollTwentyLink} target="_blank" rel="noopener noreferrer">
             Roll20 Link
           </Link>
         </Box>
       </Box>
       <Button
-          onClick={addCharacter}
-          variant="contained"
-          sx={{ backgroundColor: "Green", color: "white" }}
-        >
-          <i className="fa-solid fa-plus"></i>
-        </Button>
+        onClick={addCharacter}
+        variant="contained"
+        sx={{ backgroundColor: "Green", color: "white" }}
+      >
+        <i className="fa-solid fa-plus"></i>
+      </Button>
     </Card>
   );
 };

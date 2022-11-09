@@ -1,84 +1,91 @@
 import React, { useState, useEffect } from "react";
-import chest from '../images/treasure.png'
-import { Box, TextField, Typography, FormControlLabel, Button, Collapse, IconButton, Alert } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import { CheckBox } from '@mui/icons-material';
+import chest from "../images/treasure.png";
+import {
+  Box,
+  TextField,
+  Typography,
+  FormControlLabel,
+  Button,
+  Collapse,
+  IconButton,
+  Alert,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { CheckBox } from "@mui/icons-material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../slices/userSlice";
 import { setCharacters } from "../slices/charactersSlice";
 
-
-
-const Login = ({ setHomepage }) => {
+const Login = ({ setHomepage, setPlayerCharacters }) => {
   const [username, setUsername] = useState("");
   const [password, setpassword] = useState("");
   const [credentialsError, setCredentialsError] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setCredentialsError(false)
-  }, [username, password])
+    setCredentialsError(false);
+  }, [username, password]);
 
-  const handleUsernameChange = e => {
-    setUsername(e.target.value)
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
-  const handlePasswordChange = e => {
-    setpassword(e.target.value)
+  const handlePasswordChange = (e) => {
+    setpassword(e.target.value);
   };
 
-  const getUserCharacters = id => {
+  const getUserCharacters = (id) => {
     const params = {
-      userId: id
-    }
+      userId: id,
+    };
 
-    axios.get('/characters', {params})
-      .then(res => {
-        dispatch(
-          setCharacters(res.data)
-        )
+    axios
+      .get("/characters", { params })
+      .then((res) => {
+        setPlayerCharacters(res.data);
       })
-      .catch(err => {console.log(err)})
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const login = (e) => {
     e.preventDefault();
 
     const params = {
       username: username,
-      password: password
-    }
+      password: password,
+    };
 
-    axios.get('/users', { params })
+    axios
+      .get("/users", { params })
       .then(function (response) {
         if (response.data.length) {
-          dispatch(
-            logIn(response.data[0])
-          )
-          getUserCharacters(response.data[0].id)
-          setHomepage('signedIn')
-          return
+          dispatch(logIn(response.data[0]));
+          getUserCharacters(response.data[0].id);
+          setHomepage("signedIn");
+          return;
         }
-        setCredentialsError(true)
+        setCredentialsError(true);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }
+  };
 
   return (
     <Box
       onSubmit={login}
       component="form"
       sx={{
-        width: { xs: '100vw', md: '40vw' },
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '20px',
-        height: '70vh',
-        justifyContent: 'center'
+        width: { xs: "100vw", md: "40vw" },
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "20px",
+        height: "70vh",
+        justifyContent: "center",
       }}
     >
       <Typography margin="10px" component="h1" variant="h2">
@@ -113,31 +120,44 @@ const Login = ({ setHomepage }) => {
         id="password"
       />
       <Collapse in={credentialsError}>
-        <Alert severity="error" action={
-          <IconButton
-            aria-label="close"
-            color="inherit"
-            size="small"
-            onClick={() => {
-              setCredentialsError(false);
-            }}
-          >
-            <CloseIcon fontSize="inherit" />
-          </IconButton>
-        }
+        <Alert
+          severity="error"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setCredentialsError(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
           sx={{ mb: 2 }}
         >
           Invalid Credentials
         </Alert>
       </Collapse>
-      <FormControlLabel control={<CheckBox defaultChecked />} label="Remember me" sx={{ margin: "10px" }} />
-      <Button type="submit" variant="contained" sx={{ margin: "10px" }}>Sign in</Button>
-      <Box width="100%" display="flex" justifyContent='space-between'>
-        <Button sx={{ textTransform: 'none' }}>Forgot your password?</Button>
-        <Button onClick={() => setHomepage('signup')} sx={{ textTransform: 'none' }}>Don't have an account? Sign Up</Button>
+      <FormControlLabel
+        control={<CheckBox defaultChecked />}
+        label="Remember me"
+        sx={{ margin: "10px" }}
+      />
+      <Button type="submit" variant="contained" sx={{ margin: "10px" }}>
+        Sign in
+      </Button>
+      <Box width="100%" display="flex" justifyContent="space-between">
+        <Button sx={{ textTransform: "none" }}>Forgot your password?</Button>
+        <Button
+          onClick={() => setHomepage("signup")}
+          sx={{ textTransform: "none" }}
+        >
+          Don't have an account? Sign Up
+        </Button>
       </Box>
     </Box>
-  )
+  );
 };
 
 export default Login;

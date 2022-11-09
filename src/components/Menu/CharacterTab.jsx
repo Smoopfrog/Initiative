@@ -1,26 +1,40 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCharacters, setCharacters } from '../../slices/charactersSlice';
-import { selectUser } from '../../slices/userSlice';
+import { selectCharacters, setCharacters } from "../../slices/charactersSlice";
+import { selectUser } from "../../slices/userSlice";
 import PlayerCharacter from "../PlayerCharacter";
-import { Box, Stack, Button, Menu, MenuItem, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Input } from "@mui/material";
+import {
+  Box,
+  Stack,
+  Button,
+  Menu,
+  MenuItem,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  TextField,
+  Input,
+} from "@mui/material";
 import axios from "axios";
 
-
-const CharacterTab = ({gameCharacters, setGameCharacters}) => {
+const CharacterTab = ({
+  gameCharacters,
+  setGameCharacters,
+  playerCharacters,
+  setPlayerCharacters,
+}) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [openNewChar, setOpenNewChar] = useState(false)
-  const [newCharName, setNewCharName] = useState('')
-  const [newCharLevel, setNewCharLevel] = useState('')
-  const [newCharRace, setNewCharRace] = useState('')
-  const [newCharClass, setNewCharClass] = useState('')
-  const [newCharHp, setNewCharHp] = useState('')
-  const [newCharAc, setNewCharAc] = useState('')
-  const [newCharSheet, setNewCharSheet] = useState('')
-  const dispatch = useDispatch();
-
+  const [openNewChar, setOpenNewChar] = useState(false);
+  const [newCharName, setNewCharName] = useState("");
+  const [newCharLevel, setNewCharLevel] = useState("");
+  const [newCharRace, setNewCharRace] = useState("");
+  const [newCharClass, setNewCharClass] = useState("");
+  const [newCharHp, setNewCharHp] = useState("");
+  const [newCharAc, setNewCharAc] = useState("");
+  const [newCharSheet, setNewCharSheet] = useState("");
   const user = useSelector(selectUser);
-  const characters = useSelector(selectCharacters)
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -28,15 +42,14 @@ const CharacterTab = ({gameCharacters, setGameCharacters}) => {
   };
 
   const handleCharDialog = () => {
-    setOpenNewChar(!openNewChar)
-  }
+    setOpenNewChar(!openNewChar);
+  };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-
-  const submitNewChar = () => {
+  const submitNewChar = async () => {
     const newChar = {
       newCharName,
       newCharLevel,
@@ -45,54 +58,52 @@ const CharacterTab = ({gameCharacters, setGameCharacters}) => {
       newCharHp,
       newCharAc,
       newCharSheet,
-      userId: user.id
-    }
+      userId: user.id,
+    };
 
-    axios.post('/characters', newChar)
-      .then(res => {
-        dispatch(
-          setCharacters(res.data)
-        )
-        handleCharDialog()
+    let newCharacters;
+    await axios
+      .post("/characters", newChar)
+      .then((res) => {
+        setPlayerCharacters(res.data);
+        handleCharDialog();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
-  }
+    console.log("newCharacters", newCharacters);
+  };
 
-  let charArray;
-  if (characters) {
-    charArray = characters.map(character => {
-      return (
-        <PlayerCharacter
-          key={character.id}
-          id={character.id}
-          userName={user.username}
-          userId={character.user_id}
-          img={character.img}
-          charName={character.charname}
-          level={character.level}
-          race={character.race}
-          class={character.class}
-          charSheetUrl={character.charsheet}
-          hp={character.hp}
-          ac={character.ac}
-          initiative={character.initiative}
-          setGameCharacters={setGameCharacters}
-          // socket={socket}
-        />
-      )
-    })
-  }
+  const charArray = playerCharacters.map((character) => {
+    return (
+      <PlayerCharacter
+        key={character.id}
+        id={character.id}
+        userName={user.username}
+        userId={character.user_id}
+        img={character.img}
+        charName={character.charname}
+        level={character.level}
+        race={character.race}
+        class={character.class}
+        charSheetUrl={character.charsheet}
+        hp={character.hp}
+        ac={character.ac}
+        initiative={character.initiative}
+        setGameCharacters={setGameCharacters}
+        setPlayerCharacters={setPlayerCharacters}
+      />
+    );
+  });
 
   return (
     <Box>
       <Box>
         <Button
           id="basic-button"
-          aria-controls={open ? 'basic-menu' : undefined}
+          aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
+          aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
           Sort by
@@ -103,14 +114,13 @@ const CharacterTab = ({gameCharacters, setGameCharacters}) => {
           open={open}
           onClose={handleClose}
           MenuListProps={{
-            'aria-labelledby': 'basic-button',
+            "aria-labelledby": "basic-button",
           }}
         >
           <MenuItem onClick={handleClose}>Name</MenuItem>
           <MenuItem onClick={handleClose}>Level</MenuItem>
           <MenuItem onClick={handleClose}>Class</MenuItem>
           <MenuItem onClick={handleClose}>Race</MenuItem>
-
         </Menu>
         <Button variant="outlined" onClick={handleCharDialog}>
           Create character
@@ -118,7 +128,14 @@ const CharacterTab = ({gameCharacters, setGameCharacters}) => {
       </Box>
       <Dialog open={openNewChar} onClose={handleCharDialog}>
         <DialogTitle>Create a new character</DialogTitle>
-        <DialogContent type='form' sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+        <DialogContent
+          type="form"
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
           <TextField
             autoFocus
             margin="dense"
@@ -191,11 +208,9 @@ const CharacterTab = ({gameCharacters, setGameCharacters}) => {
           <Button onClick={handleCharDialog}>Cancel</Button>
         </DialogActions>
       </Dialog>
-      <Stack>
-        {charArray}
-      </Stack>
+      <Stack>{charArray}</Stack>
     </Box>
-  )
-}
+  );
+};
 
 export default CharacterTab;

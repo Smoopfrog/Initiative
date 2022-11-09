@@ -1,8 +1,5 @@
 import { Box, Button } from "@mui/material";
-import React, { useEffect } from "react";
-import { useState } from "react";
 import InGameCharacter from "./InGameCharacter";
-import Tracker from "./Tracker";
 
 const GameRoom = ({ setGameCharacters, gameCharacters, sortByInitiative }) => {
   const inGameChars = gameCharacters.map((character) => {

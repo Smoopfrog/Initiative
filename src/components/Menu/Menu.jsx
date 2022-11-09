@@ -4,17 +4,17 @@ import CharacterTab from "./CharacterTab.jsx";
 import ProfileTab from "./ProfileTab.jsx";
 import GameRoomTab from "../GameRoomTab";
 import MonsterManualTab from "./MonsterManualTab.jsx";
-// import ServerTab from "./ServerTab";
-// import io from "socket.io-client";
-// const socket = io.connect("http://localhost:3001");
 
-const Menu = ({ setHomepage }) => {
-  const [value, setValue] = React.useState("1");
+
+const Menu = ({ setHomepage, playerCharacters, setPlayerCharacters }) => {
+  const [value, setValue] = useState("1");
   const [gameCharacters, setGameCharacters] = useState([]);
 
-  const sortByInitiative = characters => {
-    let sortedCharacters = characters.sort((a, b) => b.initiative - a.initiative);
-    setGameCharacters([...sortedCharacters])
+  const sortByInitiative = (characters) => {
+    let sortedCharacters = characters.sort(
+      (a, b) => b.initiative - a.initiative
+    );
+    setGameCharacters([...sortedCharacters]);
   };
 
   const handleChange = (event, newValue) => {
@@ -49,6 +49,8 @@ const Menu = ({ setHomepage }) => {
       )}
       {value === "1" && (
         <CharacterTab
+          playerCharacters={playerCharacters}
+          setPlayerCharacters={setPlayerCharacters}
           gameCharacters={gameCharacters}
           setGameCharacters={setGameCharacters}
         />

@@ -15,6 +15,11 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
     subtype = `(${capitalize(subtype)})`;
   }
 
+  let monsterImg = monster.image;
+
+  if (monsterImg) {
+    monsterImg = `https://www.dnd5eapi.co${monster.image}`
+  }
   const rollTwentyLink = `https://roll20.net/compendium/dnd5e/${monster.name}`;
   const char = {
     id: Math.random(),
@@ -22,7 +27,7 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
     charName: monster.name,
     charSheetUrl: rollTwentyLink,
     hp: monster.hit_points,
-    img: `https://www.dnd5eapi.co${monster.image}`,
+    img: monsterImg,
     initiative: 0,
     race: capitalize(monster.type),
     class: subtype,

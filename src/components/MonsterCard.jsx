@@ -17,21 +17,23 @@ const MonsterCard = ({ monster }) => {
 
   return (
     <Card>
-      {monster.image && <img src={`https://www.dnd5eapi.co${monster.image}`} />}
-      <Typography>Goblin</Typography>
-      <Typography>{monster.size} {capitalize(monster.type)}{monster.subtype && ` (${capitalize(monster.subtype)})`}, {monster.alignment} </Typography>
-      <Box>
-        <Typography>
-          Armor Class {monster.armor_class}
-        </Typography>
-        <Typography>
-          Hit Points {monster.hit_points} ({monster.hit_points_roll})
-        </Typography>
-        <Typography>
-          Speed {monster.speed.walk}
-        </Typography>
+      <Box sx={{ display: 'flex' }}>
+        {monster.image && <img src={`https://www.dnd5eapi.co${monster.image}`} width="200" height="auto" />}
+        <Box sx={{ display: 'flex', flexDirection: 'column', marginLeft: '5px'}}>
+          <Typography variant="h4">{monster.name}</Typography>
+          <Typography>{monster.size} {capitalize(monster.type)}{monster.subtype && ` (${capitalize(monster.subtype)})`}, {monster.alignment} </Typography>
+          <Typography>
+            Armor Class {monster.armor_class}
+          </Typography>
+          <Typography>
+            Hit Points {monster.hit_points} ({monster.hit_points_roll})
+          </Typography>
+          <Typography>
+            Speed {monster.speed.walk}
+          </Typography>
+        </Box>
       </Box>
-      <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>
           STR {monster.strength} ({modifierCalculator(monster.strength)})
         </Box>

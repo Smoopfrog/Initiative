@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import MonsterCard from "../MonsterCard";
 
-const MonsterManualTab = () => {
+const MonsterManualTab = ({ setGameCharacters }) => {
   const [searchText, setSearchText] = useState('')
   const [searchResults, setSearchResults] = useState()
 
@@ -24,7 +24,7 @@ const MonsterManualTab = () => {
       <TextField id="outlined-basic" label="Search" variant="outlined" value={searchText} onChange={handleSearchTextChange} />
       <Button variant="contained" color="success" onClick={searchMonsterManual}>Search</Button>
       {searchResults && 
-        <MonsterCard monster={searchResults}/>
+        <MonsterCard monster={searchResults} setGameCharacters={setGameCharacters}/>
       }
     </Box>
   )

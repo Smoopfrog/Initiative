@@ -55,7 +55,7 @@ const Menu = ({ setHomepage, playerCharacters, setPlayerCharacters }) => {
           setGameCharacters={setGameCharacters}
         />
       )}
-      {value === "2" && <MonsterManualTab />}
+      {value === "2" && <MonsterManualTab setGameCharacters={setGameCharacters}/>}
       {value === "3" && <ProfileTab setHomepage={setHomepage} />}
     </Box>
   );

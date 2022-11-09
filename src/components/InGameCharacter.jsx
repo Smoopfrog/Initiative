@@ -16,9 +16,6 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
   const changeInitiative = (event) => {
     setInitiative(event.target.value)
     character.initiative = event.target.value;
-    console.log(character)
-    // let newChars = gameCharacters.filter(gameCharacter => gameCharacter.id != character.id)
-    // setGameCharacters([...newChars, character])
   }
 
   const changeHp = event => {
@@ -44,15 +41,15 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
         <Box sx={{ display: 'flex', width: '40%' }}>
             <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', border: '10px black'}}>
               <label>Initiative</label>
-              <TextField value={initiative} onChange={changeInitiative} sx={{ width: '50px', textAlignLast: 'center'  }} />
+              <TextField type='number' step='1' value={initiative} onChange={changeInitiative} sx={{ width: '50px', textAlignLast: 'center'  }} />
             </Box>
             <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlignLast: 'center'}}>
               <label>HP</label>
-              <TextField value={hp} onChange={changeHp} sx={{ width: '50px' }} />
+              <TextField type='number' step='1' value={hp} onChange={changeHp} sx={{ width: '50px' }} />
             </Box>
             <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlignLast: 'center'}}>
               <label>AC</label>
-              <TextField value={ac} onChange={changeAc} sx={{ width: '50px' }} />
+              <TextField type='number' step='1' value={ac} onChange={changeAc} sx={{ width: '50px' }} />
             </Box>
           </Box>
       </Box>

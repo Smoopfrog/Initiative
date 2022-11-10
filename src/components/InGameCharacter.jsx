@@ -14,10 +14,10 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
   const [initiative, setInitiative] = useState(character.initiative);
   const [hp, setHp] = useState(character.hp);
   const [ac, setAc] = useState(character.ac);
-  let backgroundColor = 'white'
+  let backgroundColor = "white";
 
   if (character.selected) {
-    backgroundColor = 'yellow'
+    backgroundColor = "yellow";
   }
 
   const removeChar = () => {
@@ -47,7 +47,7 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
         justifyContent: "space-between",
         padding: "10px",
         margin: "10px",
-        background: backgroundColor
+        background: backgroundColor,
       }}
     >
       <Box sx={{ display: "flex" }}>
@@ -80,7 +80,7 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
             )}
           </Box>
         </Box>
-        <Box sx={{ display: "flex", width: "40%" }}>
+        <Box sx={{ display: "flex" }}>
           <Box
             sx={{
               display: "flex",
@@ -90,8 +90,8 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
               border: "10px black",
             }}
           >
-            <label>Initiative</label>
             <TextField
+              label="Initiative"
               type="number"
               step="1"
               value={initiative}
@@ -108,13 +108,15 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
               textAlignLast: "center",
             }}
           >
-            <label>HP</label>
             <TextField
+              label="HP"
               type="number"
               step="1"
               value={hp}
               onChange={changeHp}
               sx={{ width: "50px" }}
+              placeholder={character.hp}
+              inputProps={{ padding: "0px" }}
             />
           </Box>
           <Box
@@ -126,13 +128,14 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
               textAlignLast: "center",
             }}
           >
-            <label>AC</label>
             <TextField
+              label="AC"
               type="number"
               step="1"
               value={ac}
               onChange={changeAc}
               sx={{ width: "50px" }}
+              placeholder={character.ac}
             />
           </Box>
         </Box>
@@ -143,10 +146,15 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
           variant="contained"
           color="error"
           type={"trash"}
+          sx={{
+            maxWidth: "30px",
+            maxHeight: "30px",
+            minWidth: "30px",
+            minHeight: "30px",
+          }}
         >
           <i className="fa-solid fa-trash-can"></i>
         </Button>
-        <Button>?</Button>
       </Box>
     </Card>
   );

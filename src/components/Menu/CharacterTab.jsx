@@ -18,6 +18,7 @@ import {
   Input,
 } from "@mui/material";
 import axios from "axios";
+import UploadAndDisplayImage from "../UploadAndDisplayImage";
 
 const CharacterTab = ({
   gameCharacters,
@@ -27,6 +28,7 @@ const CharacterTab = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openNewChar, setOpenNewChar] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [newCharName, setNewCharName] = useState("");
   const [newCharLevel, setNewCharLevel] = useState("");
   const [newCharRace, setNewCharRace] = useState("");
@@ -59,19 +61,35 @@ const CharacterTab = ({
       newCharAc,
       newCharSheet,
       userId: user.id,
+      image: selectedImage.name
     };
 
-    let newCharacters;
+    let charId;
     await axios
       .post("/characters", newChar)
       .then((res) => {
+        console.log(res.data);
+        charId = res.data.id;
         setPlayerCharacters(res.data);
         handleCharDialog();
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log("newCharacters", newCharacters);
+
+    const fd = new FormData();
+    fd.append("CharacterImage", selectedImage, selectedImage.name);
+    
+    await axios
+      .post("/characterImages", fd)
+      .then((res) => {
+        // setPlayerCharacters(res.data);
+        // handleCharDialog();
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const charArray = playerCharacters.map((character) => {
@@ -136,6 +154,10 @@ const CharacterTab = ({
             justifyContent: "space-between",
           }}
         >
+          <UploadAndDisplayImage
+            selectedImage={selectedImage}
+            setSelectedImage={setSelectedImage}
+          />
           <TextField
             autoFocus
             margin="dense"

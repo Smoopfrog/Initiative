@@ -61,7 +61,7 @@ const CharacterTab = ({
       newCharAc,
       newCharSheet,
       userId: user.id,
-      image: selectedImage.name
+      // image: selectedImage.name
     };
 
     let charId;
@@ -77,19 +77,19 @@ const CharacterTab = ({
         console.log(error);
       });
 
-    const fd = new FormData();
-    fd.append("CharacterImage", selectedImage, selectedImage.name);
+    // const fd = new FormData();
+    // fd.append("CharacterImage", selectedImage, selectedImage.name);
     
-    await axios
-      .post("/characterImages", fd)
-      .then((res) => {
-        // setPlayerCharacters(res.data);
-        // handleCharDialog();
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // await axios
+    //   .post("/characterImages", fd)
+    //   .then((res) => {
+    //     // setPlayerCharacters(res.data);
+    //     // handleCharDialog();
+    //     console.log(res.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   const charArray = playerCharacters.map((character) => {

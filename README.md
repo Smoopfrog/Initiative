@@ -10,10 +10,9 @@ Initiative is a Dungeons and Dragons app allowing users to create and save custo
 
 ## Getting Started
 1. Install all required dependencies: `npm i`
-2. Setup database with the schema in the `db.sql` file
-3. Create an `.env` file with database credentials that are imported into the `db.js` file
-4. Run the server by entering `node server/index` in the command line from the root of the project
-5. Run `npm start`:
+2. Setup databases with the schema in the migrations folder
+3. Run the server by entering `nodemon server/index` in the command line from the root of the project
+4. Run `npm start`:
 - Runs the app
 - Open [http://localhost:3006](http://localhost:3006) to view it in your browser.
 

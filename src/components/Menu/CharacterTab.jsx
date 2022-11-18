@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCharacters, setCharacters } from "../../slices/charactersSlice";
 import { selectUser } from "../../slices/userSlice";
+import { selectCharacters, setCharacters } from "../../slices/charactersSlice";
 import PlayerCharacter from "../PlayerCharacter";
 import {
   Box,
@@ -17,8 +17,8 @@ import {
   TextField,
   Input,
 } from "@mui/material";
-import axios from "axios";
 import UploadAndDisplayImage from "../UploadAndDisplayImage";
+import NewCharacterForm from "../NewCharacterForm";
 
 const CharacterTab = ({
   gameCharacters,
@@ -26,71 +26,71 @@ const CharacterTab = ({
   playerCharacters,
   setPlayerCharacters,
 }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [openNewChar, setOpenNewChar] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [newCharName, setNewCharName] = useState("");
-  const [newCharLevel, setNewCharLevel] = useState("");
-  const [newCharRace, setNewCharRace] = useState("");
-  const [newCharClass, setNewCharClass] = useState("");
-  const [newCharHp, setNewCharHp] = useState("");
-  const [newCharAc, setNewCharAc] = useState("");
-  const [newCharSheet, setNewCharSheet] = useState("");
+  // const [anchorEl, setAnchorEl] = useState(null);
+  // const [openNewChar, setOpenNewChar] = useState(false);
+  // const [selectedImage, setSelectedImage] = useState(null);
+  // const [newCharName, setNewCharName] = useState("");
+  // const [newCharLevel, setNewCharLevel] = useState("");
+  // const [newCharRace, setNewCharRace] = useState("");
+  // const [newCharClass, setNewCharClass] = useState("");
+  // const [newCharHp, setNewCharHp] = useState("");
+  // const [newCharAc, setNewCharAc] = useState("");
+  // const [newCharSheet, setNewCharSheet] = useState("");
   const user = useSelector(selectUser);
-  const open = Boolean(anchorEl);
+  // const open = Boolean(anchorEl);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleCharDialog = () => {
-    setOpenNewChar(!openNewChar);
-  };
+  // const handleCharDialog = () => {
+  //   setOpenNewChar(!openNewChar);
+  // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const submitNewChar = async () => {
-    const newChar = {
-      newCharName,
-      newCharLevel,
-      newCharRace,
-      newCharClass,
-      newCharHp,
-      newCharAc,
-      newCharSheet,
-      userId: user.id,
-      // image: selectedImage.name
-    };
+  // const submitNewChar = async () => {
+  //   const newChar = {
+  //     newCharName,
+  //     newCharLevel,
+  //     newCharRace,
+  //     newCharClass,
+  //     newCharHp,
+  //     newCharAc,
+  //     newCharSheet,
+  //     userId: user.id,
+  //     // image: selectedImage.name
+  //   };
 
-    let charId;
-    await axios
-      .post("/characters", newChar)
-      .then((res) => {
-        console.log(res.data);
-        charId = res.data.id;
-        setPlayerCharacters(res.data);
-        handleCharDialog();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  //   let charId;
+  //   await axios
+  //     .post("/characters", newChar)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       charId = res.data.id;
+  //       setPlayerCharacters(res.data);
+  //       handleCharDialog();
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
 
-    // const fd = new FormData();
-    // fd.append("CharacterImage", selectedImage, selectedImage.name);
-    
-    // await axios
-    //   .post("/characterImages", fd)
-    //   .then((res) => {
-    //     // setPlayerCharacters(res.data);
-    //     // handleCharDialog();
-    //     console.log(res.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-  };
+  //   // const fd = new FormData();
+  //   // fd.append("CharacterImage", selectedImage, selectedImage.name);
+
+  //   // await axios
+  //   //   .post("/characterImages", fd)
+  //   //   .then((res) => {
+  //   //     // setPlayerCharacters(res.data);
+  //   //     // handleCharDialog();
+  //   //     console.log(res.data);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.log(error);
+  //   //   });
+  // };
 
   const charArray = playerCharacters.map((character) => {
     return (
@@ -117,7 +117,7 @@ const CharacterTab = ({
   return (
     <Box>
       <Box>
-        <Button
+        {/* <Button
           id="basic-button"
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
@@ -139,12 +139,14 @@ const CharacterTab = ({
           <MenuItem onClick={handleClose}>Level</MenuItem>
           <MenuItem onClick={handleClose}>Class</MenuItem>
           <MenuItem onClick={handleClose}>Race</MenuItem>
-        </Menu>
-        <Button variant="outlined" onClick={handleCharDialog}>
-          Create character
-        </Button>
+        </Menu> */}
+        <Button variant="outlined">Create character</Button>
       </Box>
-      <Dialog open={openNewChar} onClose={handleCharDialog}>
+      <NewCharacterForm
+        playerCharacters={playerCharacters}
+        setPlayerCharacters={setPlayerCharacters}
+      />
+      {/* <Dialog open={openNewChar} onClose={handleCharDialog}>
         <DialogTitle>Create a new character</DialogTitle>
         <DialogContent
           type="form"
@@ -229,7 +231,7 @@ const CharacterTab = ({
           <Button onClick={submitNewChar}>Create</Button>
           <Button onClick={handleCharDialog}>Cancel</Button>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
       <Stack>{charArray}</Stack>
     </Box>
   );

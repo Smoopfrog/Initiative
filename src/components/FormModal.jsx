@@ -49,7 +49,6 @@ const NewCharacterForm = (props) => {
     <Card className={styles.modal}>
       <form>
         <header>Create a new character</header>
-        <body>
           <UploadAndDisplayImage
             selectedImage={selectedImage}
             setSelectedImage={setSelectedImage}
@@ -117,7 +116,6 @@ const NewCharacterForm = (props) => {
               onChange={(e) => setNewCharSheet(e.target.value)}
             />
           </div>
-        </body>
         <footer>
           <Button onClick={submitNewChar}>Create</Button>
           <Button onClick={props.closeForm}>Cancel</Button>

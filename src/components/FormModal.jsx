@@ -8,7 +8,7 @@ import UploadAndDisplayImage from "./UploadAndDisplayImage";
 import styles from "./Backdrop.module.css";
 
 const Backdrop = (props) => {
-  return <div className={styles.backdrop} onClick={props.onConfirm} />;
+  return <div className={styles.backdrop} onClick={props.closeForm} />;
 };
 
 const NewCharacterForm = (props) => {
@@ -67,7 +67,7 @@ const NewCharacterForm = (props) => {
 
   return (
     <Card className={styles.modal}>
-      <form open={openNewChar}>
+      <form>
         <header>Create a new character</header>
         <body>
           <UploadAndDisplayImage
@@ -126,7 +126,7 @@ const NewCharacterForm = (props) => {
         </body>
         <footer>
           <Button onClick={submitNewChar}>Create</Button>
-          <Button>Cancel</Button>
+          <Button onClick={props.closeForm}>Cancel</Button>
         </footer>
       </form>
     </Card>
@@ -137,14 +137,14 @@ const FormModal = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop onConfirm={props.onConfirm} />,
+        <Backdrop onConfirm={props.onConfirm} closeForm={props.closeForm} />,
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
         <NewCharacterForm
-          title={props.title}
-          message={props.message}
-          onConfirm={props.onConfirm}
+          closeForm={props.closeForm}
+          playerCharacters={playerCharacters}
+          setPlayerCharacters={setPlayerCharacters}
         />,
         document.getElementById("overlay-root")
       )}

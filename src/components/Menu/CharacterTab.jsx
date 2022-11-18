@@ -26,6 +26,7 @@ const CharacterTab = ({
   playerCharacters,
   setPlayerCharacters,
 }) => {
+  const [showForm, setShowForm] = useState(false);
   // const [anchorEl, setAnchorEl] = useState(null);
   // const [openNewChar, setOpenNewChar] = useState(false);
   // const [selectedImage, setSelectedImage] = useState(null);
@@ -43,9 +44,9 @@ const CharacterTab = ({
   //   setAnchorEl(event.currentTarget);
   // };
 
-  // const handleCharDialog = () => {
-  //   setOpenNewChar(!openNewChar);
-  // };
+  const showFormHandler = () => {
+    setShowForm(!showForm);
+  };
 
   // const handleClose = () => {
   //   setAnchorEl(null);
@@ -140,12 +141,17 @@ const CharacterTab = ({
           <MenuItem onClick={handleClose}>Class</MenuItem>
           <MenuItem onClick={handleClose}>Race</MenuItem>
         </Menu> */}
-        <Button variant="outlined">Create character</Button>
+        <Button variant="outlined" onClick={showFormHandler}>
+          Create character
+        </Button>
       </Box>
-      <FormModal
-        playerCharacters={playerCharacters}
-        setPlayerCharacters={setPlayerCharacters}
-      />
+      {showForm && (
+        <FormModal
+          closeForm={showFormHandler}
+          playerCharacters={playerCharacters}
+          setPlayerCharacters={setPlayerCharacters}
+        />
+      )}
       {/* <Dialog open={openNewChar} onClose={handleCharDialog}>
         <DialogTitle>Create a new character</DialogTitle>
         <DialogContent

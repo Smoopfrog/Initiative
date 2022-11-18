@@ -32,35 +32,17 @@ const NewCharacterForm = (props) => {
       newCharAc,
       newCharSheet,
       userId: user.id,
-      // image: selectedImage.name
     };
 
-    let charId;
     await axios
       .post("/characters", newChar)
       .then((res) => {
-        console.log(res.data);
-        charId = res.data.id;
         props.setPlayerCharacters(res.data);
         props.closeForm();
       })
       .catch((error) => {
         console.log(error);
       });
-
-    // const fd = new FormData();
-    // fd.append("CharacterImage", selectedImage, selectedImage.name);
-
-    // await axios
-    //   .post("/characterImages", fd)
-    //   .then((res) => {
-    //     // setPlayerCharacters(res.data);
-    //     // handleCharDialog();
-    //     console.log(res.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   };
 
   return (

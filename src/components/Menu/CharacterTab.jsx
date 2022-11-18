@@ -3,21 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../slices/userSlice";
 import { selectCharacters, setCharacters } from "../../slices/charactersSlice";
 import PlayerCharacter from "../PlayerCharacter";
-import {
-  Box,
-  Stack,
-  Button,
-  Menu,
-  MenuItem,
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  TextField,
-  Input,
-} from "@mui/material";
-import UploadAndDisplayImage from "../UploadAndDisplayImage";
+import { Box, Stack, Button } from "@mui/material";
 import FormModal from "../FormModal";
 
 const CharacterTab = ({

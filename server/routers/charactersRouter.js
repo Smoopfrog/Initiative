@@ -17,12 +17,10 @@ module.exports = (db) => {
       });
   });
   
-  router.post("/characterImages", upload.single("CharacterImage"), async (req, res) => {
-    let image = req.file.buffer.toString('base64')
-    console.log(image)
-  })
-
-
+  // router.post("/characterImages", upload.single("CharacterImage"), async (req, res) => {
+  //   let image = req.file.buffer.toString('base64')
+  //   console.log(image)
+  // })
 
   router.post("/characters", async (req, res) => {
     const character = req.body;

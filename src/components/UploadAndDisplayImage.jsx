@@ -21,7 +21,6 @@ const UploadAndDisplayImage = (props) => {
         type="file"
         name="CharacterImage"
         onChange={(event) => {
-          console.log(event.target.files[0]);
           props.setSelectedImage(event.target.files[0]);
         }}
       />

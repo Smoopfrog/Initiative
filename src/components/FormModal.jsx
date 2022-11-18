@@ -12,8 +12,6 @@ const Backdrop = (props) => {
 };
 
 const NewCharacterForm = (props) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [openNewChar, setOpenNewChar] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [newCharName, setNewCharName] = useState("");
   const [newCharLevel, setNewCharLevel] = useState("");
@@ -33,7 +31,7 @@ const NewCharacterForm = (props) => {
       newCharHp,
       newCharAc,
       newCharSheet,
-      userId: props.user.id,
+      userId: user.id,
       // image: selectedImage.name
     };
 
@@ -44,7 +42,7 @@ const NewCharacterForm = (props) => {
         console.log(res.data);
         charId = res.data.id;
         props.setPlayerCharacters(res.data);
-        // handleCharDialog();
+        props.closeForm();
       })
       .catch((error) => {
         console.log(error);
@@ -143,8 +141,8 @@ const FormModal = (props) => {
       {ReactDOM.createPortal(
         <NewCharacterForm
           closeForm={props.closeForm}
-          playerCharacters={playerCharacters}
-          setPlayerCharacters={setPlayerCharacters}
+          playerCharacters={props.playerCharacters}
+          setPlayerCharacters={props.setPlayerCharacters}
         />,
         document.getElementById("overlay-root")
       )}

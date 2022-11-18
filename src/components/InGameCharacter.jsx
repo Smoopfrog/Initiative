@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import monsterSilhouette from "../images/MonsterSilhouette.png";
 
 const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
-  const [initiative, setInitiative] = useState(character.initiative);
+  const [initiative, setInitiative] = useState("");
   const [hp, setHp] = useState(character.hp);
   const [ac, setAc] = useState(character.ac);
   let backgroundColor = "white";

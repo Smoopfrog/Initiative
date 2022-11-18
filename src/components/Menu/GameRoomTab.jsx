@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import InGameCharacter from "./InGameCharacter";
+import InGameCharacter from "../InGameCharacter";
 
 const GameRoom = ({ setGameCharacters, gameCharacters, sortByInitiative }) => {
   const inGameChars = gameCharacters.map((character) => {
@@ -19,7 +19,6 @@ const GameRoom = ({ setGameCharacters, gameCharacters, sortByInitiative }) => {
 
   const nextChar = () => {
     // get selected char and index
-
     let selectedIndex = gameCharacters.findIndex((char) => char.selected);
     let selectedChar = {};
 

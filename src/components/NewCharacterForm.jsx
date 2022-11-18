@@ -18,7 +18,6 @@ const NewCharacterForm = (props) => {
   const [newCharSheet, setNewCharSheet] = useState("");
   const user = useSelector(selectUser);
 
-
   const submitNewChar = async () => {
     const newChar = {
       newCharName,
@@ -61,52 +60,58 @@ const NewCharacterForm = (props) => {
   };
 
   return (
-    <form open={openNewChar} >
+    <form open={openNewChar}>
       <header>Create a new character</header>
       <body>
         <UploadAndDisplayImage
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
         />
+        <label htmlFor="name">Name</label>
         <input
-          label="Name"
+          id="name"
           type="text"
           value={newCharName}
           onChange={(e) => setNewCharName(e.target.value)}
         />
+        <label htmlFor="level">Level</label>
         <input
-          label="Level"
+          id="level"
           type="number"
           value={newCharLevel}
           onChange={(e) => setNewCharLevel(e.target.value)}
         />
+        <label htmlFor="race">Race</label>
         <input
-          label="Race"
+          id="race"
           type="text"
           value={newCharRace}
           onChange={(e) => setNewCharRace(e.target.value)}
         />
+        <label htmlFor="class">Class</label>
         <input
-          label="Class"
+          id="class"
           type="text"
           value={newCharClass}
           onChange={(e) => setNewCharClass(e.target.value)}
         />
-
+        <label htmlFor="hp" >HP</label>
         <input
-          label="HP"
+          id="hp"
           type="number"
           value={newCharHp}
           onChange={(e) => setNewCharHp(e.target.value)}
         />
+        <label htmlFor="ac">AC</label>
         <input
-          label="AC"
+          id="ac"
           type="number"
           value={newCharAc}
           onChange={(e) => setNewCharAc(e.target.value)}
         />
+        <label htmlFor="characterSheet">Character Sheet Link</label>
         <input
-          label="Character Sheet Link"
+          id="characterSheet"
           type="url"
           value={newCharSheet}
           onChange={(e) => setNewCharSheet(e.target.value)}
@@ -114,7 +119,7 @@ const NewCharacterForm = (props) => {
       </body>
       <footer>
         <Button onClick={submitNewChar}>Create</Button>
-        <Button >Cancel</Button>
+        <Button>Cancel</Button>
       </footer>
     </form>
   );

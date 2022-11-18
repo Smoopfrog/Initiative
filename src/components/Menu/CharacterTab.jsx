@@ -18,7 +18,7 @@ import {
   Input,
 } from "@mui/material";
 import UploadAndDisplayImage from "../UploadAndDisplayImage";
-import NewCharacterForm from "../NewCharacterForm";
+import FormModal from "../FormModal";
 
 const CharacterTab = ({
   gameCharacters,
@@ -142,7 +142,7 @@ const CharacterTab = ({
         </Menu> */}
         <Button variant="outlined">Create character</Button>
       </Box>
-      <NewCharacterForm
+      <FormModal
         playerCharacters={playerCharacters}
         setPlayerCharacters={setPlayerCharacters}
       />

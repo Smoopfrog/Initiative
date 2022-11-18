@@ -19,7 +19,7 @@ const MonsterManualTab = ({ setGameCharacters }) => {
     const data = await response.json();
 
     if (!data.name) {
-      setSearchResults(false);
+      setSearchResults('notFound');
     } else {
       setSearchResults(data);
     }
@@ -37,14 +37,14 @@ const MonsterManualTab = ({ setGameCharacters }) => {
       <Button variant="contained" color="success" onClick={searchMonsterManual}>
         Search
       </Button>
-      {searchResults ? (
+      {(searchResults !== "notFound" && searchResults) && 
         <MonsterCard
           monster={searchResults}
           setGameCharacters={setGameCharacters}
         />
-      ) : (
-        <h2>Monster not found</h2>
-      )}
+      }
+      
+      {searchResults === "notFound" && <h2>Monster not found</h2>}
     </Box>
   );
 };

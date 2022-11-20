@@ -42,7 +42,7 @@ const CharacterTab = ({
   });
 
   return (
-    <Box>
+    <Box sx={{maxHeight: '88vh'}}>
       <Box>
         <Button variant="outlined" onClick={showFormHandler}>
           Create character
@@ -55,7 +55,7 @@ const CharacterTab = ({
           setPlayerCharacters={setPlayerCharacters}
         />
       )}
-      <Stack>{charArray}</Stack>
+      <Box sx={{ overflowY: "scroll", maxHeight: "inherit" }}>{charArray}</Box>
     </Box>
   );
 };

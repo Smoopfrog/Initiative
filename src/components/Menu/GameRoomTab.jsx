@@ -99,7 +99,8 @@ const GameRoom = ({ setGameCharacters, gameCharacters, sortByInitiative }) => {
 
   return (
     <Box>
-      <Box sx={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
+      {gameCharacters.length === 0 ? <h1>Add peoples please</h1> : 
+      (<Box sx={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
         {playerTurn()}
         <Box>
           <Button onClick={prevChar}>
@@ -110,8 +111,10 @@ const GameRoom = ({ setGameCharacters, gameCharacters, sortByInitiative }) => {
             <i className="fa-solid fa-arrow-right"></i>
           </Button>
         </Box>
-      </Box>
-      {inGameChars}
+        
+      </Box>)
+    }
+    {inGameChars}
     </Box>
   );
 };

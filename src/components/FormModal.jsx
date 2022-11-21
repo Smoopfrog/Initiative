@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../slices/userSlice";
 import axios from "axios";
 import { Button, Card } from "@mui/material";
+import ModalBackdrop from "./ModalBackdrop";
 import UploadAndDisplayImage from "./UploadAndDisplayImage";
 import styles from "./Backdrop.module.css";
 
-const Backdrop = (props) => {
-  return <div className={styles.backdrop} onClick={props.closeForm} />;
-};
 
 const NewCharacterForm = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -129,7 +127,7 @@ const FormModal = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop onConfirm={props.onConfirm} closeForm={props.closeForm} />,
+        <ModalBackdrop onConfirm={props.onConfirm} closeForm={props.closeForm} />,
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(

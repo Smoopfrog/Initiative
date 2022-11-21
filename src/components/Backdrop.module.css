@@ -10,6 +10,7 @@
 
 .modal {
   position: fixed;
+  background: white;
   top: 30vh;
   left: 10%;
   width: 80%;

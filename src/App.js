@@ -4,6 +4,7 @@ import Menu from "./components/Menu/Menu";
 import background from "./images/orcus.jpeg";
 import { Box } from "@mui/material";
 import { useState } from "react";
+import ConfirmationModal from "./components/ConfirmationModal";
 const axios = require("axios").default;
 
 axios.defaults.baseURL = "http://localhost:7001";
@@ -38,6 +39,7 @@ const App = () => {
           setPlayerCharacters={setPlayerCharacters}
         />
       )}
+      <ConfirmationModal />
     </Box>
   );
 };

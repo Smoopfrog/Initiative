@@ -1,14 +1,14 @@
 import ModalBackdrop from "./ModalBackdrop";
 import ReactDOM from "react-dom";
-import styles from './Backdrop.module.css'
+import styles from "./Backdrop.module.css";
 const ConfirmationPopUp = (props) => {
   return (
     <div className={styles.modal}>
       <header>Confirm?</header>
-      <p>Are you sure you want to delete characterName?</p>
+      <p>Are you sure you want to delete {props.name}?</p>
       <footer>
-        <button>Cancel</button>
-        <button>Delete</button>
+        <button onClick={props.closeForm}>Cancel</button>
+        <button onClick={props.onConfirm}>Delete</button>
       </footer>
     </div>
   );
@@ -25,7 +25,11 @@ const ConfirmationModal = (props) => {
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <ConfirmationPopUp />,
+        <ConfirmationPopUp
+          onConfirm={props.onConfirm}
+          closeForm={props.closeForm}
+          name={props.name}
+        />,
         document.getElementById("overlay-root")
       )}
     </>

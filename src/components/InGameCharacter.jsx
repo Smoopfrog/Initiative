@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import monsterSilhouette from "../images/MonsterSilhouette.png";
 
 const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
-  const [initiative, setInitiative] = useState("");
+  const [initiative, setInitiative] = useState('1');
   const [hp, setHp] = useState(character.hp);
   const [ac, setAc] = useState(character.ac);
   let backgroundColor = "white";
@@ -115,7 +115,7 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
               value={hp}
               onChange={changeHp}
               sx={{ width: "50px" }}
-              placeholder={character.hp}
+              placeholder={character.hp.toString()}
               inputProps={{ padding: "0px" }}
             />
           </Box>
@@ -135,7 +135,7 @@ const InGameCharacter = ({ character, gameCharacters, setGameCharacters }) => {
               value={ac}
               onChange={changeAc}
               sx={{ width: "50px" }}
-              placeholder={character.ac}
+              placeholder={(character.ac).toString()}
             />
           </Box>
         </Box>

@@ -24,6 +24,26 @@ const Login = ({ setHomepage, setPlayerCharacters }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const params = localStorage.getItem("isLoggedIn")
+    if (localStorage.getItem("isLoggedIn")) {
+      axios
+      .get("/loggedIn", { params })
+      .then(function (response) {
+        if (response.data.length) {
+            dispatch(logIn(response.data[0]));
+            getUserCharacters(response.data[0].id);
+            setHomepage("signedIn");
+            return;
+          }
+          setCredentialsError(true);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }, [])
+
+  useEffect(() => {
     setCredentialsError(false);
   }, [username, password]);
 
@@ -57,11 +77,12 @@ const Login = ({ setHomepage, setPlayerCharacters }) => {
       username: username,
       password: password,
     };
-
+    
     axios
-      .get("/users", { params })
-      .then(function (response) {
-        if (response.data.length) {
+    .get("/users", { params })
+    .then(function (response) {
+      if (response.data.length) {
+          localStorage.setItem("isLoggedIn", username);
           dispatch(logIn(response.data[0]));
           getUserCharacters(response.data[0].id);
           setHomepage("signedIn");

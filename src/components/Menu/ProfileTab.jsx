@@ -10,6 +10,7 @@ const ProfileTab = ({ setHomepage }) => {
 
   const handleSignOut = () => {
     dispatch(logOut())
+    localStorage.clear()
     setHomepage('signin')
   }
 

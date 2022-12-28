@@ -1,0 +1,9 @@
+.form {
+  padding: 10px;
+}
+
+.label {
+  display: block;
+  padding: 10px 0px 0px;
+  text-transform: uppercase;
+}

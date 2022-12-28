@@ -4,6 +4,17 @@
 
 .label {
   display: block;
-  padding: 10px 0px 0px;
+  padding: 10px 0px 2px;
   text-transform: uppercase;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonGroup {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
 }

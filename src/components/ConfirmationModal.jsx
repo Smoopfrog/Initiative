@@ -1,15 +1,25 @@
 import ModalBackdrop from "./ModalBackdrop";
 import ReactDOM from "react-dom";
-import styles from "./Backdrop.module.css";
+import modalStyles from "./Backdrop.module.css";
+import styles from "./ConfirmationModal.module.css"
+
 const ConfirmationPopUp = (props) => {
   return (
-    <div className={styles.modal}>
-      <header>Confirm?</header>
-      <p>Are you sure you want to delete {props.name}?</p>
-      <footer>
-        <button onClick={props.closeForm}>Cancel</button>
-        <button onClick={props.onConfirm}>Delete</button>
-      </footer>
+    <div className={modalStyles.modal}>
+      <div>
+        <span>
+          <i class="fa-regular fa-circle-xmark fa-x5"></i>
+        </span>
+        <h1>Are you sure?</h1>
+        <p>
+          Are you sure you want to delete {props.name}? This process cannot be
+          undone.
+        </p>
+        <footer>
+          <button onClick={props.closeForm}>Cancel</button>
+          <button onClick={props.onConfirm}>Delete</button>
+        </footer>
+      </div>
     </div>
   );
 };

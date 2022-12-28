@@ -47,7 +47,7 @@ const NewCharacterForm = (props) => {
   return (
     <Card className={backdropStyles.modal}>
       <form className={styles.form}>
-        <header>Create a new character</header>
+        <h1 className={styles.title}>Create a new character</h1>
         <UploadAndDisplayImage
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
@@ -115,9 +115,9 @@ const NewCharacterForm = (props) => {
             onChange={(e) => setNewCharSheet(e.target.value)}
           />
         </div>
-        <footer>
-          <Button onClick={submitNewChar}>Create</Button>
-          <Button onClick={props.closeForm}>Cancel</Button>
+        <footer className={styles.buttonGroup}>
+          <Button onClick={submitNewChar} variant="contained" color="success">Create</Button>
+          <Button onClick={props.closeForm} variant="contained" color="error">Cancel</Button>
         </footer>
       </form>
     </Card>

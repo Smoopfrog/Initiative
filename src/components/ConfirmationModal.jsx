@@ -6,8 +6,8 @@ import styles from "./ConfirmationModal.module.css"
 const ConfirmationPopUp = (props) => {
   return (
     <div className={modalStyles.modal}>
-      <div>
-        <span>
+      <div className={styles.container}>
+        <span className={styles.icon}>
           <i class="fa-regular fa-circle-xmark fa-x5"></i>
         </span>
         <h1>Are you sure?</h1>
@@ -16,8 +16,8 @@ const ConfirmationPopUp = (props) => {
           undone.
         </p>
         <footer>
-          <button onClick={props.closeForm}>Cancel</button>
-          <button onClick={props.onConfirm}>Delete</button>
+          <button className={styles.button + ' ' + styles.cancelButton} onClick={props.closeForm}>Cancel</button>
+          <button className={styles.button + ' ' + styles.deleteButton} onClick={props.onConfirm}>Delete</button>
         </footer>
       </div>
     </div>

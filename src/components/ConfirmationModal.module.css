@@ -1,17 +1,35 @@
 .container {
+  height: 400px;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-.icon {
+.closeIcon {
+  float: right;
+  padding: 10px;
+  transition: all .2s ease-in-out;
+}
+
+.closeIcon:hover {
+  cursor: pointer;
+  transform: scale(1.1); 
+}
+
+.garbageIcon {
   color: red;
+  font-size: 100px;
 }
 
 p {
   text-align: center;
 }
 
+.buttons {
+  margin: 1px;
+}
 
 .button {
   border-radius: 6px;
@@ -34,6 +52,7 @@ p {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
+  margin: 5px
 }
 
 .button:hover,

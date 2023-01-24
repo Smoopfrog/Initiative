@@ -110,15 +110,11 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
         }}
       />
       <form className={styles} onSubmit={login}>
-        <h1 margin="10px" component="h1" variant="h2">
-          Initiative
-        </h1>
+        <h1>Initiative</h1>
         <br />
         <img src={chest} width="50" height="50" />
-        <Typography margin="10px" component="h1" variant="h4">
-          Sign in
-        </Typography>
-        <TextField
+        <h2>Sign in</h2>
+        <input
           value={username}
           onChange={handleUsernameChange}
           margin="normal"
@@ -130,7 +126,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
           autoComplete="username"
           autoFocus
         />
-        <TextField
+        <input
           value={password}
           onChange={handlePasswordChange}
           margin="normal"
@@ -141,43 +137,26 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
           type="password"
           id="password"
         />
-        <Collapse in={credentialsError}>
-          <Alert
-            severity="error"
-            action={
-              <IconButton
-                aria-label="close"
-                color="inherit"
-                size="small"
-                onClick={() => {
-                  setCredentialsError(false);
-                }}
-              >
-                <CloseIcon fontSize="inherit" />
-              </IconButton>
-            }
-            sx={{ mb: 2 }}
-          >
-            Invalid Credentials
-          </Alert>
-        </Collapse>
+        {credentialsError && (
+          <div>
+            <span>Invalid Credentials</span>
+            <button>X</button>
+          </div>
+        )}
         <FormControlLabel
           control={<CheckBox defaultChecked />}
           label="Remember me"
           sx={{ margin: "10px" }}
         />
-        <Button type="submit" variant="contained" sx={{ margin: "10px" }}>
+        <button type="submit" variant="contained" sx={{ margin: "10px" }}>
           Sign in
-        </Button>
-        <Box width="100%" display="flex" justifyContent="space-between">
-          <Button sx={{ textTransform: "none" }}>Forgot your password?</Button>
-          <Button
-            onClick={() => setHomepage("signup")}
-            sx={{ textTransform: "none" }}
-          >
+        </button>
+        <div className={styles.options}>
+          <button className={styles["options-button"]}>Forgot your password?</button>
+          <button onClick={() => setHomepage("signup")} className={styles["options-button"]}>
             Don't have an account? Sign Up
-          </Button>
-        </Box>
+          </button>
+        </div>
       </form>
     </div>
   );

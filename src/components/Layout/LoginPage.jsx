@@ -114,29 +114,40 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
         <br />
         <img src={chest} width="50" height="50" />
         <h2>Sign in</h2>
-        <input
-          value={username}
-          onChange={handleUsernameChange}
-          margin="normal"
-          required
-          fullWidth
-          id="username"
-          label="Username"
-          name="username"
-          autoComplete="username"
-          autoFocus
-        />
-        <input
-          value={password}
-          onChange={handlePasswordChange}
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label="Password"
-          type="password"
-          id="password"
-        />
+        <div className={styles["input-container"]}>
+          <input
+            type="text"
+            value={username}
+            onChange={handleUsernameChange}
+            required
+            id="username"
+            label="Username"
+            name="username"
+            aria-labelledby="label-username"
+            autoFocus
+            ></input>
+            <label className={styles["label"]} for='username' id='label-username'>
+              <div className={styles["text"]}>Username</div>
+            </label>
+        </div>
+        <div className={styles["input-container"]}>
+          <input
+            value={password}
+            onChange={handlePasswordChange}
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            aria-labelledby="label-password"
+            />
+            <label className={styles["label"]} for='password' id='label-password'>
+              <div className={styles["text"]}>Password</div>
+            </label>
+        </div>
+
         {credentialsError && (
           <div>
             <span>Invalid Credentials</span>
@@ -152,8 +163,13 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
           Sign in
         </button>
         <div className={styles.options}>
-          <button className={styles["options-button"]}>Forgot your password?</button>
-          <button onClick={() => setHomepage("signup")} className={styles["options-button"]}>
+          <button className={styles["options-button"]}>
+            Forgot your password?
+          </button>
+          <button
+            onClick={() => setHomepage("signup")}
+            className={styles["options-button"]}
+          >
             Don't have an account? Sign Up
           </button>
         </div>

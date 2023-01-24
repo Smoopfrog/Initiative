@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { logIn } from "../../slices/userSlice";
 import { setCharacters } from "../../slices/charactersSlice";
 import background from "../../images/orcus.jpeg";
+import Input from "../UI/Input";
 
 const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
   const [username, setUsername] = useState("");
@@ -97,6 +98,20 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
       });
   };
 
+  useEffect(() => {
+    if (!credentialsError) {
+      return;
+    }
+
+    setCredentialsError(true);
+
+    const errorTimer = setTimeout(() => {
+      setCredentialsError(false);
+    }, 3000);
+
+    return () => clearTimeout(errorTimer);
+  }, [credentialsError]);
+
   return (
     <div className={styles.page}>
       <Box
@@ -114,52 +129,22 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
         <br />
         <img src={chest} width="50" height="50" />
         <h2>Sign in</h2>
-        <div className={styles["input-container"]}>
-          <input
-            type="text"
-            value={username}
-            onChange={handleUsernameChange}
-            required
-            id="username"
-            label="Username"
-            name="username"
-            aria-labelledby="label-username"
-            autoFocus
-          ></input>
-          <label
-            className={password ? styles["has-text"] : styles["label"]}
-            for="username"
-            id="label-username"
-          >
-            <div className={styles["text"]}>Username</div>
-          </label>
-        </div>
-        <div className={styles["input-container"]}>
-          <input
-            value={password}
-            onChange={handlePasswordChange}
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            aria-labelledby="label-password"
-          />
-          <label
-            className={password ? styles["has-text"] : styles["label"]}
-            for="password"
-            id="label-password"
-          >
-            <div className={styles["text"]}>Password</div>
-          </label>
-        </div>
-
+        <Input
+          value={username}
+          handleOnChange={handleUsernameChange}
+          label="Username"
+        />
+        <Input
+          value={password}
+          handleOnChange={handlePasswordChange}
+          label="Password"
+        />
         {credentialsError && (
-          <div>
+          <div className={styles.error}>
+            <span className={styles["error-icon"]}>
+              <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+            </span>
             <span>Invalid Credentials</span>
-            <button>X</button>
           </div>
         )}
         <FormControlLabel

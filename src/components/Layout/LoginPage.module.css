@@ -62,56 +62,14 @@ button:active {
   color: white;
 }
 
-.input-container {
-  position: relative;
+
+.error {
+  padding: 10px 16px;
+  background-color: rgb(253, 237, 237);
+  color: rgb(95, 33, 32)
 }
 
-input {
-  height: 48px;
-  width: 280px;
-  border: 1px solid #c0c0c0;
-  border-radius: 4px;
-  box-sizing: border-box;
-  padding: 16px;
-}
-
-.label {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 16px;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-}
-
-input:focus {
-  outline: none;
-  border: 2px solid blue;
-}
-
-input:focus + .label .text {
-  font-size: 12px;
-  transform: translate(0, -180%);
-  background-color: white;
-  padding-left: 4px;
-  padding-right: 4px;
-  color: blue;
-}
-
-.label .text {
-  transition: all 0.15s ease-out;
-}
-
-input:focus + .label .text,
-:not(input[value=""]) + .label .text {
-  font-size: 12px;
-  transform: translate(0, -150%);
-  background-color: white;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-input:focus + .label .text {
-  color: blue;
+.error-icon {
+  color: #ef5350;
+  padding: 10px;
 }

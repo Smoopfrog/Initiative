@@ -1,4 +1,5 @@
 import Login from "./components/Login";
+import LoginPage from "./components/Layout/LoginPage";
 import Signup from "./components/Signup";
 import Menu from "./components/Menu/Menu";
 import background from "./images/orcus.jpeg";
@@ -10,21 +11,11 @@ axios.defaults.baseURL = "http://localhost:7001";
 const App = () => {
   const [homepage, setHomepage] = useState("signin");
   const [playerCharacters, setPlayerCharacters] = useState([]);
-  
+
   return (
-    <Box sx={{ display: "flex", justifyContent: "row", height: "100vh" }}>
-      <Box
-        sx={{
-          height: "100vh",
-          width: { xs: "0vw", md: "60vw" },
-          backgroundImage: `url(${background})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+    <div>
       {homepage === "signin" && (
-        <Login
+        <LoginPage
           setHomepage={setHomepage}
           setPlayerCharacters={setPlayerCharacters}
         />
@@ -37,7 +28,7 @@ const App = () => {
           setPlayerCharacters={setPlayerCharacters}
         />
       )}
-    </Box>
+    </div>
   );
 };
 

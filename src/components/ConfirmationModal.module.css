@@ -10,12 +10,12 @@
 .closeIcon {
   float: right;
   padding: 10px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .closeIcon:hover {
   cursor: pointer;
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 .garbageIcon {
@@ -35,10 +35,10 @@ p {
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
   font-size: 16px;
   font-weight: 800;
   line-height: 16px;
@@ -52,7 +52,7 @@ p {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-  margin: 5px
+  margin: 5px;
 }
 
 .button:hover,
@@ -62,7 +62,7 @@ p {
 }
 
 .button:active {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .cancelButton {
@@ -77,14 +77,14 @@ p {
   color: grey;
 }
 
-.deleteButton{
-  background: #FF4742;
-  border: 1px solid #FF4742;
+.deleteButton {
+  background: #ff4742;
+  border: 1px solid #ff4742;
 }
 
 .deleteButton:hover,
 .deleteButton:active {
   background-color: initial;
   background-position: 0 0;
-  color: #FF4742;
+  color: #ff4742;
 }

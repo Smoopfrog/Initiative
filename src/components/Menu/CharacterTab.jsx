@@ -55,7 +55,7 @@ const CharacterTab = ({
           setPlayerCharacters={setPlayerCharacters}
         />
       )}
-      <Box sx={{ overflowY: "scroll", maxHeight: "inherit" }}>{charArray}</Box>
+      <Box sx={{ overflow: "auto", maxHeight: "inherit" }}>{charArray}</Box>
     </Box>
   );
 };

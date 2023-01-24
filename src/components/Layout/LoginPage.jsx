@@ -125,10 +125,14 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             name="username"
             aria-labelledby="label-username"
             autoFocus
-            ></input>
-            <label className={styles["label"]} for='username' id='label-username'>
-              <div className={styles["text"]}>Username</div>
-            </label>
+          ></input>
+          <label
+            className={password ? styles["has-text"] : styles["label"]}
+            for="username"
+            id="label-username"
+          >
+            <div className={styles["text"]}>Username</div>
+          </label>
         </div>
         <div className={styles["input-container"]}>
           <input
@@ -142,10 +146,14 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             type="password"
             id="password"
             aria-labelledby="label-password"
-            />
-            <label className={styles["label"]} for='password' id='label-password'>
-              <div className={styles["text"]}>Password</div>
-            </label>
+          />
+          <label
+            className={password ? styles["has-text"] : styles["label"]}
+            for="password"
+            id="label-password"
+          >
+            <div className={styles["text"]}>Password</div>
+          </label>
         </div>
 
         {credentialsError && (

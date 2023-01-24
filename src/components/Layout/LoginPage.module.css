@@ -1,0 +1,13 @@
+.page {
+  display: flex;
+}
+
+form {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 70vh;
+  justify-content: center;
+}

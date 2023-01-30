@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from "react";
 import chest from "../../images/treasure.png";
 import styles from "./LoginPage.module.css";
-import {
-  Box,
-  TextField,
-  Typography,
-  FormControlLabel,
-  Button,
-  Collapse,
-  IconButton,
-  Alert,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { CheckBox } from "@mui/icons-material";
+import { Box } from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../slices/userSlice";
@@ -147,11 +136,6 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             <span>Invalid Credentials</span>
           </div>
         )}
-        <FormControlLabel
-          control={<CheckBox defaultChecked />}
-          label="Remember me"
-          sx={{ margin: "10px" }}
-        />
         <button type="submit" variant="contained" sx={{ margin: "10px" }}>
           Sign in
         </button>

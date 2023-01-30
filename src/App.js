@@ -5,6 +5,7 @@ import Menu from "./components/Menu/Menu";
 import background from "./images/orcus.jpeg";
 import { Box } from "@mui/material";
 import { useState } from "react";
+import SignupPage from "./components/Layout/SignupPage";
 const axios = require("axios").default;
 axios.defaults.baseURL = "http://localhost:7001";
 
@@ -20,7 +21,7 @@ const App = () => {
           setPlayerCharacters={setPlayerCharacters}
         />
       )}
-      {homepage === "signup" && <Signup setHomepage={setHomepage} />}
+      {homepage === "signup" && <SignupPage setHomepage={setHomepage} />}
       {homepage === "signedIn" && (
         <Menu
           setHomepage={setHomepage}

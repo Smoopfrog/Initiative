@@ -103,16 +103,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
 
   return (
     <div className={styles.page}>
-      <Box
-        sx={{
-          height: "100vh",
-          width: { xs: "0vw", md: "60vw" },
-          backgroundImage: `url(${background})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+      <div className={styles["home-image"]}></div>
       <form className={styles} onSubmit={login}>
         <h1>Initiative</h1>
         <br />
@@ -136,9 +127,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             <span>Invalid Credentials</span>
           </div>
         )}
-        <button type="submit">
-          Sign in
-        </button>
+        <button type="submit">Sign in</button>
         <div className={styles.options}>
           <button className={styles["options-button"]}>
             Forgot your password?

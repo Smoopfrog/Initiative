@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./LoginPage.module.css";
 import Input from "../UI/Input";
 import axios from "axios";
-import { Box, Typography, Button } from "@mui/material";
 import chest from "../../images/treasureOpen.png";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../slices/userSlice";
-import background from "../../images/orcus.jpeg";
 
 const SignupPage = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
@@ -96,16 +94,8 @@ const SignupPage = ({ setHomepage }) => {
 
   return (
     <div className={styles.page}>
-      <Box
-        sx={{
-          height: "100vh",
-          width: { xs: "0vw", md: "60vw" },
-          backgroundImage: `url(${background})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+      <div className={styles["home-image"]}>
+      </div>
       <form>
         <h1>Initiative</h1>
         <br />
@@ -142,7 +132,7 @@ const SignupPage = ({ setHomepage }) => {
             <span>Passwords do not match!</span>
           </div>
         )}
-        <button type="submit">Sign Up</button>
+        <button onClick={onSignUp}>Sign Up</button>
         <button onClick={() => setHomepage("signin")} className={styles["options-button"]}>
           Already have an account? Sign In
         </button>

@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./LoginPage.module.css";
 import Input from "../UI/Input";
 import axios from "axios";
-import {
-  Box,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import chest from "../../images/treasureOpen.png";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../slices/userSlice";
@@ -18,6 +14,34 @@ const SignupPage = ({ setHomepage }) => {
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!usernameError) {
+      return;
+    }
+
+    setUsernameError(true);
+
+    const errorTimer = setTimeout(() => {
+      setUsernameError(false);
+    }, 3000);
+
+    return () => clearTimeout(errorTimer);
+  }, [usernameError]);
+
+  useEffect(() => {
+    if (!passwordError) {
+      return;
+    }
+
+    setPasswordError(true);
+
+    const errorTimer = setTimeout(() => {
+      setPasswordError(false);
+    }, 3000);
+
+    return () => clearTimeout(errorTimer);
+  }, [passwordError]);
 
   useEffect(() => {
     setUsernameError(false);

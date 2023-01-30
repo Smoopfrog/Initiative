@@ -1,7 +1,17 @@
+import { useState } from "react";
+import styles from "./GameRoom.module.css";
 import { Box, Button } from "@mui/material";
 import InGameCharacter from "../InGameCharacter";
 
-const GameRoom = ({ setGameCharacters, gameCharacters, sortByInitiative }) => {
+const GameRoom = ({ gameCharacters, setGameCharacters }) => {
+  console.log(gameCharacters)
+  const sortByInitiative = (characters) => {
+    let sortedCharacters = characters.sort(
+      (a, b) => b.initiative - a.initiative
+    );
+    setGameCharacters([...sortedCharacters]);
+  };
+
   const inGameChars = gameCharacters.map((character) => {
     return (
       <InGameCharacter
@@ -98,24 +108,31 @@ const GameRoom = ({ setGameCharacters, gameCharacters, sortByInitiative }) => {
   };
 
   return (
-    <Box>
-      {gameCharacters.length === 0 ? <h1>Add peoples please</h1> : 
-      (<Box sx={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
-        {playerTurn()}
-        <Box>
-          <Button onClick={prevChar}>
-            <i className="fa-solid fa-arrow-left"></i>
-          </Button>
-          <Button onClick={sortButtonHandler}>Sort</Button>
-          <Button onClick={nextChar}>
-            <i className="fa-solid fa-arrow-right"></i>
-          </Button>
+    <div className={styles.page}>
+      {gameCharacters.length === 0 ? (
+        <h1>Add peoples please</h1>
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {playerTurn()}
+          <Box>
+            <Button onClick={prevChar}>
+              <i className="fa-solid fa-arrow-left"></i>
+            </Button>
+            <Button onClick={sortButtonHandler}>Sort</Button>
+            <Button onClick={nextChar}>
+              <i className="fa-solid fa-arrow-right"></i>
+            </Button>
+          </Box>
         </Box>
-        
-      </Box>)
-    }
-    {inGameChars}
-    </Box>
+      )}
+      {inGameChars}
+    </div>
   );
 };
 

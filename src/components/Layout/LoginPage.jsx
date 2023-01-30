@@ -8,6 +8,7 @@ import { logIn } from "../../slices/userSlice";
 import { setCharacters } from "../../slices/charactersSlice";
 import background from "../../images/orcus.jpeg";
 import Input from "../UI/Input";
+import Button from "../UI/Button";
 
 const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
   const [username, setUsername] = useState("");
@@ -104,7 +105,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
   return (
     <div className={styles.page}>
       <div className={styles["home-image"]}></div>
-      <form className={styles} onSubmit={login}>
+      <form>
         <h1>Initiative</h1>
         <br />
         <img src={chest} width="50" height="50" />
@@ -127,17 +128,14 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             <span>Invalid Credentials</span>
           </div>
         )}
-        <button type="submit">Sign in</button>
+        <Button label="Sign In" onClick={login} />
         <div className={styles.options}>
-          <button className={styles["options-button"]}>
-            Forgot your password?
-          </button>
-          <button
+          <Button label="Forgot your password?" style="options-button" />
+          <Button
+            label="Don't have an account? Sign Up"
+            style="options-button"
             onClick={() => setHomepage("signup")}
-            className={styles["options-button"]}
-          >
-            Don't have an account? Sign Up
-          </button>
+          />
         </div>
       </form>
     </div>

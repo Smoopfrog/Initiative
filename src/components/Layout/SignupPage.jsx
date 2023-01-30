@@ -5,6 +5,7 @@ import axios from "axios";
 import chest from "../../images/treasureOpen.png";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../slices/userSlice";
+import Button from "../UI/Button";
 
 const SignupPage = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
@@ -132,10 +133,8 @@ const SignupPage = ({ setHomepage }) => {
             <span>Passwords do not match!</span>
           </div>
         )}
-        <button onClick={onSignUp}>Sign Up</button>
-        <button onClick={() => setHomepage("signin")} className={styles["options-button"]}>
-          Already have an account? Sign In
-        </button>
+        <Button label='Sign Up' onClick={onSignUp} />
+        <Button label='Already have an account? Sign In' style="options-button" onClick={() => setHomepage("signin")}/>
       </form>
     </div>
   );

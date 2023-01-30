@@ -136,7 +136,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             <span>Invalid Credentials</span>
           </div>
         )}
-        <button type="submit" variant="contained" sx={{ margin: "10px" }}>
+        <button type="submit">
           Sign in
         </button>
         <div className={styles.options}>

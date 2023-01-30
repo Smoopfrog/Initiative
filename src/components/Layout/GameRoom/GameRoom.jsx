@@ -5,7 +5,6 @@ import InGameCharacter from "../../InGameCharacter";
 import Controller from "./Controller";
 
 const GameRoom = ({ gameCharacters, setGameCharacters }) => {
-  console.log(gameCharacters);
   const sortByInitiative = (characters) => {
     let sortedCharacters = characters.sort(
       (a, b) => b.initiative - a.initiative

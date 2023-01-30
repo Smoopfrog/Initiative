@@ -1,5 +1,5 @@
 import MonsterManualTab from "../Menu/MonsterManualTab";
-import GameRoom from "./GameRoom";
+import GameRoom from "./GameRoom/GameRoom";
 import SideBar from "./SideBar";
 import styles from "./HomePage.module.css";
 import { useState } from "react";

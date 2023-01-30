@@ -11,21 +11,13 @@ const Input = (props) => {
         id={props.label}
         name={props.label}
         aria-labelledby={`"label-${props.label}`}
-        autoFocus
       ></input>
       <label
-        className={styles["label"]
-        }
+        className={styles["label"]}
         for={props.label}
         id={`"label-${props.label}`}
       >
-        <div
-          className={
-styles["text"]
-          }
-        >
-          {props.label}
-        </div>
+        <div className={styles["text"]}>{props.label}</div>
       </label>
     </div>
   );

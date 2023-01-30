@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import chest from "../../images/treasure.png";
 import styles from "./LoginPage.module.css";
-import { Box } from "@mui/material";
+import Input from "../UI/Input";
+import Button from "../UI/Button";
+import chest from "../../images/treasure.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../slices/userSlice";
 import { setCharacters } from "../../slices/charactersSlice";
-import background from "../../images/orcus.jpeg";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
 
 const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
   const [username, setUsername] = useState("");

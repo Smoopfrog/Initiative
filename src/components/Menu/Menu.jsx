@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Tabs, Tab } from "@mui/material";
 import CharacterTab from "./CharacterTab.jsx";
 import ProfileTab from "./ProfileTab.jsx";
-import GameRoomTab from "./GameRoomTab";
+import GameRoomTab from "./GameRoom";
 import MonsterManualTab from "./MonsterManualTab.jsx";
 
 

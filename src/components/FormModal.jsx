@@ -5,7 +5,7 @@ import { selectUser } from "../slices/userSlice";
 import axios from "axios";
 import { Button, Card } from "@mui/material";
 import ModalBackdrop from "./ModalBackdrop.jsx";
-import UploadAndDisplayImage from "./UploadAndDisplayImage";
+import UploadAndDisplayImage from "./UI/UploadAndDisplayImage";
 import backdropStyles from "./Backdrop.module.css";
 import styles from "./Form.module.css"
 

@@ -17,7 +17,7 @@ const SideBar = (props) => {
       <div className={styles.header}>
         <h1>Initiative</h1>
       </div>
-      <Tabs onClick={tabHandler} />
+      <Tabs onClick={tabHandler} currentTab={currentTab} />
       {currentTab === "characters" && (
         <CharacterTab
           playerCharacters={props.playerCharacters}

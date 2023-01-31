@@ -1,3 +1,12 @@
 .side-bar {
   width: 40vw;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  background-color: brown;
+  color: white;
+}

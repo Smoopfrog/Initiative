@@ -9,11 +9,14 @@ const SideBar = (props) => {
   const [currentTab, setCurrentTab] = useState("characters");
 
   const tabHandler = (tabName) => {
-    setCurrentTab(tabName)
-  } 
+    setCurrentTab(tabName);
+  };
 
   return (
     <div className={styles["side-bar"]}>
+      <div className={styles.header}>
+        <h1>Initiative</h1>
+      </div>
       <Tabs onClick={tabHandler} />
       {currentTab === "characters" && (
         <CharacterTab

@@ -126,14 +126,12 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             <span>Invalid Credentials</span>
           </div>
         )}
-        <Button label="Sign In" onClick={login} />
+        <Button onClick={login}>Sign In</Button>
         <div className={styles.options}>
-          <Button label="Forgot your password?" style="options-button" />
-          <Button
-            label="Don't have an account? Sign Up"
-            style="options-button"
-            onClick={() => setHomepage("signup")}
-          />
+          <Button style="options-button">Forgot your password?</Button>
+          <Button style="options-button" onClick={() => setHomepage("signup")}>
+            Don't have an account? Sign Up
+          </Button>
         </div>
       </form>
     </div>

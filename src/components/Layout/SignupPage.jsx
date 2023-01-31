@@ -95,8 +95,7 @@ const SignupPage = ({ setHomepage }) => {
 
   return (
     <div className={styles.page}>
-      <div className={styles["home-image"]}>
-      </div>
+      <div className={styles["home-image"]}></div>
       <form>
         <h1>Initiative</h1>
         <br />
@@ -133,8 +132,10 @@ const SignupPage = ({ setHomepage }) => {
             <span>Passwords do not match!</span>
           </div>
         )}
-        <Button label='Sign Up' onClick={onSignUp} />
-        <Button label='Already have an account? Sign In' style="options-button" onClick={() => setHomepage("signin")}/>
+        <Button onClick={onSignUp}>Sign Up</Button>
+        <Button style="options-button" onClick={() => setHomepage("signin")}>
+          Already have an account? Sign In
+        </Button>
       </form>
     </div>
   );

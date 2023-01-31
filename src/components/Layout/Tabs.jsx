@@ -1,12 +1,14 @@
-import styles from "./Tabs.module.css"
+import styles from "./Tabs.module.css";
 import Button from "../UI/Button";
 
 const Tabs = (props) => {
   return (
     <div className={styles.tabs}>
-      <Button>Characters</Button>
-      <Button>Monster Manual</Button>
-      <Button>Profile</Button>
+      <Button onClick={() => props.onClick("characters")}>Characters</Button>
+      <Button onClick={() => props.onClick("monsterManual")}>
+        Monster Manual
+      </Button>
+      <Button onClick={() => props.onClick("profile")}>Profile</Button>
     </div>
   );
 };

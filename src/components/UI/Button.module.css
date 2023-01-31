@@ -41,3 +41,46 @@ button:active {
   background-color: #1976d2;
   color: white;
 }
+
+.tab {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+
+.tab:hover {
+  background-color: #777;
+  color: white
+}
+
+.tab:active {
+  background-color: brown;
+  color: white;
+}
+
+.tab-active {
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  background-color: brown;
+  color: white;
+}
+
+.tab-active:hover {
+  background-color: #777;
+  color: white
+}

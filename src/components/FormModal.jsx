@@ -8,6 +8,7 @@ import ModalBackdrop from "./ModalBackdrop.jsx";
 import UploadAndDisplayImage from "./UI/UploadAndDisplayImage";
 import backdropStyles from "./Backdrop.module.css";
 import styles from "./Form.module.css";
+import Input from "./UI/Input";
 
 const NewCharacterForm = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -51,7 +52,42 @@ const NewCharacterForm = (props) => {
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
         />
-        <div>
+        <Input
+          value={newCharName}
+          onChange={(e) => setNewCharName(e.target.value)}
+          label="Name"
+        />
+        <Input
+          value={newCharLevel}
+          onChange={(e) => setNewCharLevel(e.target.value)}
+          label="Level"
+        />
+        <Input
+          value={newCharRace}
+          onChange={(e) => setNewCharRace(e.target.value)}
+          label="Race"
+        />{" "}
+        <Input
+          value={newCharClass}
+          onChange={(e) => setNewCharClass(e.target.value)}
+          label="Class"
+        />{" "}
+        <Input
+          value={newCharHp}
+          onChange={(e) => setNewCharHp(e.target.value)}
+          label="HP"
+        />
+        <Input
+          value={newCharAc}
+          onChange={(e) => setNewCharAc(e.target.value)}
+          label="AC"
+        />
+        <Input
+          value={newCharSheet}
+          onChange={(e) => setNewCharSheet(e.target.value)}
+          label="Character Sheet Link"
+        />
+        {/* <div>
           <label htmlFor="name" className={styles.label}>
             Name
           </label>
@@ -127,7 +163,7 @@ const NewCharacterForm = (props) => {
             value={newCharSheet}
             onChange={(e) => setNewCharSheet(e.target.value)}
           />
-        </div>
+        </div> */}
         <footer className={styles.buttonGroup}>
           <Button style="green" onClick={submitNewChar}>
             Create

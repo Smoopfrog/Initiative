@@ -4,7 +4,8 @@ import axios from "axios";
 import ConfirmationModal from "../ConfirmationModal";
 import Button from "../UI/Button";
 // import { inGame } from "../slices/userSlice";
-import styles from './CharacterCard.module.css'
+import styles from "./CharacterCard.module.css";
+
 const CharacterCard = (props) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const char = {
@@ -46,7 +47,7 @@ const CharacterCard = (props) => {
   };
 
   return (
-    <>
+    <div className={styles.card}>
       {showConfirmationModal && (
         <ConfirmationModal
           name={props.charName}
@@ -54,47 +55,32 @@ const CharacterCard = (props) => {
           onConfirm={deleteChar}
         />
       )}
-      <div
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          width: "90%",
-          margin: "10px",
-          padding: "10px",
-          background: "oldlace",
-        }}
-      >
-        <div sx={{ display: "flex" }}>
-          <img src={halfling} width="20%" />
-          <div
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <h1 variant="h5">{props.charName}</h1>
-            <h3 variant="h12">
-              Lv.{props.level} {props.race} {props.class}
-            </h3>
-            {props.charSheetUrl && (
+      <div className={styles.character}>
+        <img src={halfling} width="30%" />
+        <div className={styles.info}>
+          <h1>{props.charName}</h1>
+          <h3>
+            Lv.{props.level} {props.race} {props.class}
+          </h3>
+          {props.charSheetUrl && (
+            <h3>
               <a href={props.charSheetUrl}>Character Sheet</a>
-            )}
-          </div>
-        </div>
-        <div className={styles.buttons}>
-          <Button>
-            <i className="fa-solid fa-pen-to-square"></i>
-          </Button>
-          <Button onClick={addCharacter}>
-            <i className="fa-solid fa-plus"></i>
-          </Button>
-          <Button onClick={confirmationModalHandler}>
-            <i className="fa-solid fa-trash-can"></i>
-          </Button>
+            </h3>
+          )}
         </div>
       </div>
-    </>
+      <div className={styles.buttons}>
+        <Button>
+          <i className="fa-solid fa-pen-to-square"></i>
+        </Button>
+        <Button onClick={addCharacter}>
+          <i className="fa-solid fa-plus"></i>
+        </Button>
+        <Button onClick={confirmationModalHandler}>
+          <i className="fa-solid fa-trash-can"></i>
+        </Button>
+      </div>
+    </div>
   );
 };
 

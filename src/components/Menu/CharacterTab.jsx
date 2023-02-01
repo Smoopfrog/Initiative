@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../slices/userSlice";
 import { selectCharacters, setCharacters } from "../../slices/charactersSlice";
 import PlayerCharacter from "../PlayerCharacter";
-import { Box, Stack, Button } from "@mui/material";
+import Button from "../UI/Button";
 import FormModal from "../FormModal";
 import CharacterCard from "../CharacterCard/CharacterCard";
+import styles from "./CharacterTab.module.css";
 
 const CharacterTab = ({
   gameCharacters,
@@ -43,12 +44,12 @@ const CharacterTab = ({
   });
 
   return (
-    <Box sx={{maxHeight: '88vh'}}>
-      <Box>
-        <Button variant="outlined" onClick={showFormHandler}>
-          Create character
-        </Button>
-      </Box>
+    <div>
+      <div className={styles['control-buttons']}>
+        <Button onClick={showFormHandler}>Create character</Button>
+        <Button>Sort</Button>
+
+      </div>
       {showForm && (
         <FormModal
           closeForm={showFormHandler}
@@ -56,8 +57,8 @@ const CharacterTab = ({
           setPlayerCharacters={setPlayerCharacters}
         />
       )}
-      <Box sx={{ overflow: "auto", maxHeight: "inherit" }}>{charArray}</Box>
-    </Box>
+      <ul className={styles["character-list"]}>{charArray}</ul>
+    </div>
   );
 };
 

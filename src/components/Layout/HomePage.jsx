@@ -1,5 +1,4 @@
 import styles from "./HomePage.module.css";
-import MonsterManualTab from "../Menu/MonsterManualTab";
 import GameRoom from "./GameRoom/GameRoom";
 import SideBar from "./SideBar";
 import { useState } from "react";

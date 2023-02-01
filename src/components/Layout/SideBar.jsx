@@ -3,7 +3,7 @@ import styles from "./SideBar.module.css";
 import { useState } from "react";
 import CharacterTab from "../Menu/CharacterTab";
 import ProfileTab from "../Menu/ProfileTab";
-import MonsterManualTab from "../Menu/MonsterManualTab";
+import MonsterManualTab from "./MonsterManual/MonsterManualTab";
 
 const SideBar = (props) => {
   const [currentTab, setCurrentTab] = useState("characters");

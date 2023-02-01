@@ -1,7 +1,8 @@
-import { Box, Button, TextField } from "@mui/material";
-import React from "react";
 import { useState } from "react";
-import MonsterCard from "../MonsterCard";
+import styles from './MonsterManualTab.module.css'
+import MonsterCard from "../../MonsterCard";
+import Button from "../../UI/Button";
+import Input from "../../UI/Input";
 
 const MonsterManualTab = ({ setGameCharacters }) => {
   const [searchText, setSearchText] = useState("");
@@ -19,33 +20,31 @@ const MonsterManualTab = ({ setGameCharacters }) => {
     const data = await response.json();
 
     if (!data.name) {
-      setSearchResults('notFound');
+      setSearchResults("notFound");
     } else {
       setSearchResults(data);
     }
   };
 
   return (
-    <Box>
-      <TextField
-        id="outlined-basic"
-        label="Search"
-        variant="outlined"
-        value={searchText}
-        onChange={handleSearchTextChange}
-      />
-      <Button variant="contained" color="success" onClick={searchMonsterManual}>
-        Search
-      </Button>
-      {(searchResults !== "notFound" && searchResults) && 
+    <div>
+      <div className={styles["search-bar"]}>
+        <Input
+          value={searchText}
+          handleOnChange={handleSearchTextChange}
+          label="Search"
+        />
+        <Button onClick={searchMonsterManual}>Search</Button>
+      </div>
+      {searchResults !== "notFound" && searchResults && (
         <MonsterCard
           monster={searchResults}
           setGameCharacters={setGameCharacters}
         />
-      }
-      
+      )}
+
       {searchResults === "notFound" && <h2>Monster not found</h2>}
-    </Box>
+    </div>
   );
 };
 

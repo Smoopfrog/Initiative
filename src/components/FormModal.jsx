@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../slices/userSlice";
 import axios from "axios";
-import { Button, Card } from "@mui/material";
+import Button from "./UI/Button";
 import ModalBackdrop from "./ModalBackdrop.jsx";
 import UploadAndDisplayImage from "./UI/UploadAndDisplayImage";
 import backdropStyles from "./Backdrop.module.css";
@@ -45,7 +45,7 @@ const NewCharacterForm = (props) => {
   };
 
   return (
-    <Card className={backdropStyles.modal}>
+    <div className={backdropStyles.modal}>
       <form className={styles.form}>
         <h1 className={styles.title}>Create a new character</h1>
         <UploadAndDisplayImage
@@ -116,11 +116,11 @@ const NewCharacterForm = (props) => {
           />
         </div>
         <footer className={styles.buttonGroup}>
-          <Button onClick={submitNewChar} variant="contained" color="success">Create</Button>
-          <Button onClick={props.closeForm} variant="contained" color="error">Cancel</Button>
+          <Button onClick={submitNewChar}>Create</Button>
+          <Button onClick={props.closeForm}>Cancel</Button>
         </footer>
       </form>
-    </Card>
+    </div>
   );
 };
 

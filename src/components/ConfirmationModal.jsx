@@ -6,9 +6,6 @@ import styles from "./ConfirmationModal.module.css";
 const ConfirmationPopUp = (props) => {
   return (
     <div className={modalStyles.modal}>
-      <div onClick={props.closeForm} className={styles.closeIcon}>
-        <i  class="fa-solid fa-x"></i>
-      </div>
       <div className={styles.container}>
         <span className={styles.garbageIcon}>
           <i className="fa-solid fa-trash-can"></i>

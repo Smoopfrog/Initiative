@@ -84,3 +84,11 @@ button:active {
   background-color: #777;
   color: white
 }
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}

@@ -56,7 +56,7 @@ const CharacterCard = (props) => {
         />
       )}
       <div className={styles.character}>
-        <img src={halfling} width="30%" />
+        <img src={halfling} width="25%" />
         <div className={styles.info}>
           <h1>{props.charName}</h1>
           <h3>
@@ -73,10 +73,10 @@ const CharacterCard = (props) => {
         <Button>
           <i className="fa-solid fa-pen-to-square"></i>
         </Button>
-        <Button onClick={addCharacter}>
+        <Button style="green" onClick={addCharacter}>
           <i className="fa-solid fa-plus"></i>
         </Button>
-        <Button onClick={confirmationModalHandler}>
+        <Button style="red" onClick={confirmationModalHandler}>
           <i className="fa-solid fa-trash-can"></i>
         </Button>
       </div>

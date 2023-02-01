@@ -7,7 +7,7 @@ import Button from "./UI/Button";
 import ModalBackdrop from "./ModalBackdrop.jsx";
 import UploadAndDisplayImage from "./UI/UploadAndDisplayImage";
 import backdropStyles from "./Backdrop.module.css";
-import styles from "./Form.module.css"
+import styles from "./Form.module.css";
 
 const NewCharacterForm = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -21,7 +21,6 @@ const NewCharacterForm = (props) => {
   const user = useSelector(selectUser);
 
   const submitNewChar = async () => {
-    
     const newChar = {
       newCharName,
       newCharLevel,
@@ -53,7 +52,9 @@ const NewCharacterForm = (props) => {
           setSelectedImage={setSelectedImage}
         />
         <div>
-          <label htmlFor="name" className={styles.label}>Name</label>
+          <label htmlFor="name" className={styles.label}>
+            Name
+          </label>
           <input
             id="name"
             type="text"
@@ -62,7 +63,9 @@ const NewCharacterForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="level" className={styles.label}>Level</label>
+          <label htmlFor="level" className={styles.label}>
+            Level
+          </label>
           <input
             id="level"
             type="number"
@@ -71,7 +74,9 @@ const NewCharacterForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="race" className={styles.label}>Race</label>
+          <label htmlFor="race" className={styles.label}>
+            Race
+          </label>
           <input
             id="race"
             type="text"
@@ -80,7 +85,9 @@ const NewCharacterForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="class" className={styles.label}>Class</label>
+          <label htmlFor="class" className={styles.label}>
+            Class
+          </label>
           <input
             id="class"
             type="text"
@@ -89,7 +96,9 @@ const NewCharacterForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="hp" className={styles.label}>HP</label>
+          <label htmlFor="hp" className={styles.label}>
+            HP
+          </label>
           <input
             id="hp"
             type="number"
@@ -98,7 +107,9 @@ const NewCharacterForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="ac" className={styles.label}>AC</label>
+          <label htmlFor="ac" className={styles.label}>
+            AC
+          </label>
           <input
             id="ac"
             type="number"
@@ -107,7 +118,9 @@ const NewCharacterForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="characterSheet" className={styles.label}>Character Sheet Link</label>
+          <label htmlFor="characterSheet" className={styles.label}>
+            Character Sheet Link
+          </label>
           <input
             id="characterSheet"
             type="url"
@@ -116,8 +129,12 @@ const NewCharacterForm = (props) => {
           />
         </div>
         <footer className={styles.buttonGroup}>
-          <Button onClick={submitNewChar}>Create</Button>
-          <Button onClick={props.closeForm}>Cancel</Button>
+          <Button style="green" onClick={submitNewChar}>
+            Create
+          </Button>
+          <Button style="red" onClick={props.closeForm}>
+            Cancel
+          </Button>
         </footer>
       </form>
     </div>
@@ -128,7 +145,10 @@ const FormModal = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <ModalBackdrop onConfirm={props.onConfirm} closeForm={props.closeForm} />,
+        <ModalBackdrop
+          onConfirm={props.onConfirm}
+          closeForm={props.closeForm}
+        />,
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(

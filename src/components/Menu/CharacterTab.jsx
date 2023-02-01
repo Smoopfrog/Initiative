@@ -5,6 +5,7 @@ import { selectCharacters, setCharacters } from "../../slices/charactersSlice";
 import PlayerCharacter from "../PlayerCharacter";
 import { Box, Stack, Button } from "@mui/material";
 import FormModal from "../FormModal";
+import CharacterCard from "../CharacterCard/CharacterCard";
 
 const CharacterTab = ({
   gameCharacters,
@@ -21,7 +22,7 @@ const CharacterTab = ({
 
   const charArray = playerCharacters.map((character) => {
     return (
-      <PlayerCharacter
+      <CharacterCard
         key={character.id}
         id={character.id}
         userName={user.username}

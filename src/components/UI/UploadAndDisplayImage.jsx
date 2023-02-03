@@ -9,7 +9,7 @@ const UploadAndDisplayImage = (props) => {
         <div>
           <img
             alt="not fount"
-            width={"250px"}
+            width={"25%"}
             src={URL.createObjectURL(props.selectedImage)}
           />
           <br />

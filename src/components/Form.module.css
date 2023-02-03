@@ -1,5 +1,13 @@
 .form {
   padding: 10px;
+  display: flex;
+
+  position: fixed;
+  background: white;
+  z-index: 100;
+  border-radius: 5px;
+  margin-top: 25px;
+  width: 50%;
 }
 
 .label {
@@ -17,4 +25,8 @@
   margin-top: 10px;
   display: flex;
   justify-content: space-evenly;
+}
+
+.body {
+  display: flex;
 }

@@ -45,10 +45,61 @@ const NewCharacterForm = (props) => {
   };
 
   return (
-    <div className={backdropStyles.modal}>
-      <form className={styles.form}>
-        <h1 className={styles.title}>Create a new character</h1>
-        <UploadAndDisplayImage
+    <form className={styles.form}>
+      <h1 className={styles.title}>Create a new character</h1>
+      <div className={styles.body}>
+        <div>
+          <UploadAndDisplayImage
+            selectedImage={selectedImage}
+            setSelectedImage={setSelectedImage}
+          />
+        </div>
+        <div>
+          <Input
+            value={newCharName}
+            handleOnChange={(e) => setNewCharName(e.target.value)}
+            label="Name"
+            type="text"
+          />
+          <Input
+            value={newCharLevel}
+            handleOnChange={(e) => setNewCharLevel(e.target.value)}
+            label="Level"
+            type="number"
+          />
+          <Input
+            value={newCharRace}
+            handleOnChange={(e) => setNewCharRace(e.target.value)}
+            label="Race"
+            type="text"
+          />
+          <Input
+            value={newCharClass}
+            handleOnChange={(e) => setNewCharClass(e.target.value)}
+            label="Class"
+            type="text"
+          />
+          <Input
+            value={newCharHp}
+            handleOnChange={(e) => setNewCharHp(e.target.value)}
+            label="HP"
+            type="number"
+          />
+          <Input
+            value={newCharAc}
+            handleOnChange={(e) => setNewCharAc(e.target.value)}
+            label="AC"
+            type="number"
+          />
+          <Input
+            value={newCharSheet}
+            handleOnChange={(e) => setNewCharSheet(e.target.value)}
+            label="Character Sheet Link"
+            type="text"
+          />
+        </div>
+      </div>
+      {/* <UploadAndDisplayImage
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
         />
@@ -93,94 +144,16 @@ const NewCharacterForm = (props) => {
           handleOnChange={(e) => setNewCharSheet(e.target.value)}
           label="Character Sheet Link"
           type="text"
-        />
-        {/* <div>
-          <label htmlFor="name" className={styles.label}>
-            Name
-          </label>
-          <input
-            id="name"
-            type="text"
-            value={newCharName}
-            onChange={(e) => setNewCharName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="level" className={styles.label}>
-            Level
-          </label>
-          <input
-            id="level"
-            type="number"
-            value={newCharLevel}
-            onChange={(e) => setNewCharLevel(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="race" className={styles.label}>
-            Race
-          </label>
-          <input
-            id="race"
-            type="text"
-            value={newCharRace}
-            onChange={(e) => setNewCharRace(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="class" className={styles.label}>
-            Class
-          </label>
-          <input
-            id="class"
-            type="text"
-            value={newCharClass}
-            onChange={(e) => setNewCharClass(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="hp" className={styles.label}>
-            HP
-          </label>
-          <input
-            id="hp"
-            type="number"
-            value={newCharHp}
-            onChange={(e) => setNewCharHp(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="ac" className={styles.label}>
-            AC
-          </label>
-          <input
-            id="ac"
-            type="number"
-            value={newCharAc}
-            onChange={(e) => setNewCharAc(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="characterSheet" className={styles.label}>
-            Character Sheet Link
-          </label>
-          <input
-            id="characterSheet"
-            type="url"
-            value={newCharSheet}
-            onChange={(e) => setNewCharSheet(e.target.value)}
-          />
-        </div> */}
-        <footer className={styles.buttonGroup}>
-          <Button style="green" onClick={submitNewChar}>
-            Create
-          </Button>
-          <Button style="red" onClick={props.closeForm}>
-            Cancel
-          </Button>
-        </footer>
-      </form>
-    </div>
+        /> */}
+      <footer className={styles.buttonGroup}>
+        <Button style="green" onClick={submitNewChar}>
+          Create
+        </Button>
+        <Button style="red" onClick={props.closeForm}>
+          Cancel
+        </Button>
+      </footer>
+    </form>
   );
 };
 

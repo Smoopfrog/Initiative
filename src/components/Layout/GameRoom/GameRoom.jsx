@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./GameRoom.module.css";
 import InGameCharacter from "../../InGameCharacter";
 import Controller from "./Controller";
+import CharacterBar from "./CharacterBar";
 
 const GameRoom = ({ gameCharacters, setGameCharacters }) => {
   const sortByInitiative = (characters) => {
@@ -118,7 +119,14 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
           nextChar={nextChar}
         />
       )}
-      {inGameChars}
+      <div className={styles.container}>
+        <i class="fa-solid fa-play"></i>
+        <span>Name</span>
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <CharacterBar />
+      {/* {inGameChars} */}
     </div>
   );
 };

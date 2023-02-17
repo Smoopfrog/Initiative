@@ -56,7 +56,7 @@ const CharacterCard = (props) => {
         />
       )}
       <div className={styles.character}>
-        <img src={props.img} width="25%" />
+        {/* <img src={props.img} width="25%" /> */}
         <div className={styles.info}>
           <h1>{props.charName}</h1>
           <h3>

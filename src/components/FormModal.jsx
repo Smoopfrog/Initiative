@@ -11,7 +11,7 @@ import styles from "./Form.module.css";
 import Input from "./UI/Input";
 
 const NewCharacterForm = (props) => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  // const [selectedImage, setSelectedImage] = useState(null);
   const [newCharName, setNewCharName] = useState("");
   const [newCharLevel, setNewCharLevel] = useState("");
   const [newCharRace, setNewCharRace] = useState("");
@@ -21,7 +21,9 @@ const NewCharacterForm = (props) => {
   const [newCharSheet, setNewCharSheet] = useState("");
   const user = useSelector(selectUser);
 
-  const submitNewChar = async () => {
+  const submitNewChar = async (event) => {
+    event.preventDefault()
+    // console.log('selectedImage', selectedImage)
     const newChar = {
       newCharName,
       newCharLevel,
@@ -48,12 +50,12 @@ const NewCharacterForm = (props) => {
     <form className={styles.form}>
       <h1 className={styles.title}>Create a new character</h1>
       <div className={styles.body}>
-        <div>
+        {/* <div>
           <UploadAndDisplayImage
             selectedImage={selectedImage}
             setSelectedImage={setSelectedImage}
-          />
-        </div>
+          /> */}
+        {/* </div> */}
         <div>
           <Input
             value={newCharName}

@@ -6,3 +6,18 @@
   flex-direction: column;
   background-color: burlywood;
 }
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.li-titles {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #141414;
+  color: white;
+}

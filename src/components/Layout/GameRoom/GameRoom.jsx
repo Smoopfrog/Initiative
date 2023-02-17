@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./GameRoom.module.css";
 import InGameCharacter from "../../InGameCharacter";
 import Controller from "./Controller";
@@ -119,13 +118,15 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
           nextChar={nextChar}
         />
       )}
-      <div className={styles.container}>
-        <i class="fa-solid fa-play"></i>
-        <span>Name</span>
-        <i class="fa-solid fa-heart"></i>
-        <i class="fa-solid fa-shield-halved"></i>
-      </div>
-      <CharacterBar />
+      <ul>
+        <li className={styles['li-titles']}>
+          <i class="fa-solid fa-play"></i>
+          <span>Name</span>
+          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-shield-halved"></i>
+        </li>
+      </ul>
+      {/* <CharacterBar /> */}
       {/* {inGameChars} */}
     </div>
   );

@@ -1,5 +1,4 @@
 import styles from "./GameRoom.module.css";
-import InGameCharacter from "../../InGameCharacter";
 import Controller from "./Controller";
 import CharacterBar from "./CharacterBar";
 
@@ -11,16 +10,12 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
     setGameCharacters([...sortedCharacters]);
   };
 
-  const inGameChars = gameCharacters.map((character) => {
-    return (
-      <InGameCharacter
-        key={character.id}
-        character={character}
-        gameCharacters={gameCharacters}
-        setGameCharacters={setGameCharacters}
-      />
+  const removeChar = (id) => {
+    let newChars = gameCharacters.filter(
+      (newCharacters) => newCharacters.id != id
     );
-  });
+    setGameCharacters(newChars);
+  };
 
   const sortButtonHandler = () => {
     sortByInitiative(gameCharacters);
@@ -61,6 +56,16 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
 
     setGameCharacters(newState);
   };
+
+  const inGameChars = gameCharacters.map((character) => {
+    return (
+      <CharacterBar
+        key={character.id}
+        character={character}
+        removeChar={removeChar}
+      />
+    );
+  });
 
   const prevChar = () => {
     // get selected char and index
@@ -119,15 +124,14 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
         />
       )}
       <ul>
-        <li className={styles['li-titles']}>
+        <li className={styles["li-titles"]}>
           <i class="fa-solid fa-play"></i>
           <span>Name</span>
           <i class="fa-solid fa-heart"></i>
           <i class="fa-solid fa-shield-halved"></i>
         </li>
+        {inGameChars}
       </ul>
-      {/* <CharacterBar /> */}
-      {/* {inGameChars} */}
     </div>
   );
 };

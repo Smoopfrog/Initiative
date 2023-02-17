@@ -1,6 +1,26 @@
 .container {
-  background-color: #141414;
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ececec;
+  color: black;
   width: 90%;
+  height: 30px;
   margin: 0 auto;
+}
+
+.hp {
+  color: green
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+.input {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  border: none;
+  padding: 0;
 }

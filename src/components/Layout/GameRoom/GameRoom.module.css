@@ -12,6 +12,10 @@ ul {
   padding-inline-start: 0;
 }
 
+li:nth-child(2n) {
+  background-color: bisque;
+}
+
 .li-titles {
   display: flex;
   align-items: center;

@@ -106,7 +106,7 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
   const playerTurn = () => {
     const selectedIndex = gameCharacters.findIndex((char) => char.selected);
     if (selectedIndex !== -1) {
-      return <h1>Turn: {gameCharacters[selectedIndex].charName}</h1>;
+      return <h1>Active Combatant: {gameCharacters[selectedIndex].charName}</h1>;
     }
     return <h1>Prepare for battle!</h1>;
   };

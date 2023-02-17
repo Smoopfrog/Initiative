@@ -27,3 +27,13 @@
 h1, h3 {
   margin: 0;
 }
+
+.stat-block p {
+  text-align: left;
+  margin: 0;
+}
+
+.stat-title {
+  font-weight: bold;
+  color: brown;
+}

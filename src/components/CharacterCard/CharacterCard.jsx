@@ -62,6 +62,16 @@ const CharacterCard = (props) => {
           <h3>
             Lv.{props.level} {props.race} {props.class}
           </h3>
+          <div className={styles["stat-block"]}>
+            <p>
+              <span className={styles["stat-title"]}>Hit Points</span>{" "}
+              {props.hp}
+            </p>
+            <p>
+              <span className={styles["stat-title"]}>Armor Class</span>{" "}
+              {props.ac}
+            </p>
+          </div>
           {props.charSheetUrl && (
             <h3>
               <a href={props.charSheetUrl}>Character Sheet</a>

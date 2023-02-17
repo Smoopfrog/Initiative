@@ -1,5 +1,6 @@
-import { Box, Button, Card, Link, Typography } from "@mui/material";
 import React from "react";
+import styles from "./CharacterCard/CharacterCard.module.css";
+import Button from "./UI/Button";
 
 const MonsterCard = ({ monster, setGameCharacters }) => {
   const capitalize = (str) => {
@@ -15,19 +16,14 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
     subtype = `(${capitalize(subtype)})`;
   }
 
-  let monsterImg = monster.image;
-
-  if (monsterImg) {
-    monsterImg = `https://www.dnd5eapi.co${monster.image}`
-  }
   const rollTwentyLink = `https://roll20.net/compendium/dnd5e/${monster.name}`;
+
   const char = {
     id: Math.random(),
-    ac: monster.armor_class,
+    ac: monster["armor_class"]["0"].value,
     charName: monster.name,
     charSheetUrl: rollTwentyLink,
     hp: monster.hit_points,
-    img: monsterImg,
     initiative: 0,
     race: capitalize(monster.type),
     class: subtype,
@@ -35,45 +31,44 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
   };
 
   const addCharacter = () => {
+    console.log("char", char);
+    console.log(setGameCharacters);
+
     setGameCharacters((prev) => [...prev, char]);
   };
 
   return (
-    <Card sx={{ display: "flex" }}>
-      <Box sx={{ display: "flex" }}>
-        {monster.image && (
-          <img
-            src={`https://www.dnd5eapi.co${monster.image}`}
-            width="200"
-            height="auto"
-          />
-        )}
-        <Box
-          sx={{ display: "flex", flexDirection: "column", marginLeft: "5px" }}
-        >
-          <Typography variant="h4">{monster.name}</Typography>
-          <Typography>
+    <div className={styles.card}>
+      <div className={styles.character}>
+        <div className={styles.info}>
+          <h1>{monster.name}</h1>
+          <h3>
+            Lv.{monster.level} {monster.race} {monster.class}
             {monster.size} {capitalize(monster.type)}
             {monster.subtype && ` (${capitalize(monster.subtype)})`},{" "}
             {monster.alignment}{" "}
-          </Typography>
-          <Typography>Armor Class {monster.armor_class}</Typography>
-          <Typography>
-            Hit Points {monster.hit_points} ({monster.hit_points_roll})
-          </Typography>
-          <Link href={rollTwentyLink} target="_blank" rel="noopener noreferrer">
-            Roll20 Link
-          </Link>
-        </Box>
-      </Box>
-      <Button
-        onClick={addCharacter}
-        variant="contained"
-        sx={{ backgroundColor: "Green", color: "white" }}
-      >
-        <i className="fa-solid fa-plus"></i>
-      </Button>
-    </Card>
+          </h3>
+          <div className={styles["stat-block"]}>
+            <p>
+              <span className={styles["stat-title"]}>Hit Points </span>
+              {monster.hit_points}
+            </p>
+            <p>
+              <span className={styles["stat-title"]}>Armor Class </span>
+              {monster["armor_class"]["0"].value}
+            </p>
+          </div>
+          <h3>
+            <a href={rollTwentyLink}>Roll20</a>
+          </h3>
+        </div>
+      </div>
+      <div className={styles.buttons}>
+        <Button style="green" onClick={addCharacter}>
+          <i className="fa-solid fa-plus"></i>
+        </Button>
+      </div>
+    </div>
   );
 };
 

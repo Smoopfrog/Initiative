@@ -121,10 +121,10 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
       />
       <ul>
         <li className={styles["li-titles"]}>
-          <i class="fa-solid fa-play"></i>
+          <i className="fa-solid fa-play"></i>
           <span>Name</span>
-          <i class="fa-solid fa-heart"></i>
-          <i class="fa-solid fa-shield-halved"></i>
+          <i className="fa-solid fa-heart"></i>
+          <i className="fa-solid fa-shield-halved"></i>
           <span></span>
         </li>
         {inGameChars}

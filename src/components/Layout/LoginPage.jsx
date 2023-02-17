@@ -121,7 +121,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
         {credentialsError && (
           <div className={styles.error}>
             <span className={styles["error-icon"]}>
-              <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+              <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
             </span>
             <span>Invalid Credentials</span>
           </div>

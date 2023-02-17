@@ -14,7 +14,7 @@ const Input = (props) => {
       ></input>
       <label
         className={styles["label"]}
-        for={props.label}
+        htmlFor={props.label}
         id={`"label-${props.label}`}
       >
         <div className={styles["text"]}>{props.label}</div>

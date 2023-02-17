@@ -19,7 +19,6 @@ module.exports = (db) => {
   });
 
   router.get('/loggedIn', (req, res) => {
-    console.log(req.query['0'])
     const username = req.query['0'];
     
     db.query(`SELECT * FROM users WHERE username = $1`, [username])

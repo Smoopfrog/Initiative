@@ -31,9 +31,6 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
   };
 
   const addCharacter = () => {
-    console.log("char", char);
-    console.log(setGameCharacters);
-
     setGameCharacters((prev) => [...prev, char]);
   };
 
@@ -59,7 +56,7 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
             </p>
           </div>
           <h3>
-            <a href={rollTwentyLink}>Roll20</a>
+            <a href={rollTwentyLink} target="_blank" rel="noreferrer noopener">Roll20</a>
           </h3>
         </div>
       </div>

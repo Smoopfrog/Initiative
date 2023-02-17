@@ -1,9 +1,7 @@
 import { useState } from "react";
-import halfling from "../../images/Ivan_Kaslov-0.webp";
 import axios from "axios";
 import ConfirmationModal from "../ConfirmationModal";
 import Button from "../UI/Button";
-// import { inGame } from "../slices/userSlice";
 import styles from "./CharacterCard.module.css";
 
 const CharacterCard = (props) => {
@@ -74,7 +72,7 @@ const CharacterCard = (props) => {
           </div>
           {props.charSheetUrl && (
             <h3>
-              <a href={props.charSheetUrl}>Character Sheet</a>
+              <a href={props.charSheetUrl} target="_blank" rel="noreferrer noopener">Character Sheet</a>
             </h3>
           )}
         </div>

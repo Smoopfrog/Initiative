@@ -2,7 +2,6 @@ import styles from "./Tabs.module.css";
 import Button from "../UI/Button";
 
 const Tabs = (props) => {
-  console.log(props.currentTab)
 
   return (
     <div className={styles.tabs}>

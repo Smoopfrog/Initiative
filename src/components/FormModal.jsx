@@ -5,13 +5,10 @@ import { selectUser } from "../slices/userSlice";
 import axios from "axios";
 import Button from "./UI/Button";
 import ModalBackdrop from "./ModalBackdrop.jsx";
-import UploadAndDisplayImage from "./UI/UploadAndDisplayImage";
-import backdropStyles from "./Backdrop.module.css";
 import styles from "./Form.module.css";
 import Input from "./UI/Input";
 
 const NewCharacterForm = (props) => {
-  // const [selectedImage, setSelectedImage] = useState(null);
   const [newCharName, setNewCharName] = useState("");
   const [newCharLevel, setNewCharLevel] = useState("");
   const [newCharRace, setNewCharRace] = useState("");
@@ -22,8 +19,7 @@ const NewCharacterForm = (props) => {
   const user = useSelector(selectUser);
 
   const submitNewChar = async (event) => {
-    event.preventDefault()
-    // console.log('selectedImage', selectedImage)
+    event.preventDefault();
     const newChar = {
       newCharName,
       newCharLevel,
@@ -50,12 +46,6 @@ const NewCharacterForm = (props) => {
     <form className={styles.form}>
       <h1 className={styles.title}>Create a new character</h1>
       <div className={styles.body}>
-        {/* <div>
-          <UploadAndDisplayImage
-            selectedImage={selectedImage}
-            setSelectedImage={setSelectedImage}
-          /> */}
-        {/* </div> */}
         <div>
           <Input
             value={newCharName}
@@ -101,52 +91,6 @@ const NewCharacterForm = (props) => {
           />
         </div>
       </div>
-      {/* <UploadAndDisplayImage
-          selectedImage={selectedImage}
-          setSelectedImage={setSelectedImage}
-        />
-        <Input
-          value={newCharName}
-          handleOnChange={(e) => setNewCharName(e.target.value)}
-          label="Name"
-          type="text"
-        />
-        <Input
-          value={newCharLevel}
-          handleOnChange={(e) => setNewCharLevel(e.target.value)}
-          label="Level"
-          type="number"
-        />
-        <Input
-          value={newCharRace}
-          handleOnChange={(e) => setNewCharRace(e.target.value)}
-          label="Race"
-          type="text"
-        />
-        <Input
-          value={newCharClass}
-          handleOnChange={(e) => setNewCharClass(e.target.value)}
-          label="Class"
-          type="text"
-        />
-        <Input
-          value={newCharHp}
-          handleOnChange={(e) => setNewCharHp(e.target.value)}
-          label="HP"
-          type="number"
-        />
-        <Input
-          value={newCharAc}
-          handleOnChange={(e) => setNewCharAc(e.target.value)}
-          label="AC"
-          type="number"
-        />
-        <Input
-          value={newCharSheet}
-          handleOnChange={(e) => setNewCharSheet(e.target.value)}
-          label="Character Sheet Link"
-          type="text"
-        /> */}
       <footer className={styles.buttonGroup}>
         <Button style="green" onClick={submitNewChar}>
           Create

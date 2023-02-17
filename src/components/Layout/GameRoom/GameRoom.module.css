@@ -19,9 +19,11 @@ li:nth-child(2n) {
 .li-titles {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 30px;
   width: 90%;
   margin: 0 auto;
+  padding: 0 5px;
   background-color: #141414;
   color: white;
 }

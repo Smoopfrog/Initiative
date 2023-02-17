@@ -113,22 +113,19 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
 
   return (
     <div className={styles.page}>
-      {gameCharacters.length === 0 ? (
-        <h1>Add peoples please</h1>
-      ) : (
-        <Controller
-          playerTurn={playerTurn}
-          prevChar={prevChar}
-          sortButtonHandler={sortButtonHandler}
-          nextChar={nextChar}
-        />
-      )}
+      <Controller
+        playerTurn={playerTurn}
+        prevChar={prevChar}
+        sortButtonHandler={sortButtonHandler}
+        nextChar={nextChar}
+      />
       <ul>
         <li className={styles["li-titles"]}>
           <i class="fa-solid fa-play"></i>
           <span>Name</span>
           <i class="fa-solid fa-heart"></i>
           <i class="fa-solid fa-shield-halved"></i>
+          <span></span>
         </li>
         {inGameChars}
       </ul>

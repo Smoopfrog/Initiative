@@ -58,7 +58,7 @@ const CharacterBar = ({ character, removeChar }) => {
       </span>
       <span>{character.ac}</span>
       <i
-        class="fa-solid fa-x delete"
+        className="fa-solid fa-x delete"
         onClick={() => removeChar(character.id)}
       ></i>
     </li>

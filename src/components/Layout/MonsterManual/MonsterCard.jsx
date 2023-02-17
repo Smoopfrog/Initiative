@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./CharacterCard/CharacterCard.module.css";
-import Button from "./UI/Button";
+import styles from "../../CharacterCard/CharacterCard.module.css";
+import Button from "../../UI/Button";
 
 const MonsterCard = ({ monster, setGameCharacters }) => {
   const capitalize = (str) => {

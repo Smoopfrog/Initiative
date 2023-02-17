@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from './MonsterManualTab.module.css'
-import MonsterCard from "../../MonsterCard";
+import MonsterCard from "./MonsterCard";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 

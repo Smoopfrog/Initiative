@@ -28,6 +28,10 @@ h1, h3 {
   margin: 0;
 }
 
+.char-name{
+  font-family: serif;
+}
+
 .stat-block p {
   text-align: left;
   margin: 0;

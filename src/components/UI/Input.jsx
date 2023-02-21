@@ -4,6 +4,7 @@ const Input = (props) => {
   return (
     <div className={styles["input-container"]}>
       <input
+        className={styles.input}
         type={props.type}
         value={props.value}
         onChange={props.handleOnChange}

@@ -46,7 +46,7 @@ const NewCharacterForm = (props) => {
     <form className={styles.form}>
       <h1 className={styles.title}>Create a new character</h1>
       <div className={styles.body}>
-        <div>
+        <div className={styles.inputs}>
           <Input
             value={newCharName}
             handleOnChange={(e) => setNewCharName(e.target.value)}

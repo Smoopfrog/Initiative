@@ -36,31 +36,42 @@ const CharacterBar = ({ character, removeChar }) => {
       className={styles.container}
       style={{ backgroundColor: backgroundColor }}
     >
-      <input
-        className={styles.input}
-        value={initiative}
-        onChange={changeInitiative}
-        type="number"
-        step="1"
-      ></input>
-      <span>{character.charName}</span>
-
-      <span className={styles.hp}>
+      {character.selected ? (
+        <div className={styles.selected}>!</div>
+      ) : (
+        <div className={styles.selected}></div>
+      )}
+      <div className={styles.character}>
         <input
           className={styles.input}
-          style={{ color: hpColor }}
-          value={hp}
-          onChange={changeHp}
+          value={initiative}
+          onChange={changeInitiative}
           type="number"
           step="1"
-        />
-        <span style={{ color: hpColor }}>/{character.hp}</span>
-      </span>
-      <span>{character.ac}</span>
-      <i
-        className="fa-solid fa-x delete"
-        onClick={() => removeChar(character.id)}
-      ></i>
+        ></input>
+        <div className={styles.name}>{character.charName}</div>
+      </div>
+
+      <div className={styles.stats}>
+        <div className={styles.hp}>
+          <input
+            className={styles.input}
+            style={{ color: hpColor }}
+            value={hp}
+            onChange={changeHp}
+            type="number"
+            step="1"
+          />
+          <div style={{ color: hpColor }}>/{character.hp}</div>
+        </div>
+        <div className={styles.ac}>{character.ac}</div>
+      </div>
+      <div className={styles["delete-icon"]}>
+        <i
+          className="fa-solid fa-x delete"
+          onClick={() => removeChar(character.id)}
+        ></i>
+      </div>
     </li>
   );
 };

@@ -42,8 +42,8 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
           <h3>
             Lv.{monster.level} {monster.race} {monster.class}
             {monster.size} {capitalize(monster.type)}
-            {monster.subtype && ` (${capitalize(monster.subtype)})`},{" "}
-            {monster.alignment}{" "}
+            {monster.subtype && ` (${capitalize(monster.subtype)})`}{" "}
+            {`${capitalize(monster.alignment)}`}{" "}
           </h3>
           <div className={styles["stat-block"]}>
             <p>

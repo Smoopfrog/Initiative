@@ -27,7 +27,7 @@ const MonsterManualTab = ({ setGameCharacters }) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles["search-bar"]}>
         <Input
           value={searchText}

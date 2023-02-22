@@ -4,11 +4,9 @@ import Button from "../../UI/Button";
 import { useState } from "react";
 
 const CharacterBar = ({ character, removeChar }) => {
+  console.log(character);
   const [initiative, setInitiative] = useState("1");
   const [hp, setHp] = useState(character.hp);
-  // if (character.selected) {
-  //   backgroundColor = "yellow";
-  // }
 
   let backgroundColor = "";
 
@@ -66,11 +64,20 @@ const CharacterBar = ({ character, removeChar }) => {
         </div>
         <div className={styles.ac}>{character.ac}</div>
       </div>
-      <div className={styles["delete-icon"]}>
-        <i
-          className="fa-solid fa-x delete"
-          onClick={() => removeChar(character.id)}
-        ></i>
+      <div className={styles.buttons}>
+        <a
+          href={character.charSheetUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <i class="fa-solid fa-question"></i>
+        </a>
+        <div className={styles["delete-icon"]}>
+          <i
+            className="fa-solid fa-x delete"
+            onClick={() => removeChar(character.id)}
+          ></i>
+        </div>
       </div>
     </li>
   );

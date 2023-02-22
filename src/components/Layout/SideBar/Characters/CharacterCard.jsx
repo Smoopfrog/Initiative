@@ -6,27 +6,28 @@ import styles from "./CharacterCard.module.css";
 
 const CharacterCard = (props) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const char = {
-    id: props.id,
-    ac: props.ac,
-    charName: props.charName,
-    charSheetUrl: props.charSheetUrl,
-    class: props.class,
-    hp: props.hp,
-    img: props.img,
-    initiative: 0,
-    level: props.level,
-    race: props.race,
-    userId: props.userId,
-    userName: props.userName,
-    selected: false,
-  };
 
   const confirmationModalHandler = () => {
     setShowConfirmationModal(!showConfirmationModal);
   };
 
   const addCharacter = () => {
+    const char = {
+      id: Date.now(),
+      ac: props.ac,
+      charName: props.charName,
+      charSheetUrl: props.charSheetUrl,
+      class: props.class,
+      hp: props.hp,
+      img: props.img,
+      initiative: 0,
+      level: props.level,
+      race: props.race,
+      userId: props.userId,
+      userName: props.userName,
+      selected: false,
+    };
+
     props.setGameCharacters((prev) => [...prev, char]);
   };
 
@@ -56,7 +57,7 @@ const CharacterCard = (props) => {
       <div className={styles.character}>
         {/* <img src={props.img} width="25%" /> */}
         <div className={styles.info}>
-          <h1 className={styles['char-name']}>{props.charName}</h1>
+          <h1 className={styles["char-name"]}>{props.charName}</h1>
           <h3>
             Lv.{props.level} {props.race} {props.class}
           </h3>
@@ -72,7 +73,13 @@ const CharacterCard = (props) => {
           </div>
           {props.charSheetUrl && (
             <h3>
-              <a href={props.charSheetUrl} target="_blank" rel="noreferrer noopener">Character Sheet</a>
+              <a
+                href={props.charSheetUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Character Sheet
+              </a>
             </h3>
           )}
         </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 const CharacterBar = ({ character, removeChar }) => {
   const [initiative, setInitiative] = useState("1");
   const [hp, setHp] = useState(character.hp);
+  const [name, setName] = useState(character.charName);
 
   let backgroundColor = "";
 
@@ -26,6 +27,10 @@ const CharacterBar = ({ character, removeChar }) => {
     setHp(event.target.value);
   };
 
+  const changeName = (event) => {
+    setName(event.target.value);
+  };
+
   return (
     <li
       className={styles.container}
@@ -44,7 +49,14 @@ const CharacterBar = ({ character, removeChar }) => {
           type="number"
           step="1"
         ></input>
-        <div className={styles.name}>{character.charName}</div>
+        <div className={styles.name}>
+          <input
+            className={styles["name-input"]}
+            value={name}
+            onChange={changeName}
+            type="text"
+          ></input>
+        </div>
       </div>
 
       <div className={styles.stats}>

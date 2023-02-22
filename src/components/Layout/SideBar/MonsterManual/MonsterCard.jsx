@@ -19,7 +19,7 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
   const rollTwentyLink = `https://roll20.net/compendium/dnd5e/${monster.name}`;
 
   const char = {
-    id: Math.random(),
+    id: Date.now(),
     ac: monster["armor_class"]["0"].value,
     charName: monster.name,
     charSheetUrl: rollTwentyLink,

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import LoginPage from "./components/Layout/LoginPage";
-import SignupPage from "./components/Layout/SignupPage";
+import LoginPage from "./components/Layout/SignIn/LoginPage";
+import SignupPage from "./components/Layout/SignIn/SignupPage";
 import HomePage from "./components/Layout/HomePage";
 
 const axios = require("axios").default;

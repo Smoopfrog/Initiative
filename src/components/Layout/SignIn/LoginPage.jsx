@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./LoginPage.module.css";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import chest from "../../images/treasure.png";
+import Input from "../../UI/Input";
+import Button from "../../UI/Button";
+import chest from "../../../images/treasure.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { logIn } from "../../slices/userSlice";
-import { setCharacters } from "../../slices/charactersSlice";
+import { logIn } from "../../../slices/userSlice";
+import { setCharacters } from "../../../slices/charactersSlice";
 
 const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
   const [username, setUsername] = useState("");
@@ -103,29 +103,31 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
   return (
     <div className={styles.page}>
       <div className={styles["home-image"]}></div>
-      <form>
-        <h1>Initiative</h1>
+      <form className={styles.form}>
+        <h1 className={styles.title}>Initiative</h1>
         <br />
         <img src={chest} width="50" height="50" />
-        <h2>Sign in</h2>
-        <Input
-          value={username}
-          handleOnChange={handleUsernameChange}
-          label="Username"
-        />
-        <Input
-          value={password}
-          handleOnChange={handlePasswordChange}
-          label="Password"
-        />
-        {credentialsError && (
-          <div className={styles.error}>
-            <span className={styles["error-icon"]}>
-              <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
-            </span>
-            <span>Invalid Credentials</span>
-          </div>
-        )}
+        <h2 className={styles.subtitle}>Sign in</h2>
+        <div className={styles.inputs}>
+          <Input
+            value={username}
+            handleOnChange={handleUsernameChange}
+            label="Username"
+          />
+          <Input
+            value={password}
+            handleOnChange={handlePasswordChange}
+            label="Password"
+          />
+          {credentialsError && (
+            <div className={styles.error}>
+              <span className={styles["error-icon"]}>
+                <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
+              </span>
+              <span>Invalid Credentials</span>
+            </div>
+          )}
+        </div>
         <Button onClick={login}>Sign In</Button>
         <div className={styles.options}>
           <Button style="options-button">Forgot your password?</Button>

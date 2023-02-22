@@ -29,7 +29,9 @@ const SideBar = (props) => {
       {currentTab === "monsterManual" && (
         <MonsterManualTab setGameCharacters={props.setGameCharacters} />
       )}
-      {currentTab === "profile" && <ProfileTab />}
+      {currentTab === "profile" && (
+        <ProfileTab setHomepage={props.setHomepage} />
+      )}
     </div>
   );
 };

@@ -2,14 +2,24 @@
   display: flex;
 }
 
-form {
-  width: 40vw;
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  height: 70vh;
   justify-content: center;
+  width: 40vw;
+  padding: 20px;
+}
+
+.subtitle {
+  margin-bottom: 10px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .options {
@@ -20,8 +30,8 @@ form {
 
 .home-image {
   height: 100vh;
-  width: 60vw ;
-  background-image: url("../../images/orcus.jpeg");
+  width: 60vw;
+  background-image: url("../../../images/orcus.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -30,7 +40,7 @@ form {
 .error {
   padding: 10px 16px;
   background-color: rgb(253, 237, 237);
-  color: rgb(95, 33, 32)
+  color: rgb(95, 33, 32);
 }
 
 .error-icon {

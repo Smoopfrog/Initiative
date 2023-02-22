@@ -17,6 +17,7 @@ const HomePage = (props) => {
         setPlayerCharacters={props.setPlayerCharacters}
         gameCharacters={gameCharacters}
         setGameCharacters={setGameCharacters}
+        setHomepage={props.setHomepage}
       />
     </div>
   );

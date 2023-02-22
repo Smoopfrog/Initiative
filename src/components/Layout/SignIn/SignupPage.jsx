@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "./LoginPage.module.css";
-import Input from "../UI/Input";
+import Input from "../../UI/Input";
 import axios from "axios";
-import chest from "../../images/treasureOpen.png";
+import chest from "../../../images/treasureOpen.png";
 import { useDispatch } from "react-redux";
-import { logIn } from "../../slices/userSlice";
-import Button from "../UI/Button";
+import { logIn } from "../../../slices/userSlice";
+import Button from "../../UI/Button";
 
 const SignupPage = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
@@ -96,42 +96,47 @@ const SignupPage = ({ setHomepage }) => {
   return (
     <div className={styles.page}>
       <div className={styles["home-image"]}></div>
-      <form>
+      <form className={styles.form}>
         <h1>Initiative</h1>
         <br />
         <img src={chest} width="50" height="50" />
-        <h2>Sign up</h2>
-        <Input
-          value={username}
-          handleOnChange={handleUsernameChange}
-          label="Username"
-        />
-        {usernameError && (
-          <div className={styles.error}>
-            <span className={styles["error-icon"]}>
-              <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-            </span>
-            <span>Username already taken!</span>
-          </div>
-        )}
-        <Input
-          value={password}
-          handleOnChange={handlePasswordChange}
-          label="Password"
-        />
-        <Input
-          value={confirmPassword}
-          handleOnChange={handleConfirmPasswordChange}
-          label="Confirm Password"
-        />
-        {passwordError && (
-          <div className={styles.error}>
-            <span className={styles["error-icon"]}>
-              <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
-            </span>
-            <span>Passwords do not match!</span>
-          </div>
-        )}
+        <h2 className={styles.subtitle}>Sign up</h2>
+        <div className={styles.inputs}>
+          <Input
+            value={username}
+            handleOnChange={handleUsernameChange}
+            label="Username"
+          />
+          {usernameError && (
+            <div className={styles.error}>
+              <span className={styles["error-icon"]}>
+                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+              </span>
+              <span>Username already taken!</span>
+            </div>
+          )}
+          <Input
+            value={password}
+            handleOnChange={handlePasswordChange}
+            label="Password"
+            type="password"
+          />
+          <Input
+            value={confirmPassword}
+            handleOnChange={handleConfirmPasswordChange}
+            label="Confirm Password"
+            type="password"
+
+          />
+          {passwordError && (
+            <div className={styles.error}>
+              <span className={styles["error-icon"]}>
+                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+              </span>
+              <span>Passwords do not match!</span>
+            </div>
+          )}
+        </div>
         <Button onClick={onSignUp}>Sign Up</Button>
         <Button style="options-button" onClick={() => setHomepage("signin")}>
           Already have an account? Sign In

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../../slices/userSlice";
@@ -7,7 +7,7 @@ import Button from "../../../UI/Button";
 import Input from "../../../UI/Input";
 import ModalBackdrop from "../../../UI/ModalBackdrop.jsx";
 import styles from "./CharacterForm.module.css";
- 
+
 const NewCharacterForm = (props) => {
   const [newCharName, setNewCharName] = useState("");
   const [newCharLevel, setNewCharLevel] = useState("");
@@ -16,10 +16,40 @@ const NewCharacterForm = (props) => {
   const [newCharHp, setNewCharHp] = useState("");
   const [newCharAc, setNewCharAc] = useState("");
   const [newCharSheet, setNewCharSheet] = useState("");
+  const [formError, setFormError] = useState();
   const user = useSelector(selectUser);
+
+  useEffect(() => {
+    if (!formError) {
+      return;
+    }
+
+    setFormError(true);
+
+    const errorTimer = setTimeout(() => {
+      setFormError(false);
+    }, 3000);
+
+    return () => clearTimeout(errorTimer);
+  }, [formError]);
 
   const submitNewChar = async (event) => {
     event.preventDefault();
+
+    if (
+      !newCharName ||
+      !newCharLevel ||
+      !newCharRace ||
+      !newCharClass ||
+      !newCharHp ||
+      !newCharAc ||
+      !newCharSheet
+    ) {
+      setFormError(true);
+      console.log("error");
+      return;
+    }
+
     const newChar = {
       newCharName,
       newCharLevel,
@@ -89,6 +119,14 @@ const NewCharacterForm = (props) => {
             label="Character Sheet Link"
             type="text"
           />
+          {formError && (
+            <div className={styles.error}>
+              <div className={styles["error-icon"]}>
+                <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
+              </div>
+              <div className={styles['error-message']}>Please fill out form completely</div>
+            </div>
+          )}
         </div>
       </div>
       <footer className={styles.buttonGroup}>

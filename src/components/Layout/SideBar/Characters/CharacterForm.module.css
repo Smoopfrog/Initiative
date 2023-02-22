@@ -11,7 +11,7 @@
   margin-top: 25px;
   width: 50%;
 }
- 
+
 .inputs {
   display: flex;
   flex-direction: column;
@@ -37,4 +37,18 @@
 
 .body {
   display: flex;
+}
+
+.error {
+  display: flex;
+  color: red;
+  justify-content: center;
+}
+
+.error-icon {
+  margin-right: 5px;
+}
+
+.error-message {
+  text-transform: capitalize;
 }

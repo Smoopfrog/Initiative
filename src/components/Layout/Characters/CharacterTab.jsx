@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../slices/userSlice";
 import { selectCharacters, setCharacters } from "../../../slices/charactersSlice";
-import PlayerCharacter from "../../PlayerCharacter";
+// import PlayerCharacter from "../../PlayerCharacter";
 import Button from "../../UI/Button";
-import FormModal from "../../FormModal";
+import CharacterForm from "./CharacterForm";
 import CharacterCard from "./CharacterCard";
 import styles from "./CharacterTab.module.css";
 
@@ -51,7 +51,7 @@ const CharacterTab = ({
 
       </div>
       {showForm && (
-        <FormModal
+        <CharacterForm
           closeForm={showFormHandler}
           playerCharacters={playerCharacters}
           setPlayerCharacters={setPlayerCharacters}

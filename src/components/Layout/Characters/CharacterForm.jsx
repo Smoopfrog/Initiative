@@ -1,13 +1,13 @@
 import { useState } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../slices/userSlice";
+import { selectUser } from "../../../slices/userSlice";
 import axios from "axios";
-import Button from "./UI/Button";
-import ModalBackdrop from "./ModalBackdrop.jsx";
-import styles from "./Form.module.css";
-import Input from "./UI/Input";
-
+import Button from "../../UI/Button";
+import ModalBackdrop from "../../ModalBackdrop.jsx";
+import styles from "./CharacterForm.module.css";
+import Input from "../../UI/Input";
+ 
 const NewCharacterForm = (props) => {
   const [newCharName, setNewCharName] = useState("");
   const [newCharLevel, setNewCharLevel] = useState("");

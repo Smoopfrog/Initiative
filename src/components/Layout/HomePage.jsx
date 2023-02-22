@@ -1,6 +1,6 @@
 import styles from "./HomePage.module.css";
 import GameRoom from "./GameRoom/GameRoom";
-import SideBar from "./SideBar";
+import SideBar from "./SideBar/SideBar";
 import { useState } from "react";
 
 const HomePage = (props) => {

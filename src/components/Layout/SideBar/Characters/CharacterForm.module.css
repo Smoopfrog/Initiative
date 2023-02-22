@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  position: fixed;
+  background: white;
+  z-index: 100;
+  border-radius: 5px;
+  margin-top: 25px;
+  width: 50%;
+}
+ 
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  display: block;
+  padding: 10px 0px 2px;
+  text-transform: uppercase;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonGroup {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.body {
+  display: flex;
+}

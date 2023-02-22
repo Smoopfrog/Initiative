@@ -1,0 +1,43 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10px;
+  padding: 10px;
+  background: oldlace;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.character {
+  display: flex;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1, h3 {
+  margin: 0;
+}
+
+.char-name{
+  font-family: serif;
+}
+
+.stat-block p {
+  text-align: left;
+  margin: 0;
+}
+
+.stat-title {
+  font-weight: bold;
+  color: brown;
+}

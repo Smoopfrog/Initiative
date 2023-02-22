@@ -3,7 +3,7 @@
   flex: 1;
   align-items: center;
   justify-content: space-between;
-  background-color: #ececec;
+  background-color: white;
   /* gap: 20px; */
   color: black;
   width: 90%;
@@ -64,5 +64,5 @@ i:hover {
 }
 
 .delete-icon {
- padding-left: 5px;
+ padding: 0 5px
 }

@@ -1,10 +1,7 @@
 import styles from "./CharacterBar.module.css";
-import Button from "../../UI/Button";
-
 import { useState } from "react";
 
 const CharacterBar = ({ character, removeChar }) => {
-  console.log(character);
   const [initiative, setInitiative] = useState("1");
   const [hp, setHp] = useState(character.hp);
 
@@ -70,11 +67,11 @@ const CharacterBar = ({ character, removeChar }) => {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <i class="fa-solid fa-question"></i>
+          <i class="fa-solid fa-eye"></i>{" "}
         </a>
         <div className={styles["delete-icon"]}>
           <i
-            className="fa-solid fa-x delete"
+            className="fa-solid fa-trash"
             onClick={() => removeChar(character.id)}
           ></i>
         </div>

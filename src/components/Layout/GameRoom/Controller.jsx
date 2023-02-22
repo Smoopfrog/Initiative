@@ -3,7 +3,7 @@ import styles from "./Controller.module.css";
 
 const Controller = (props) => {
   return (
-    <div className={styles.card}>
+    <div className={styles.container}>
       {props.playerTurn()}
       <div>
         <Button onClick={props.prevChar}>

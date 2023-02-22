@@ -1,11 +1,12 @@
-.card {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   align-self: center;
   background-color: white;
   border-radius: 10px;
-  width: 30vw;
+  /* width: 30vw; */
   padding: 10px;
+  margin-bottom: 30px;
   border: 2px black solid;
-} 
+}

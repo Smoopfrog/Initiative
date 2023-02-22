@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import ConfirmationModal from "../ConfirmationModal";
-import Button from "../UI/Button";
+import ConfirmationModal from "../../ConfirmationModal";
+import Button from "../../UI/Button";
 import styles from "./CharacterCard.module.css";
 
 const CharacterCard = (props) => {

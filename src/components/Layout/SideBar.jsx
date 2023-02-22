@@ -1,8 +1,8 @@
 import Tabs from "./Tabs";
 import styles from "./SideBar.module.css";
 import { useState } from "react";
-import CharacterTab from "../Menu/CharacterTab";
-import ProfileTab from "../Menu/ProfileTab";
+import CharacterTab from "./Characters/CharacterTab";
+import ProfileTab from "./ProfileTab";
 import MonsterManualTab from "./MonsterManual/MonsterManualTab";
 
 const SideBar = (props) => {

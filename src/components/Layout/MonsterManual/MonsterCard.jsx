@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../CharacterCard/CharacterCard.module.css";
+import styles from "../Characters/CharacterCard.module.css";
 import Button from "../../UI/Button";
 
 const MonsterCard = ({ monster, setGameCharacters }) => {

@@ -118,6 +118,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             value={password}
             handleOnChange={handlePasswordChange}
             label="Password"
+            type="password"
           />
           {credentialsError && (
             <div className={styles.error}>

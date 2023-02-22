@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../slices/userSlice";
 import axios from "axios";
 import Button from "../../UI/Button";
-import ModalBackdrop from "../../ModalBackdrop.jsx";
+import ModalBackdrop from "../../UI/ModalBackdrop.jsx";
 import styles from "./CharacterForm.module.css";
 import Input from "../../UI/Input";
  

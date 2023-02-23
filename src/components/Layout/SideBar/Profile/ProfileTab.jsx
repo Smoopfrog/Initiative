@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import React from "react";
 import { useSelector } from 'react-redux';
 import { selectUser, logOut } from '../../../../slices/userSlice';
@@ -15,15 +14,11 @@ const ProfileTab = ({ setHomepage }) => {
   }
 
   return (
-    <Box sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
-  }}>
+    <div>
       <h1>Profile</h1>
       <h2>{user.username}</h2>
       <button onClick={handleSignOut}>Sign Out</button>
-    </Box>
+    </div>
   )
 }
 

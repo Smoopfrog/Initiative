@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./LoginPage.module.css";
 import Input from "../../UI/Input";
-import axios from "axios";
 import chest from "../../../images/treasureOpen.png";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../../slices/userSlice";
 import Button from "../../UI/Button";
@@ -14,6 +14,8 @@ const SignupPage = ({ setHomepage }) => {
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const dispatch = useDispatch();
+
+  // const saltRounds = 10;
 
   useEffect(() => {
     if (!usernameError) {
@@ -50,35 +52,42 @@ const SignupPage = ({ setHomepage }) => {
   const onSignUp = (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setPasswordError(true);
-      return;
-    }
+    // bcrypt.genSalt(saltRounds, (err, salt) => {
+    //   bcrypt.hash(password, salt, function (err, hash) {
+    //     // returns hash
+    //     console.log(hash);
+    //   });
+    // });
 
-    const userData = {
-      username: username,
-      password: password,
-    };
+    // if (password !== confirmPassword) {
+    //   setPasswordError(true);
+    //   return;
+    // }
 
-    axios
-      .post("/users", userData)
-      .then(function (response) {
-        if (response.data.length) {
-          setUsernameError(true);
-        } else {
-          dispatch(
-            logIn({
-              username: username,
-              password: password,
-              loggedIn: true,
-            })
-          );
-          setHomepage("signedIn");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // const userData = {
+    //   username: username,
+    //   password: password,
+    // };
+
+    // axios
+    //   .post("/users", userData)
+    //   .then(function (response) {
+    //     if (response.data.length) {
+    //       setUsernameError(true);
+    //     } else {
+    //       dispatch(
+    //         logIn({
+    //           username: username,
+    //           password: password,
+    //           loggedIn: true,
+    //         })
+    //       );
+    //       setHomepage("signedIn");
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
 
   const handleUsernameChange = (e) => {
@@ -126,7 +135,6 @@ const SignupPage = ({ setHomepage }) => {
             handleOnChange={handleConfirmPasswordChange}
             label="Confirm Password"
             type="password"
-
           />
           {passwordError && (
             <div className={styles.error}>

@@ -7,9 +7,11 @@ const CharacterBar = ({ character, removeChar }) => {
   const [name, setName] = useState(character.charName);
 
   let backgroundColor = "";
+  let selectedColor = "";
 
   if (character.selected) {
-    backgroundColor = "grey";
+    backgroundColor = "darkgrey";
+    selectedColor = "red";
   }
 
   let hpColor = "green";
@@ -36,11 +38,10 @@ const CharacterBar = ({ character, removeChar }) => {
       className={styles.container}
       style={{ backgroundColor: backgroundColor }}
     >
-      {character.selected ? (
-        <div className={styles.selected}>!</div>
-      ) : (
-        <div className={styles.selected}></div>
-      )}
+      <div
+        style={{ backgroundColor: selectedColor }}
+        className={styles.selected}
+      ></div>
       <div className={styles.character}>
         <input
           className={styles.input}

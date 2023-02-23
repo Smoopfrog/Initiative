@@ -6,13 +6,11 @@
   background-color: white;
   /* gap: 20px; */
   color: black;
-  width: 90%;
   height: 30px;
-  margin: 0 auto;
 }
 
 .selected {
-  text-align: center;
+  height: -webkit-fill-available;
   flex: 1;
 }
 

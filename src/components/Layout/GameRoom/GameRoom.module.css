@@ -2,19 +2,20 @@
   width: 60vw;
   height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: url("../../../images/background.png");
 }
 
-ul {
+.initiative-tracker {
   list-style-type: none;
   padding-inline-start: 0;
-  margin: 0;
+  border: 2px solid black;
+  width: 90%;
 }
 
 li:nth-child(2n) {
-  background-color: bisque;
+  background-color: aliceblue;
 }
 
 .li-titles {
@@ -22,8 +23,6 @@ li:nth-child(2n) {
   align-items: center;
   justify-content: space-between;
   height: 30px;
-  width: 90%;
-  margin: 0 auto;
   padding: 0;
   background-color: #141414;
   color: white;
@@ -59,7 +58,6 @@ li:nth-child(2n) {
   justify-content: center;
   text-align: left;
   flex: 1;
-
 }
 
 .shield {

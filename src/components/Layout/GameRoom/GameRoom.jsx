@@ -107,7 +107,10 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
     const selectedIndex = gameCharacters.findIndex((char) => char.selected);
     if (selectedIndex !== -1) {
       return (
-        <h1>Active Combatant: {gameCharacters[selectedIndex].charName}</h1>
+        <div className={styles.subtitle}>
+          <h4>Active Combatant:</h4>
+          <h1>{gameCharacters[selectedIndex].charName}</h1>
+        </div>
       );
     }
     return <h1>Prepare for battle!</h1>;
@@ -121,7 +124,7 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
         sortButtonHandler={sortButtonHandler}
         nextChar={nextChar}
       />
-      <ul className={styles['initiative-tracker']}>
+      <ul className={styles["initiative-tracker"]}>
         <li className={styles["li-titles"]}>
           <div className={styles["selected-space"]}></div>
           <div className={styles["intiative-name"]}>

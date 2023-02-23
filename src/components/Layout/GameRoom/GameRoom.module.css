@@ -7,6 +7,14 @@
   flex-direction: column;
 }
 
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .initiative-tracker {
   list-style-type: none;
   padding-inline-start: 0;

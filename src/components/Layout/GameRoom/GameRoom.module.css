@@ -24,7 +24,47 @@ li:nth-child(2n) {
   height: 30px;
   width: 90%;
   margin: 0 auto;
-  padding: 0 5px;
+  padding: 0;
   background-color: #141414;
   color: white;
+}
+
+.selected-space {
+  flex: 1;
+}
+
+.intiative-name {
+  display: flex;
+  flex: 10;
+  gap: 10px;
+}
+
+.name {
+  width: 200px;
+}
+
+.initiative {
+  text-align: center;
+  width: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-evenly;
+  flex: 15;
+}
+
+.heart {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex: 1;
+
+}
+
+.shield {
+  flex: 1;
+}
+.buttons-space {
+  flex: 2;
 }

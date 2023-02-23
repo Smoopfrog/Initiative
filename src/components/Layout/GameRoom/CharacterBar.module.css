@@ -18,30 +18,29 @@
 
 .character {
   display: flex;
-  flex: 20;
+  flex: 10;
+  gap: 10px
 }
 
 .name {
-  margin-left: 10px;
   font-weight: bold;
 }
 
 .stats {
   display: flex;
   justify-content: center;
-  flex: 30;
+  flex: 15;
 }
 
 .hp {
   display: flex;
   justify-content: center;
   color: green;
-  flex: 2;
+  flex: 1;
 }
 
 .ac {
-  margin-left: 10px;
-  flex: 2;
+  flex: 1;
 }
 
 i:hover {
@@ -50,8 +49,7 @@ i:hover {
 
 .input {
   background-color: transparent;
-  width: 40px;
-  /* height: 30px; */
+  width: 20px;
   border: none;
   padding: 0;
   font-size: 16px;
@@ -69,7 +67,7 @@ i:hover {
 
 .buttons {
   display: flex;
-  flex: 3;
+  flex: 2;
 }
 
 .delete-icon {

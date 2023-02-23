@@ -106,7 +106,9 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
   const playerTurn = () => {
     const selectedIndex = gameCharacters.findIndex((char) => char.selected);
     if (selectedIndex !== -1) {
-      return <h1>Active Combatant: {gameCharacters[selectedIndex].charName}</h1>;
+      return (
+        <h1>Active Combatant: {gameCharacters[selectedIndex].charName}</h1>
+      );
     }
     return <h1>Prepare for battle!</h1>;
   };
@@ -121,11 +123,22 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
       />
       <ul>
         <li className={styles["li-titles"]}>
-          <i className="fa-solid fa-play"></i>
-          <span>Name</span>
-          <i className="fa-solid fa-heart"></i>
-          <i className="fa-solid fa-shield-halved"></i>
-          <span></span>
+          <div className={styles["selected-space"]}></div>
+          <div className={styles["intiative-name"]}>
+            <div className={styles.initiative}>
+              <i className="fa-solid fa-play"></i>
+            </div>
+            <div className={styles.name}>Name</div>
+          </div>
+          <div className={styles.stats}>
+            <div className={styles.heart}>
+              <i className="fa-solid fa-heart"></i>
+            </div>
+            <div className={styles.shield}>
+              <i className="fa-solid fa-shield-halved"></i>
+            </div>
+          </div>
+          <div className={styles["buttons-space"]}></div>
         </li>
         {inGameChars}
       </ul>

@@ -27,6 +27,7 @@ const CharacterTab = ({
         key={character.id}
         id={character.id}
         userName={user.username}
+        character={character}
         userId={character.user_id}
         img={character.img}
         charName={character.charname}
@@ -55,6 +56,7 @@ const CharacterTab = ({
           closeForm={showFormHandler}
           playerCharacters={playerCharacters}
           setPlayerCharacters={setPlayerCharacters}
+          type='newChar'
         />
       )}
       <ul className={styles["character-list"]}>{charArray}</ul>

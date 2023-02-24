@@ -60,7 +60,13 @@ const CharacterCard = (props) => {
           onConfirm={deleteChar}
         />
       )}
-      {showEditFrom && <CharacterForm closeForm={editFormHandler} />}
+      {showEditFrom && (
+        <CharacterForm
+          closeForm={editFormHandler}
+          character={props.character}
+          type="editChar"
+        />
+      )}
       <div className={styles.character}>
         {/* <img src={props.img} width="25%" /> */}
         <div className={styles.info}>

@@ -8,7 +8,7 @@ import Input from "../../../UI/Input";
 import ModalBackdrop from "../../../UI/ModalBackdrop.jsx";
 import styles from "./CharacterForm.module.css";
 
-const NewCharacterForm = (props) => {
+const NewCharacterForm = ({ character, setPlayerCharacters, closeForm }) => {
   const [newCharName, setNewCharName] = useState("");
   const [newCharLevel, setNewCharLevel] = useState("");
   const [newCharRace, setNewCharRace] = useState("");
@@ -64,8 +64,8 @@ const NewCharacterForm = (props) => {
     await axios
       .post("/characters", newChar)
       .then((res) => {
-        props.setPlayerCharacters(res.data);
-        props.closeForm();
+        setPlayerCharacters(res.data);
+        closeForm();
       })
       .catch((error) => {
         console.log(error);
@@ -124,7 +124,9 @@ const NewCharacterForm = (props) => {
               <div className={styles["error-icon"]}>
                 <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
               </div>
-              <div className={styles['error-message']}>Please fill out form completely</div>
+              <div className={styles["error-message"]}>
+                Please fill out form completely
+              </div>
             </div>
           )}
         </div>
@@ -133,7 +135,7 @@ const NewCharacterForm = (props) => {
         <Button style="green" onClick={submitNewChar}>
           Create
         </Button>
-        <Button style="red" onClick={props.closeForm}>
+        <Button style="red" onClick={closeForm}>
           Cancel
         </Button>
       </footer>
@@ -155,6 +157,8 @@ const FormModal = (props) => {
         <NewCharacterForm
           closeForm={props.closeForm}
           setPlayerCharacters={props.setPlayerCharacters}
+          character={props.character}
+          type={props.type}
         />,
         document.getElementById("overlay-root")
       )}

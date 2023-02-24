@@ -8,7 +8,12 @@ import Input from "../../../UI/Input";
 import ModalBackdrop from "../../../UI/ModalBackdrop.jsx";
 import styles from "./CharacterForm.module.css";
 
-const NewCharacterForm = ({ character, setPlayerCharacters, closeForm }) => {
+const NewCharacterForm = ({
+  character,
+  setPlayerCharacters,
+  closeForm,
+  type,
+}) => {
   const [newCharName, setNewCharName] = useState("");
   const [newCharLevel, setNewCharLevel] = useState("");
   const [newCharRace, setNewCharRace] = useState("");
@@ -74,7 +79,14 @@ const NewCharacterForm = ({ character, setPlayerCharacters, closeForm }) => {
 
   return (
     <form className={styles.form}>
+              {type === "newChar" && (
       <h1 className={styles.title}>Create a new character</h1>
+
+        )}
+        {type === "editChar" && (
+      <h1 className={styles.title}>Edit {character.charname}</h1>
+
+        )}
       <div className={styles.body}>
         <div className={styles.inputs}>
           <Input
@@ -132,9 +144,16 @@ const NewCharacterForm = ({ character, setPlayerCharacters, closeForm }) => {
         </div>
       </div>
       <footer className={styles.buttonGroup}>
-        <Button style="green" onClick={submitNewChar}>
-          Create
-        </Button>
+        {type === "newChar" && (
+          <Button style="green" onClick={submitNewChar}>
+            Create
+          </Button>
+        )}
+        {type === "editChar" && (
+          <Button style="green" onClick={submitNewChar}>
+            Save Changes
+          </Button>
+        )}
         <Button style="red" onClick={closeForm}>
           Cancel
         </Button>

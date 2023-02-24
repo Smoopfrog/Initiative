@@ -1,14 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
 import ConfirmationModal from "../../../UI/ConfirmationModal";
+import CharacterForm from "./CharacterForm";
 import Button from "../../../UI/Button";
 import styles from "./CharacterCard.module.css";
 
 const CharacterCard = (props) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showEditFrom, setShowEditForm] = useState(false);
 
   const confirmationModalHandler = () => {
     setShowConfirmationModal(!showConfirmationModal);
+  };
+
+  const editFormHandler = () => {
+    setShowEditForm(!showEditFrom);
   };
 
   const addCharacter = () => {
@@ -54,6 +60,7 @@ const CharacterCard = (props) => {
           onConfirm={deleteChar}
         />
       )}
+      {showEditFrom && <CharacterForm closeForm={editFormHandler} />}
       <div className={styles.character}>
         {/* <img src={props.img} width="25%" /> */}
         <div className={styles.info}>
@@ -85,7 +92,7 @@ const CharacterCard = (props) => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <Button>
+        <Button onClick={editFormHandler}>
           <i className="fa-solid fa-pen-to-square"></i>
         </Button>
         <Button style="green" onClick={addCharacter}>

@@ -154,7 +154,6 @@ const FormModal = (props) => {
       {ReactDOM.createPortal(
         <NewCharacterForm
           closeForm={props.closeForm}
-          playerCharacters={props.playerCharacters}
           setPlayerCharacters={props.setPlayerCharacters}
         />,
         document.getElementById("overlay-root")

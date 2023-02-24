@@ -3,6 +3,7 @@
   height: 100vh;
   background-color: whitesmoke;
   border-left: 2px solid brown;
+  border-bottom: 2px solid brown;
 }
 
 .header {

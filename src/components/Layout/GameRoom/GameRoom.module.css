@@ -3,8 +3,8 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  margin-top: 100px;
 }
 
 
@@ -51,8 +51,8 @@ li:nth-child(2n) {
 }
 
 .initiative {
-  text-align: center;
-  width: 20px;
+  text-align: right;
+  width: 30px;
 }
 
 .stats {

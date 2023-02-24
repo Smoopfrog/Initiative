@@ -47,7 +47,7 @@ const CharacterTab = ({
     <div>
       <div className={styles['control-buttons']}>
         <Button onClick={showFormHandler}>Create character</Button>
-        <Button>Sort</Button>
+        {/* <Button>Sort</Button> */}
 
       </div>
       {showForm && (

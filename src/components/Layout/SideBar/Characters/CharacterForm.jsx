@@ -14,13 +14,16 @@ const NewCharacterForm = ({
   closeForm,
   type,
 }) => {
-  const [newCharName, setNewCharName] = useState("");
-  const [newCharLevel, setNewCharLevel] = useState("");
-  const [newCharRace, setNewCharRace] = useState("");
-  const [newCharClass, setNewCharClass] = useState("");
-  const [newCharHp, setNewCharHp] = useState("");
-  const [newCharAc, setNewCharAc] = useState("");
-  const [newCharSheet, setNewCharSheet] = useState("");
+  console.log(character);
+  const [newCharName, setNewCharName] = useState(
+    type === "editChar" ? character.charname : ""
+  );
+  const [newCharLevel, setNewCharLevel] = useState(type === "editChar" ? character.level : "");
+  const [newCharRace, setNewCharRace] = useState(type === "editChar" ? character.race : "");
+  const [newCharClass, setNewCharClass] = useState(type === "editChar" ? character.class : "");
+  const [newCharHp, setNewCharHp] = useState(type === "editChar" ? character.hp : "");
+  const [newCharAc, setNewCharAc] = useState(type === "editChar" ? character.ac : "");
+  const [newCharSheet, setNewCharSheet] = useState(type === "editChar" ? character.charsheet : "");
   const [formError, setFormError] = useState();
   const user = useSelector(selectUser);
 
@@ -79,14 +82,12 @@ const NewCharacterForm = ({
 
   return (
     <form className={styles.form}>
-              {type === "newChar" && (
-      <h1 className={styles.title}>Create a new character</h1>
-
-        )}
-        {type === "editChar" && (
-      <h1 className={styles.title}>Edit {character.charname}</h1>
-
-        )}
+      {type === "newChar" && (
+        <h1 className={styles.title}>Create a new character</h1>
+      )}
+      {type === "editChar" && (
+        <h1 className={styles.title}>Edit {character.charname}</h1>
+      )}
       <div className={styles.body}>
         <div className={styles.inputs}>
           <Input

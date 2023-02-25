@@ -21,7 +21,7 @@ const CharacterCard = (props) => {
     const char = {
       id: Date.now(),
       ac: props.ac,
-      charName: props.charName,
+      name: props.name,
       charSheetUrl: props.charSheetUrl,
       class: props.class,
       hp: props.hp,
@@ -55,7 +55,7 @@ const CharacterCard = (props) => {
     <div className={styles.card}>
       {showConfirmationModal && (
         <ConfirmationModal
-          name={props.charName}
+          name={props.name}
           closeForm={confirmationModalHandler}
           onConfirm={deleteChar}
         />
@@ -71,7 +71,7 @@ const CharacterCard = (props) => {
       <div className={styles.character}>
         {/* <img src={props.img} width="25%" /> */}
         <div className={styles.info}>
-          <h1 className={styles["char-name"]}>{props.charName}</h1>
+          <h1 className={styles["char-name"]}>{props.name}</h1>
           <h3>
             Lv.{props.level} {props.race} {props.class}
           </h3>

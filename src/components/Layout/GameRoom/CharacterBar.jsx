@@ -4,7 +4,7 @@ import { useState } from "react";
 const CharacterBar = ({ character, removeChar }) => {
   const [initiative, setInitiative] = useState("1");
   const [hp, setHp] = useState(character.hp);
-  const [name, setName] = useState(character.charName);
+  const [name, setName] = useState(character.name);
 
   let backgroundColor = "";
   let selectedColor = "";

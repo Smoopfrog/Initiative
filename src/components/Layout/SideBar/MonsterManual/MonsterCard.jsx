@@ -21,7 +21,7 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
   const char = {
     id: Date.now(),
     ac: monster["armor_class"]["0"].value,
-    charName: monster.name,
+    name: monster.name,
     charSheetUrl: rollTwentyLink,
     hp: monster.hit_points,
     initiative: 0,

@@ -18,7 +18,7 @@ module.exports = (db) => {
   router.post("/characters", async (req, res) => {
     const character = req.body;
     await db.query(
-      `INSERT INTO characters (user_id, charname, level, race, class, hp, ac, charsheet) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+      `INSERT INTO characters (user_id, name, level, race, class, hp, ac, charsheet) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
       [
         character.userId,
         character.newCharName,
@@ -46,7 +46,7 @@ module.exports = (db) => {
 
     await db.query(
       `UPDATE characters
-      SET charname = $1, 
+      SET name = $1, 
       level = $2,
       race = $3,
       class = $4,

@@ -109,7 +109,7 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
       return (
         <div className={styles.subtitle}>
           <h4>Active Combatant:</h4>
-          <h1>{gameCharacters[selectedIndex].charName}</h1>
+          <h1>{gameCharacters[selectedIndex].name}</h1>
         </div>
       );
     }

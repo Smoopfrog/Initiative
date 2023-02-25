@@ -15,7 +15,7 @@ const NewCharacterForm = ({
   type,
 }) => {
   const [newCharName, setNewCharName] = useState(
-    type === "editChar" ? character.charname : ""
+    type === "editChar" ? character.name : ""
   );
   const [newCharLevel, setNewCharLevel] = useState(
     type === "editChar" ? character.level : ""
@@ -137,7 +137,7 @@ const NewCharacterForm = ({
         <h1 className={styles.title}>Create a new character</h1>
       )}
       {type === "editChar" && (
-        <h1 className={styles.title}>Edit {character.charname}</h1>
+        <h1 className={styles.title}>Edit {character.name}</h1>
       )}
       <div className={styles.body}>
         <div className={styles.inputs}>

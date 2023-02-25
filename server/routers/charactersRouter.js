@@ -17,17 +17,18 @@ module.exports = (db) => {
 
   router.post("/characters", async (req, res) => {
     const character = req.body;
+    
     await db.query(
       `INSERT INTO characters (user_id, name, level, race, class, hp, ac, charsheet) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
       [
         character.userId,
-        character.newCharName,
-        character.newCharLevel,
-        character.newCharRace,
-        character.newCharClass,
-        character.newCharHp,
-        character.newCharAc,
-        character.newCharSheet,
+        character.name,
+        character.level,
+        character.race,
+        character.clas,
+        character.hp,
+        character.ac,
+        character.charSheet,
       ]
     );
 
@@ -55,13 +56,13 @@ module.exports = (db) => {
       charsheet = $7
       WHERE id = $8`,
       [
-        character.newCharName,
-        character.newCharLevel,
-        character.newCharRace,
-        character.newCharClass,
-        character.newCharHp,
-        character.newCharAc,
-        character.newCharSheet,
+        character.name,
+        character.level,
+        character.race,
+        character.clas,
+        character.hp,
+        character.ac,
+        character.charSheet,
         character.id,
       ]
     );

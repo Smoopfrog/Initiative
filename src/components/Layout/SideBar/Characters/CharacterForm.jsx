@@ -8,31 +8,31 @@ import Input from "../../../UI/Input";
 import ModalBackdrop from "../../../UI/ModalBackdrop.jsx";
 import styles from "./CharacterForm.module.css";
 
-const NewCharacterForm = ({
+const CharacterForm = ({
   character,
   setPlayerCharacters,
   closeForm,
   type,
 }) => {
-  const [newCharName, setNewCharName] = useState(
+  const [name, setName] = useState(
     type === "editChar" ? character.name : ""
   );
-  const [newCharLevel, setNewCharLevel] = useState(
+  const [level, setLevel] = useState(
     type === "editChar" ? character.level : ""
   );
-  const [newCharRace, setNewCharRace] = useState(
+  const [race, setRace] = useState(
     type === "editChar" ? character.race : ""
   );
-  const [newCharClass, setNewCharClass] = useState(
+  const [clas, setClas] = useState(
     type === "editChar" ? character.class : ""
   );
-  const [newCharHp, setNewCharHp] = useState(
+  const [hp, setHp] = useState(
     type === "editChar" ? character.hp : ""
   );
-  const [newCharAc, setNewCharAc] = useState(
+  const [ac, setAc] = useState(
     type === "editChar" ? character.ac : ""
   );
-  const [newCharSheet, setNewCharSheet] = useState(
+  const [charSheet, setCharSheet] = useState(
     type === "editChar" ? character.charsheet : ""
   );
   const [formError, setFormError] = useState();
@@ -52,37 +52,37 @@ const NewCharacterForm = ({
     return () => clearTimeout(errorTimer);
   }, [formError]);
 
-  const submitEditedChar = async (event) => {
+  const submitEditedCharacter = async (event) => {
     event.preventDefault();
 
     if (
-      !newCharName ||
-      !newCharLevel ||
-      !newCharRace ||
-      !newCharClass ||
-      !newCharHp ||
-      !newCharAc ||
-      !newCharSheet
+      !name ||
+      !level ||
+      !race ||
+      !clas ||
+      !hp ||
+      !ac ||
+      !charSheet
     ) {
       setFormError(true);
       console.log("error");
       return;
     }
 
-    const editedChar = {
-      newCharName,
-      newCharLevel,
-      newCharRace,
-      newCharClass,
-      newCharHp,
-      newCharAc,
-      newCharSheet,
+    const editedCharacter = {
+      name,
+      level,
+      race,
+      clas,
+      hp,
+      ac,
+      charSheet,
       id: character.id,
       userId: character.user_id,
     };
 
     axios
-      .patch("/characters", editedChar)
+      .patch("/characters", editedCharacter)
       .then((res) => {
         setPlayerCharacters(res.data);
         closeForm();
@@ -92,36 +92,36 @@ const NewCharacterForm = ({
       });
   };
 
-  const submitNewChar = async (event) => {
+  const submitNewCharacter = async (event) => {
     event.preventDefault();
 
     if (
-      !newCharName ||
-      !newCharLevel ||
-      !newCharRace ||
-      !newCharClass ||
-      !newCharHp ||
-      !newCharAc ||
-      !newCharSheet
+      !name ||
+      !level ||
+      !race ||
+      !clas ||
+      !hp ||
+      !ac ||
+      !charSheet
     ) {
       setFormError(true);
       console.log("error");
       return;
     }
 
-    const newChar = {
-      newCharName,
-      newCharLevel,
-      newCharRace,
-      newCharClass,
-      newCharHp,
-      newCharAc,
-      newCharSheet,
+    const newCharacter = {
+      name,
+      level,
+      race,
+      clas,
+      hp,
+      ac,
+      charSheet,
       userId: user.id,
     };
 
     await axios
-      .post("/characters", newChar)
+      .post("/characters", newCharacter)
       .then((res) => {
         setPlayerCharacters(res.data);
         closeForm();
@@ -142,44 +142,44 @@ const NewCharacterForm = ({
       <div className={styles.body}>
         <div className={styles.inputs}>
           <Input
-            value={newCharName}
-            handleOnChange={(e) => setNewCharName(e.target.value)}
+            value={name}
+            handleOnChange={(e) => setName(e.target.value)}
             label="Name"
             type="text"
           />
           <Input
-            value={newCharLevel}
-            handleOnChange={(e) => setNewCharLevel(e.target.value)}
+            value={level}
+            handleOnChange={(e) => setLevel(e.target.value)}
             label="Level"
             type="number"
           />
           <Input
-            value={newCharRace}
-            handleOnChange={(e) => setNewCharRace(e.target.value)}
+            value={race}
+            handleOnChange={(e) => setRace(e.target.value)}
             label="Race"
             type="text"
           />
           <Input
-            value={newCharClass}
-            handleOnChange={(e) => setNewCharClass(e.target.value)}
+            value={clas}
+            handleOnChange={(e) => setClas(e.target.value)}
             label="Class"
             type="text"
           />
           <Input
-            value={newCharHp}
-            handleOnChange={(e) => setNewCharHp(e.target.value)}
+            value={hp}
+            handleOnChange={(e) => setHp(e.target.value)}
             label="HP"
             type="number"
           />
           <Input
-            value={newCharAc}
-            handleOnChange={(e) => setNewCharAc(e.target.value)}
+            value={ac}
+            handleOnChange={(e) => setAc(e.target.value)}
             label="AC"
             type="number"
           />
           <Input
-            value={newCharSheet}
-            handleOnChange={(e) => setNewCharSheet(e.target.value)}
+            value={charSheet}
+            handleOnChange={(e) => setCharSheet(e.target.value)}
             label="Character Sheet Link"
             type="text"
           />
@@ -197,12 +197,12 @@ const NewCharacterForm = ({
       </div>
       <footer className={styles.buttonGroup}>
         {type === "newChar" && (
-          <Button style="green" onClick={submitNewChar}>
+          <Button style="green" onClick={submitNewCharacter}>
             Create
           </Button>
         )}
         {type === "editChar" && (
-          <Button style="green" onClick={submitEditedChar}>
+          <Button style="green" onClick={submitEditedCharacter}>
             Save Changes
           </Button>
         )}
@@ -225,7 +225,7 @@ const FormModal = (props) => {
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <NewCharacterForm
+        <CharacterForm
           closeForm={props.closeForm}
           setPlayerCharacters={props.setPlayerCharacters}
           character={props.character}

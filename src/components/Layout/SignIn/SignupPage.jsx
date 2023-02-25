@@ -59,35 +59,35 @@ const SignupPage = ({ setHomepage }) => {
     //   });
     // });
 
-    // if (password !== confirmPassword) {
-    //   setPasswordError(true);
-    //   return;
-    // }
+    if (password !== confirmPassword) {
+      setPasswordError(true);
+      return;
+    }
 
-    // const userData = {
-    //   username: username,
-    //   password: password,
-    // };
+    const userData = {
+      username: username,
+      password: password,
+    };
 
-    // axios
-    //   .post("/users", userData)
-    //   .then(function (response) {
-    //     if (response.data.length) {
-    //       setUsernameError(true);
-    //     } else {
-    //       dispatch(
-    //         logIn({
-    //           username: username,
-    //           password: password,
-    //           loggedIn: true,
-    //         })
-    //       );
-    //       setHomepage("signedIn");
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .post("/users", userData)
+      .then(function (response) {
+        if (response.data.length) {
+          setUsernameError(true);
+        } else {
+          dispatch(
+            logIn({
+              username: username,
+              password: password,
+              loggedIn: true,
+            })
+          );
+          setHomepage("signedIn");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const handleUsernameChange = (e) => {
@@ -108,7 +108,7 @@ const SignupPage = ({ setHomepage }) => {
       <form className={styles.form}>
         <h1>Initiative</h1>
         <br />
-        <img src={chest} width="50" height="50" />
+        <img src={chest} width="50" height="50" alt="Orcus the great"/>
         <h2 className={styles.subtitle}>Sign up</h2>
         <div className={styles.inputs}>
           <Input

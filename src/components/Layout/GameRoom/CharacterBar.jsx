@@ -1,10 +1,14 @@
 import styles from "./CharacterBar.module.css";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectGameRoomCharacters, setGameRoomCharacters } from "../../../slices/gameRoomSlice";
 
 const CharacterBar = ({ character, removeChar }) => {
-  const [initiative, setInitiative] = useState("1");
+  const [initiative, setInitiative] = useState(character.initiative);
   const [hp, setHp] = useState(character.hp);
   const [name, setName] = useState(character.name);
+  const dispatch = useDispatch();
+  const gameRoomCharacters = useSelector(selectGameRoomCharacters);
 
   let backgroundColor = "";
   let selectedColor = "";
@@ -22,7 +26,12 @@ const CharacterBar = ({ character, removeChar }) => {
 
   const changeInitiative = (event) => {
     setInitiative(event.target.value);
-    character.initiative = event.target.value;
+    
+    const characters = [...gameRoomCharacters]
+    const characterIndex = characters.findIndex((char => char.id === character.id));
+    characters[characterIndex].initiative = event.target.value
+    console.log(characters)
+    dispatch(setGameRoomCharacters(characters))
   };
 
   const changeHp = (event) => {
@@ -80,7 +89,7 @@ const CharacterBar = ({ character, removeChar }) => {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <i class="fa-solid fa-eye"></i>{" "}
+          <i className="fa-solid fa-eye"></i>{" "}
         </a>
         <div className={styles["delete-icon"]}>
           <i

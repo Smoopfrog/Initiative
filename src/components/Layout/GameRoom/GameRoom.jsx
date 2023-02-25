@@ -10,11 +10,16 @@ import CharacterBar from "./CharacterBar";
 const GameRoom = () => {
   const dispatch = useDispatch();
   const gameCharacters = useSelector(selectGameRoomCharacters);
+  console.log("gameCharacters", gameCharacters);
 
   const sortByInitiative = (characters) => {
-    let sortedCharacters = characters.sort(
+    console.log("characters", characters);
+    const copiedCharcters = [...gameCharacters]
+
+    const sortedCharacters = copiedCharcters.sort(
       (a, b) => b.initiative - a.initiative
     );
+    console.log("sortedCharacters", sortedCharacters);
     dispatch(setGameRoomCharacters(sortedCharacters));
   };
 
@@ -36,24 +41,24 @@ const GameRoom = () => {
 
     // check if any are selected
     if (selectedIndex !== -1) {
-      selectedChar = gameCharacters.find(
-        (char, index) => index === selectedIndex
-      );
+      selectedChar = {
+        ...gameCharacters.find((char, index) => index === selectedIndex),
+      };
       selectedChar.selected = false;
     } else {
       selectedIndex = -1;
     }
-
     // Check if at end of order
     if (selectedIndex == gameCharacters.length - 1) {
       selectedIndex = -1;
     }
 
-    let nextUp = gameCharacters.find(
-      (char, index) => index === selectedIndex + 1
-    );
+    const nextUp = {
+      ...gameCharacters.find((char, index) => index === selectedIndex + 1),
+    };
 
     nextUp.selected = true;
+    console.log("nextUp", nextUp.selected);
 
     // replace the char obj by finding the id
     const newState = gameCharacters.map((character) => {
@@ -63,7 +68,6 @@ const GameRoom = () => {
     });
 
     dispatch(setGameRoomCharacters(newState));
-    // setGameCharacters(newState);
   };
 
   const prevChar = () => {
@@ -73,9 +77,9 @@ const GameRoom = () => {
 
     // check if any are selected
     if (selectedIndex !== -1) {
-      selectedChar = gameCharacters.find(
-        (char, index) => index === selectedIndex
-      );
+      selectedChar = {
+        ...gameCharacters.find((char, index) => index === selectedIndex),
+      };
       selectedChar.selected = false;
     } else {
       selectedIndex = 1;
@@ -86,9 +90,9 @@ const GameRoom = () => {
       selectedIndex = gameCharacters.length;
     }
 
-    let nextUp = gameCharacters.find(
-      (char, index) => index === selectedIndex - 1
-    );
+    let nextUp = {
+      ...gameCharacters.find((char, index) => index === selectedIndex - 1),
+    };
 
     nextUp.selected = true;
 
@@ -98,9 +102,7 @@ const GameRoom = () => {
       if (character.id == selectedChar.id) return selectedChar;
       return character;
     });
-
     dispatch(setGameRoomCharacters(newState));
-    // setGameCharacters(newState);
   };
 
   const playerTurn = () => {
@@ -116,7 +118,6 @@ const GameRoom = () => {
     return <h1>Prepare for battle!</h1>;
   };
 
-
   const inGameChars = gameCharacters.map((character) => {
     return (
       <CharacterBar
@@ -126,7 +127,7 @@ const GameRoom = () => {
       />
     );
   });
-  
+
   return (
     <div className={styles.page}>
       <Controller

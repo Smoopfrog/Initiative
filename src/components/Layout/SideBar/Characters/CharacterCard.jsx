@@ -33,7 +33,7 @@ const CharacterCard = ({ character, user }) => {
       hp: character.hp,
       ac: character.ac,
       charSheet: character.charSheet,
-      initiative: null,
+      initiative: 0,
       selected: false,
     };
 

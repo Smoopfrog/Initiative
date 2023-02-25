@@ -65,6 +65,7 @@ const CharacterCard = (props) => {
           closeForm={editFormHandler}
           character={props.character}
           type="editChar"
+          setPlayerCharacters={props.setPlayerCharacters}
         />
       )}
       <div className={styles.character}>

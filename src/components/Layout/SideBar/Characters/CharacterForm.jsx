@@ -18,12 +18,24 @@ const NewCharacterForm = ({
   const [newCharName, setNewCharName] = useState(
     type === "editChar" ? character.charname : ""
   );
-  const [newCharLevel, setNewCharLevel] = useState(type === "editChar" ? character.level : "");
-  const [newCharRace, setNewCharRace] = useState(type === "editChar" ? character.race : "");
-  const [newCharClass, setNewCharClass] = useState(type === "editChar" ? character.class : "");
-  const [newCharHp, setNewCharHp] = useState(type === "editChar" ? character.hp : "");
-  const [newCharAc, setNewCharAc] = useState(type === "editChar" ? character.ac : "");
-  const [newCharSheet, setNewCharSheet] = useState(type === "editChar" ? character.charsheet : "");
+  const [newCharLevel, setNewCharLevel] = useState(
+    type === "editChar" ? character.level : ""
+  );
+  const [newCharRace, setNewCharRace] = useState(
+    type === "editChar" ? character.race : ""
+  );
+  const [newCharClass, setNewCharClass] = useState(
+    type === "editChar" ? character.class : ""
+  );
+  const [newCharHp, setNewCharHp] = useState(
+    type === "editChar" ? character.hp : ""
+  );
+  const [newCharAc, setNewCharAc] = useState(
+    type === "editChar" ? character.ac : ""
+  );
+  const [newCharSheet, setNewCharSheet] = useState(
+    type === "editChar" ? character.charsheet : ""
+  );
   const [formError, setFormError] = useState();
   const user = useSelector(selectUser);
 
@@ -40,6 +52,46 @@ const NewCharacterForm = ({
 
     return () => clearTimeout(errorTimer);
   }, [formError]);
+
+  const submitEditedChar = async (event) => {
+    event.preventDefault();
+
+    if (
+      !newCharName ||
+      !newCharLevel ||
+      !newCharRace ||
+      !newCharClass ||
+      !newCharHp ||
+      !newCharAc ||
+      !newCharSheet
+    ) {
+      setFormError(true);
+      console.log("error");
+      return;
+    }
+
+    const editedChar = {
+      newCharName,
+      newCharLevel,
+      newCharRace,
+      newCharClass,
+      newCharHp,
+      newCharAc,
+      newCharSheet,
+      id: character.id,
+      userId: character.user_id,
+    };
+
+    axios
+      .patch("/characters", editedChar)
+      .then((res) => {
+        setPlayerCharacters(res.data);
+        closeForm();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const submitNewChar = async (event) => {
     event.preventDefault();
@@ -151,7 +203,7 @@ const NewCharacterForm = ({
           </Button>
         )}
         {type === "editChar" && (
-          <Button style="green" onClick={submitNewChar}>
+          <Button style="green" onClick={submitEditedChar}>
             Save Changes
           </Button>
         )}

@@ -4,7 +4,7 @@ import MonsterCard from "./MonsterCard";
 import Button from "../../../UI/Button";
 import Input from "../../../UI/Input";
 
-const MonsterManualTab = ({ setGameCharacters }) => {
+const MonsterManualTab = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState();
 
@@ -39,7 +39,6 @@ const MonsterManualTab = ({ setGameCharacters }) => {
       {searchResults !== "notFound" && searchResults && (
         <MonsterCard
           monster={searchResults}
-          setGameCharacters={setGameCharacters}
         />
       )}
 

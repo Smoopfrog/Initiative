@@ -1,8 +1,16 @@
 import React from "react";
 import styles from "../Characters/CharacterCard.module.css";
 import Button from "../../../UI/Button";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectGameRoomCharacters,
+  setGameRoomCharacters,
+} from "../../../../slices/gameRoomSlice";
 
-const MonsterCard = ({ monster, setGameCharacters }) => {
+const MonsterCard = ({ monster }) => {
+  const dispatch = useDispatch();
+  const gameRoomCharacters = useSelector(selectGameRoomCharacters);
+
   const capitalize = (str) => {
     if (str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
@@ -18,7 +26,7 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
 
   const rollTwentyLink = `https://roll20.net/compendium/dnd5e/${monster.name}`;
 
-  const char = {
+  const character = {
     id: Date.now(),
     ac: monster["armor_class"]["0"].value,
     name: monster.name,
@@ -31,7 +39,7 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
   };
 
   const addCharacter = () => {
-    setGameCharacters((prev) => [...prev, char]);
+    dispatch(setGameRoomCharacters([...gameRoomCharacters, character]));
   };
 
   return (
@@ -56,7 +64,9 @@ const MonsterCard = ({ monster, setGameCharacters }) => {
             </p>
           </div>
           <h3>
-            <a href={rollTwentyLink} target="_blank" rel="noreferrer noopener">Roll20</a>
+            <a href={rollTwentyLink} target="_blank" rel="noreferrer noopener">
+              Roll20
+            </a>
           </h3>
         </div>
       </div>

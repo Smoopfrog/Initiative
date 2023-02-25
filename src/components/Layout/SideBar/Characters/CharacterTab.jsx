@@ -1,24 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectUser } from "../../../../slices/userSlice";
 import { selectCharacters } from "../../../../slices/charactersSlice";
-// import { selectCharacters, setCharacters } from "../../../slices/charactersSlice";
-// import PlayerCharacter from "../../PlayerCharacter";
-import Button from "../../../UI/Button";
 import CharacterForm from "./CharacterForm";
 import CharacterCard from "./CharacterCard";
+import Button from "../../../UI/Button";
 import styles from "./CharacterTab.module.css";
 
-const CharacterTab = ({
-  gameCharacters,
-  setGameCharacters,
-  playerCharacters,
-  setPlayerCharacters,
-}) => {
+const CharacterTab = () => {
   const [showForm, setShowForm] = useState(false);
   const user = useSelector(selectUser);
   const characters = useSelector(selectCharacters);
-
 
   const showFormHandler = () => {
     setShowForm(!showForm);
@@ -30,25 +22,20 @@ const CharacterTab = ({
         key={character.id}
         character={character}
         user={user}
-        setGameCharacters={setGameCharacters}
-        setPlayerCharacters={setPlayerCharacters}
       />
     );
   });
 
   return (
     <div>
-      <div className={styles['control-buttons']}>
+      <div className={styles["control-buttons"]}>
         <Button onClick={showFormHandler}>Create character</Button>
         {/* <Button>Sort</Button> */}
-
       </div>
       {showForm && (
         <CharacterForm
           closeForm={showFormHandler}
-          playerCharacters={playerCharacters}
-          setPlayerCharacters={setPlayerCharacters}
-          type='newChar'
+          type="newChar"
         />
       )}
       <ul className={styles["character-list"]}>{charArray}</ul>

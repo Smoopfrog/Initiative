@@ -1,24 +1,20 @@
 import { useState } from "react";
-import axios from "axios";
-import ConfirmationModal from "../../../UI/ConfirmationModal";
-import CharacterForm from "./CharacterForm";
-import Button from "../../../UI/Button";
-import styles from "./CharacterCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setCharacters } from "../../../../slices/charactersSlice";
 import { setGameRoomCharacters } from "../../../../slices/gameRoomSlice";
 import { selectGameRoomCharacters } from "../../../../slices/gameRoomSlice";
+import axios from "axios";
+import CharacterForm from "./CharacterForm";
+import ConfirmationModal from "../../../UI/ConfirmationModal";
+import Button from "../../../UI/Button";
+import styles from "./CharacterCard.module.css";
 
-const CharacterCard = ({
-  character,
-  user,
-  setGameCharacters,
-  setPlayerCharacters,
-}) => {
+const CharacterCard = ({ character, user }) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showEditFrom, setShowEditForm] = useState(false);
-  const dispatch = useDispatch();
   const gameRoomCharacters = useSelector(selectGameRoomCharacters);
+  const dispatch = useDispatch();
+
   const confirmationModalHandler = () => {
     setShowConfirmationModal(!showConfirmationModal);
   };
@@ -72,7 +68,6 @@ const CharacterCard = ({
           closeForm={editFormHandler}
           character={character}
           type="editChar"
-          setPlayerCharacters={setPlayerCharacters}
         />
       )}
       <div className={styles.character}>

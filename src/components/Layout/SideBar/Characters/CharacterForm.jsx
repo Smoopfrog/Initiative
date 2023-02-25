@@ -11,7 +11,6 @@ import styles from "./CharacterForm.module.css";
 
 const CharacterForm = ({
   character,
-  setPlayerCharacters,
   closeForm,
   type,
 }) => {
@@ -67,7 +66,6 @@ const CharacterForm = ({
       !charSheet
     ) {
       setFormError(true);
-      console.log("error");
       return;
     }
 
@@ -107,7 +105,6 @@ const CharacterForm = ({
       !charSheet
     ) {
       setFormError(true);
-      console.log("error");
       return;
     }
 

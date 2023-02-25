@@ -1,24 +1,13 @@
 import styles from "./HomePage.module.css";
 import GameRoom from "./GameRoom/GameRoom";
 import SideBar from "./SideBar/SideBar";
-import { useState } from "react";
 
-const HomePage = (props) => {
-  const [gameCharacters, setGameCharacters] = useState([]);
+const HomePage = ({ setHomepage }) => {
 
   return (
     <div className={styles.homepage}>
-      <GameRoom
-        gameCharacters={gameCharacters}
-        setGameCharacters={setGameCharacters}
-      />
-      <SideBar
-        playerCharacters={props.playerCharacters}
-        setPlayerCharacters={props.setPlayerCharacters}
-        gameCharacters={gameCharacters}
-        setGameCharacters={setGameCharacters}
-        setHomepage={props.setHomepage}
-      />
+      <GameRoom />
+      <SideBar setHomepage={setHomepage} />
     </div>
   );
 };

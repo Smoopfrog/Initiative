@@ -41,7 +41,6 @@ module.exports = (db) => {
   });
 
   router.patch("/characters", async (req, res) => {
-    console.log(req.body);
     const character = req.body;
     const userId = req.body.userId;
 

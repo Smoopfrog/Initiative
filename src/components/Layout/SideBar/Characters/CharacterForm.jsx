@@ -14,7 +14,6 @@ const NewCharacterForm = ({
   closeForm,
   type,
 }) => {
-  console.log(character);
   const [newCharName, setNewCharName] = useState(
     type === "editChar" ? character.charname : ""
   );

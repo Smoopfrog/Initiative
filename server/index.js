@@ -28,35 +28,3 @@ app.listen(port, () => {
 server.listen(3001, () => {
   console.log("SERVER RUNNING")
 });
-
-// Socket.io
-
-// const io = new Server(server, {
-//   cors: {
-//     origin: "http://localhost:3006",
-//     methods: ["GET", "POST"],
-//   },
-// });
-
-// io.on("connection", (socket) => {
-//   console.log(`User Connected: ${socket.id}`);
-
-//   socket.on("join_room", (data) => {
-//     socket.join(data);
-//     console.log(`User with ID: ${socket.id} joined room: ${data}`);
-//   });
-
-//   socket.on("leave", (data) => {
-//     socket.leave(data);
-//     console.log(`User with ID: ${socket.id} has left room: ${data}`);
-//   });
-
-//   socket.on("add_character", (data) => {
-//     console.log('data', data)
-//     socket.to(data.room).emit("receive_character", data);
-//   });
-
-//   socket.on("disconnect", () => {
-//     console.log("User Disconnected", socket.id);
-//   });
-// });

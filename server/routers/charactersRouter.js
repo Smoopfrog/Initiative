@@ -45,22 +45,29 @@ module.exports = (db) => {
     const character = req.body;
     const userId = req.body.userId;
 
-    // await db.query(
-    //   `INSERT INTO characters (user_id, charname, level, race, class, hp, ac, charsheet) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
-    //   [
-    //     character.userId,
-    //     character.newCharName,
-    //     character.newCharLevel,
-    //     character.newCharRace,
-    //     character.newCharClass,
-    //     character.newCharHp,
-    //     character.newCharAc,
-    //     character.newCharSheet,
-    //   ]
-    // );
+    await db.query(
+      `UPDATE characters
+      SET charname = $1, 
+      level = $2,
+      race = $3,
+      class = $4,
+      hp = $5,
+      ac = $6,
+      charsheet = $7
+      WHERE id = $8`,
+      [
+        character.newCharName,
+        character.newCharLevel,
+        character.newCharRace,
+        character.newCharClass,
+        character.newCharHp,
+        character.newCharAc,
+        character.newCharSheet,
+        character.id,
+      ]
+    );
 
-    db
-      .query(`SELECT * FROM characters WHERE user_id = $1`, [userId])
+    db.query(`SELECT * FROM characters WHERE user_id = $1`, [userId])
       .then((data) => {
         const characters = data.rows;
         res.send(characters);

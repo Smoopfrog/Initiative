@@ -54,6 +54,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
     axios
       .get("/characters", { params })
       .then((res) => {
+        dispatch(setCharacters(res.data))
         setPlayerCharacters(res.data);
       })
       .catch((err) => {
@@ -71,11 +72,12 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
 
     axios
       .get("/users", { params })
-      .then(function (response) {
-        if (response.data.length) {
+      .then((res) => {
+        if (res.data.length) {
           localStorage.setItem("isLoggedIn", username);
-          dispatch(logIn(response.data[0]));
-          getUserCharacters(response.data[0].id);
+          console.log(res)
+          dispatch(logIn(res.data[0]));
+          getUserCharacters(res.data[0].id);
           setHomepage("signedIn");
           return;
         }

@@ -1,20 +1,28 @@
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectGameRoomCharacters,
+  setGameRoomCharacters,
+} from "../../../slices/gameRoomSlice";
 import styles from "./GameRoom.module.css";
 import Controller from "./Controller";
 import CharacterBar from "./CharacterBar";
 
-const GameRoom = ({ gameCharacters, setGameCharacters }) => {
+const GameRoom = () => {
+  const dispatch = useDispatch();
+  const gameCharacters = useSelector(selectGameRoomCharacters);
+
   const sortByInitiative = (characters) => {
     let sortedCharacters = characters.sort(
       (a, b) => b.initiative - a.initiative
     );
-    setGameCharacters([...sortedCharacters]);
+    dispatch(setGameRoomCharacters(sortedCharacters));
   };
 
   const removeChar = (id) => {
     let newChars = gameCharacters.filter(
       (newCharacters) => newCharacters.id != id
     );
-    setGameCharacters(newChars);
+    dispatch(setGameRoomCharacters(newChars));
   };
 
   const sortButtonHandler = () => {
@@ -54,18 +62,9 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
       return character;
     });
 
-    setGameCharacters(newState);
+    dispatch(setGameRoomCharacters(newState));
+    // setGameCharacters(newState);
   };
-
-  const inGameChars = gameCharacters.map((character) => {
-    return (
-      <CharacterBar
-        key={character.id}
-        character={character}
-        removeChar={removeChar}
-      />
-    );
-  });
 
   const prevChar = () => {
     // get selected char and index
@@ -100,7 +99,8 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
       return character;
     });
 
-    setGameCharacters(newState);
+    dispatch(setGameRoomCharacters(newState));
+    // setGameCharacters(newState);
   };
 
   const playerTurn = () => {
@@ -116,6 +116,17 @@ const GameRoom = ({ gameCharacters, setGameCharacters }) => {
     return <h1>Prepare for battle!</h1>;
   };
 
+
+  const inGameChars = gameCharacters.map((character) => {
+    return (
+      <CharacterBar
+        key={character.id}
+        character={character}
+        removeChar={removeChar}
+      />
+    );
+  });
+  
   return (
     <div className={styles.page}>
       <Controller

@@ -4,8 +4,10 @@ import ConfirmationModal from "../../../UI/ConfirmationModal";
 import CharacterForm from "./CharacterForm";
 import Button from "../../../UI/Button";
 import styles from "./CharacterCard.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCharacters } from "../../../../slices/charactersSlice";
+import { setGameRoomCharacters } from "../../../../slices/gameRoomSlice";
+import { selectGameRoomCharacters } from "../../../../slices/gameRoomSlice";
 
 const CharacterCard = ({
   character,
@@ -16,7 +18,7 @@ const CharacterCard = ({
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showEditFrom, setShowEditForm] = useState(false);
   const dispatch = useDispatch();
-
+  const gameRoomCharacters = useSelector(selectGameRoomCharacters);
   const confirmationModalHandler = () => {
     setShowConfirmationModal(!showConfirmationModal);
   };
@@ -39,7 +41,7 @@ const CharacterCard = ({
       selected: false,
     };
 
-    setGameCharacters((prev) => [...prev, char]);
+    dispatch(setGameRoomCharacters([...gameRoomCharacters, char]));
   };
 
   const deleteChar = () => {

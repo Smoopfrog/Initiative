@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const charactersSlice = createSlice({
   name: "characters",
   initialState: {
-    characters: []
+    characters: [],
   },
   reducers: {
     setCharacters: (state, action) => {
@@ -11,10 +11,10 @@ export const charactersSlice = createSlice({
     },
     setCharactersNull: (state) => {
       state.characters = [];
-    }
-  }
-})
+    },
+  },
+});
 
-export const {setCharacters, setCharactersNull} = charactersSlice.actions;
-export const selectCharacters = state => state.characters.characters;
+export const { setCharacters, setCharactersNull } = charactersSlice.actions;
+export const selectCharacters = (state) => state.characters.characters;
 export default charactersSlice.reducer;

@@ -1,20 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const gameRoomSlice = createSlice({
-  name: "gameRoomCharacters",
+  name: "gameRoom",
   initialState: {
-    gameRoomcharacters: []
+    characters: [],
   },
   reducers: {
     setGameRoomCharacters: (state, action) => {
-      state.gameRoomcharacters = action.payload;
+      state.characters = action.payload;
     },
     setGameRoomCharactersNull: (state) => {
-      state.gameRoomcharacters = [];
-    }
-  }
-})
+      state.characters = [];
+    },
+  },
+});
 
-export const {setGameRoomCharacters, setGameRoomCharactersNull} = gameRoom.actions;
-export const selectCharacters = state => state.gameRoomcharacters.gameRoomcharacters;
-export default gameRoom.reducer;
+export const { setGameRoomCharacters, setGameRoomCharactersNull } = gameRoomSlice.actions;
+export const selectGameRoomCharacters = (state) => state.gameRoom.characters;
+export default gameRoomSlice.reducer;

@@ -28,18 +28,8 @@ const CharacterTab = ({
     return (
       <CharacterCard
         key={character.id}
-        id={character.id}
-        userName={user.username}
         character={character}
-        userId={character.user_id}
-        name={character.name}
-        level={character.level}
-        race={character.race}
-        class={character.class}
-        charSheetUrl={character.charsheet}
-        hp={character.hp}
-        ac={character.ac}
-        initiative={character.initiative}
+        user={user}
         setGameCharacters={setGameCharacters}
         setPlayerCharacters={setPlayerCharacters}
       />

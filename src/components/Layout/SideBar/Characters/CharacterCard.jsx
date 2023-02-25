@@ -4,10 +4,18 @@ import ConfirmationModal from "../../../UI/ConfirmationModal";
 import CharacterForm from "./CharacterForm";
 import Button from "../../../UI/Button";
 import styles from "./CharacterCard.module.css";
+import { useDispatch } from "react-redux";
+import { setCharacters } from "../../../../slices/charactersSlice";
 
-const CharacterCard = (props) => {
+const CharacterCard = ({
+  character,
+  user,
+  setGameCharacters,
+  setPlayerCharacters,
+}) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showEditFrom, setShowEditForm] = useState(false);
+  const dispatch = useDispatch();
 
   const confirmationModalHandler = () => {
     setShowConfirmationModal(!showConfirmationModal);
@@ -20,33 +28,30 @@ const CharacterCard = (props) => {
   const addCharacter = () => {
     const char = {
       id: Date.now(),
-      ac: props.ac,
-      name: props.name,
-      charSheetUrl: props.charSheetUrl,
-      class: props.class,
-      hp: props.hp,
-      img: props.img,
-      initiative: 0,
-      level: props.level,
-      race: props.race,
-      userId: props.userId,
-      userName: props.userName,
+      name: character.name,
+      level: character.level,
+      race: character.race,
+      class: character.class,
+      hp: character.hp,
+      ac: character.ac,
+      charSheet: character.charSheet,
+      initiative: null,
       selected: false,
     };
 
-    props.setGameCharacters((prev) => [...prev, char]);
+    setGameCharacters((prev) => [...prev, char]);
   };
 
   const deleteChar = () => {
     const params = {
-      userId: props.userId,
-      charId: props.id,
+      userId: user.id,
+      charId: character.id,
     };
 
     axios
       .delete("/characters", { params })
       .then((res) => {
-        props.setPlayerCharacters([...res.data]);
+        dispatch(setCharacters(res.data));
       })
       .then((err) => console.log(err));
   };
@@ -55,7 +60,7 @@ const CharacterCard = (props) => {
     <div className={styles.card}>
       {showConfirmationModal && (
         <ConfirmationModal
-          name={props.name}
+          name={character.name}
           closeForm={confirmationModalHandler}
           onConfirm={deleteChar}
         />
@@ -63,32 +68,32 @@ const CharacterCard = (props) => {
       {showEditFrom && (
         <CharacterForm
           closeForm={editFormHandler}
-          character={props.character}
+          character={character}
           type="editChar"
-          setPlayerCharacters={props.setPlayerCharacters}
+          setPlayerCharacters={setPlayerCharacters}
         />
       )}
       <div className={styles.character}>
         {/* <img src={props.img} width="25%" /> */}
         <div className={styles.info}>
-          <h1 className={styles["char-name"]}>{props.name}</h1>
+          <h1 className={styles["char-name"]}>{character.name}</h1>
           <h3>
-            Lv.{props.level} {props.race} {props.class}
+            Lv.{character.level} {character.race} {character.class}
           </h3>
           <div className={styles["stat-block"]}>
             <p>
               <span className={styles["stat-title"]}>Hit Points</span>{" "}
-              {props.hp}
+              {character.hp}
             </p>
             <p>
               <span className={styles["stat-title"]}>Armor Class</span>{" "}
-              {props.ac}
+              {character.ac}
             </p>
           </div>
-          {props.charSheetUrl && (
+          {character.charSheet && (
             <h3>
               <a
-                href={props.charSheetUrl}
+                href={character.charSheet}
                 target="_blank"
                 rel="noreferrer noopener"
               >

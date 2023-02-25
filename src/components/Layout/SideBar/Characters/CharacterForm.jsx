@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../../slices/userSlice";
+import { setCharacters } from "../../../../slices/charactersSlice";
 import axios from "axios";
 import Button from "../../../UI/Button";
 import Input from "../../../UI/Input";
@@ -37,6 +38,7 @@ const CharacterForm = ({
   );
   const [formError, setFormError] = useState();
   const user = useSelector(selectUser);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!formError) {
@@ -84,7 +86,7 @@ const CharacterForm = ({
     axios
       .patch("/characters", editedCharacter)
       .then((res) => {
-        setPlayerCharacters(res.data);
+        dispatch(setCharacters(res.data));
         closeForm();
       })
       .catch((error) => {
@@ -123,7 +125,7 @@ const CharacterForm = ({
     await axios
       .post("/characters", newCharacter)
       .then((res) => {
-        setPlayerCharacters(res.data);
+        dispatch(setCharacters(res.data))
         closeForm();
       })
       .catch((error) => {

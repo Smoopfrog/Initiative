@@ -1,15 +1,14 @@
 import styles from "./CharacterBar.module.css";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectGameRoomCharacters, setGameRoomCharacters } from "../../../slices/gameRoomSlice";
+import { useDispatch } from "react-redux";
+import { updateInitiative } from "../../../slices/gameRoomSlice";
 
 const CharacterBar = ({ character, removeChar }) => {
   const [initiative, setInitiative] = useState(character.initiative);
   const [hp, setHp] = useState(character.hp);
   const [name, setName] = useState(character.name);
   const dispatch = useDispatch();
-  const gameRoomCharacters = useSelector(selectGameRoomCharacters);
-
+  console.log('character', character)
   let backgroundColor = "";
   let selectedColor = "";
 
@@ -25,14 +24,21 @@ const CharacterBar = ({ character, removeChar }) => {
   }
 
   const changeInitiative = (event) => {
-    setInitiative(event.target.value);
-    
-    const characters = [...gameRoomCharacters]
-    const characterIndex = characters.findIndex((char => char.id === character.id));
-    characters[characterIndex].initiative = event.target.value
-    console.log(characters)
-    dispatch(setGameRoomCharacters(characters))
+    const newInitiative = event.target.value;
+
+    setInitiative(newInitiative);
+
+    dispatch(
+      updateInitiative({
+        id: character.id,
+        initiative: Number(newInitiative),
+      })
+    );
   };
+
+  // useEffect(() => {
+  // console.log("changeInit");
+  // }, [initiative]);
 
   const changeHp = (event) => {
     setHp(event.target.value);

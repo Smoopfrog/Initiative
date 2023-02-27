@@ -10,24 +10,15 @@ import CharacterBar from "./CharacterBar";
 const GameRoom = () => {
   const dispatch = useDispatch();
   const gameCharacters = useSelector(selectGameRoomCharacters);
-  console.log("gameCharacters", gameCharacters);
-
+  console.log('gameCharacters', gameCharacters)
   const sortByInitiative = (characters) => {
-    console.log("characters", characters);
-    const copiedCharcters = [...gameCharacters]
+    const copiedCharcters = [...gameCharacters];
 
-    const sortedCharacters = copiedCharcters.sort(
+    const sortedCharacters = copiedCharcters.slice().sort(
       (a, b) => b.initiative - a.initiative
     );
-    console.log("sortedCharacters", sortedCharacters);
     dispatch(setGameRoomCharacters(sortedCharacters));
-  };
-
-  const removeChar = (id) => {
-    let newChars = gameCharacters.filter(
-      (newCharacters) => newCharacters.id != id
-    );
-    dispatch(setGameRoomCharacters(newChars));
+    console.log("sortedCharacters", sortedCharacters);
   };
 
   const sortButtonHandler = () => {
@@ -58,7 +49,6 @@ const GameRoom = () => {
     };
 
     nextUp.selected = true;
-    console.log("nextUp", nextUp.selected);
 
     // replace the char obj by finding the id
     const newState = gameCharacters.map((character) => {
@@ -116,6 +106,13 @@ const GameRoom = () => {
       );
     }
     return <h1>Prepare for battle!</h1>;
+  };
+
+  const removeChar = (id) => {
+    let newChars = gameCharacters.filter(
+      (newCharacters) => newCharacters.id != id
+    );
+    dispatch(setGameRoomCharacters(newChars));
   };
 
   const inGameChars = gameCharacters.map((character) => {

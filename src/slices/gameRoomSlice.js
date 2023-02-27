@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 export const gameRoomSlice = createSlice({
   name: "gameRoom",
@@ -12,9 +12,25 @@ export const gameRoomSlice = createSlice({
     setGameRoomCharactersNull: (state) => {
       state.characters = [];
     },
+    updateInitiative: (state, action) => {
+      const initcharacters = state.characters.map((character) => {
+        if (character.id === action.payload.id) {
+          return {
+            ...character,
+            initiative: action.payload.initiative,
+          };
+        }
+        return character;
+      });
+      state.characters = initcharacters;
+    },
   },
 });
 
-export const { setGameRoomCharacters, setGameRoomCharactersNull } = gameRoomSlice.actions;
+export const {
+  setGameRoomCharacters,
+  setGameRoomCharactersNull,
+  updateInitiative,
+} = gameRoomSlice.actions;
 export const selectGameRoomCharacters = (state) => state.gameRoom.characters;
 export default gameRoomSlice.reducer;

@@ -11,7 +11,6 @@ const CharacterTab = () => {
   const [showForm, setShowForm] = useState(false);
   const user = useSelector(selectUser);
   const characters = useSelector(selectCharacters);
-  console.log('characterTab', characters)
   const showFormHandler = () => {
     setShowForm(!showForm);
   };

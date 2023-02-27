@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from 'react-redux';
 import { selectUser, logOut } from '../../../../slices/userSlice';
 import { useDispatch } from "react-redux";
+import styles from './ProfileTab.module.css'
 
 const ProfileTab = ({ setHomepage }) => {
   const user = useSelector(selectUser);
@@ -14,9 +15,8 @@ const ProfileTab = ({ setHomepage }) => {
   }
 
   return (
-    <div>
-      <h1>Profile</h1>
-      <h2>{user.username}</h2>
+    <div className={styles.container}>
+      <h2 className={styles.header}>Sign in as: <strong>{user.username}</strong></h2>
       <button onClick={handleSignOut}>Sign Out</button>
     </div>
   )

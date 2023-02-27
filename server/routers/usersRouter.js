@@ -1,18 +1,23 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 
 module.exports = (db) => {
-  router.get("/users", (req, res) => {
+  router.get("/users", async (req, res) => {
     const username = req.query.username;
     const password = req.query.password;
 
-    db.query(`SELECT * FROM users WHERE username = $1 AND password = $2`, [
-      username,
-      password,
-    ])
+    await db
+      .query(`SELECT * FROM users WHERE username = $1`, [username])
       .then((data) => {
-        const users = data.rows;
-        res.send(users);
+        const user = data.rows[0];
+        const bcrypted = bcrypt.compare(password, user.password);
+
+        if (bcrypted) {
+          res.send(user);
+        } else {
+          res.send([])
+        }
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
@@ -32,9 +37,12 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/users", (req, res) => {
+  router.post("/users", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
 
     db.query(`SELECT * FROM users WHERE username = $1`, [username])
       .then((data) => {
@@ -45,9 +53,9 @@ module.exports = (db) => {
         } else {
           db.query(`INSERT INTO users (username, password) VALUES ($1, $2)`, [
             username,
-            password,
+            hash,
           ]);
-          res.send(users);
+          res.send({ username, password });
         }
       })
       .catch((err) => {

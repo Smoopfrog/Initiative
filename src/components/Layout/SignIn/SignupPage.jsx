@@ -6,7 +6,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../../slices/userSlice";
 import Button from "../../UI/Button";
-const bcrypt = require('bcryptjs')
 
 const SignupPage = ({ setHomepage }) => {
   const [username, setUsername] = useState("");
@@ -50,15 +49,8 @@ const SignupPage = ({ setHomepage }) => {
     setUsernameError(false);
   }, [username]);
 
-  const onSignUp = (e) => {
+  const onSignUp = async (e) => {
     e.preventDefault();
-
-    // bcrypt.genSalt(saltRounds, (err, salt) => {
-    //   bcrypt.hash(password, salt, function (err, hash) {
-    //     // returns hash
-    //     console.log(hash);
-    //   });
-    // });
 
     if (password !== confirmPassword) {
       setPasswordError(true);
@@ -72,21 +64,20 @@ const SignupPage = ({ setHomepage }) => {
 
     axios
       .post("/users", userData)
-      .then(function (response) {
+      .then((response) => {
         if (response.data.length) {
           setUsernameError(true);
         } else {
           dispatch(
             logIn({
-              username: username,
-              password: password,
+              ...response.data,
               loggedIn: true,
             })
           );
           setHomepage("signedIn");
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   };
@@ -109,7 +100,7 @@ const SignupPage = ({ setHomepage }) => {
       <form className={styles.form}>
         <h1>Initiative</h1>
         <br />
-        <img src={chest} width="50" height="50" alt="Orcus the great"/>
+        <img src={chest} width="50" height="50" alt="Orcus the great" />
         <h2 className={styles.subtitle}>Sign up</h2>
         <div className={styles.inputs}>
           <Input

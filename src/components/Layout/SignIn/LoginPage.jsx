@@ -7,6 +7,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../../slices/userSlice";
 import { setCharacters } from "../../../slices/charactersSlice";
+import bcrypt from "bcryptjs";
 
 const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
   const [username, setUsername] = useState("");
@@ -54,7 +55,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
     axios
       .get("/characters", { params })
       .then((res) => {
-        dispatch(setCharacters(res.data))
+        dispatch(setCharacters(res.data));
         setPlayerCharacters(res.data);
       })
       .catch((err) => {
@@ -62,7 +63,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
       });
   };
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
 
     const params = {
@@ -73,11 +74,11 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
     axios
       .get("/users", { params })
       .then((res) => {
-        if (res.data.length) {
+        console.log(res.data)
+        if (res.data) {
           localStorage.setItem("isLoggedIn", username);
-          console.log(res)
-          dispatch(logIn(res.data[0]));
-          getUserCharacters(res.data[0].id);
+          dispatch(logIn(res.data));
+          getUserCharacters(res.data.id);
           setHomepage("signedIn");
           return;
         }

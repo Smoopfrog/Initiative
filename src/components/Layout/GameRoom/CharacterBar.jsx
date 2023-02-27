@@ -79,7 +79,7 @@ const CharacterBar = ({ character, removeChar }) => {
         style={{ backgroundColor: selectedColor }}
         className={styles.selected}
       >
-        {hp == 0 && <i class="fa-solid fa-skull"></i>}
+        {hp == 0 && <i className="fa-solid fa-skull"></i>}
       </div>
       <div className={styles.character}>
         <input

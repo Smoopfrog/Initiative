@@ -12,10 +12,10 @@ const SignupPage = ({ setHomepage }) => {
   const [password, setpassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [usernameError, setUsernameError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-  const dispatch = useDispatch();
+  const [passwordMatchError, setPasswordMatchError] = useState(false);
+  const [passwordLengthError, setPasswordLengthError] = useState(false);
 
-  // const saltRounds = 10;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!usernameError) {
@@ -32,18 +32,32 @@ const SignupPage = ({ setHomepage }) => {
   }, [usernameError]);
 
   useEffect(() => {
-    if (!passwordError) {
+    if (!passwordMatchError) {
       return;
     }
 
-    setPasswordError(true);
+    setPasswordMatchError(true);
 
     const errorTimer = setTimeout(() => {
-      setPasswordError(false);
+      setPasswordMatchError(false);
     }, 3000);
 
     return () => clearTimeout(errorTimer);
-  }, [passwordError]);
+  }, [passwordMatchError]);
+
+  useEffect(() => {
+    if (!passwordLengthError) {
+      return;
+    }
+
+    setPasswordLengthError(true);
+
+    const errorTimer = setTimeout(() => {
+      setPasswordLengthError(false);
+    }, 3000);
+
+    return () => clearTimeout(errorTimer);
+  }, [passwordLengthError]);
 
   useEffect(() => {
     setUsernameError(false);
@@ -53,7 +67,12 @@ const SignupPage = ({ setHomepage }) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setPasswordError(true);
+      setPasswordMatchError(true);
+      return;
+    }
+
+    if (password.length < 8) {
+      setPasswordLengthError(true);
       return;
     }
 
@@ -128,12 +147,20 @@ const SignupPage = ({ setHomepage }) => {
             label="Confirm Password"
             type="password"
           />
-          {passwordError && (
+          {passwordMatchError && (
             <div className={styles.error}>
               <span className={styles["error-icon"]}>
-                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
               </span>
               <span>Passwords do not match!</span>
+            </div>
+          )}
+          {passwordLengthError && (
+            <div className={styles.error}>
+              <span className={styles["error-icon"]}>
+                <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
+              </span>
+              <span>Password not long enough!</span>
             </div>
           )}
         </div>

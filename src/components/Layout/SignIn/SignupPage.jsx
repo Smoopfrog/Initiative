@@ -6,6 +6,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../../slices/userSlice";
 import Button from "../../UI/Button";
+const bcrypt = require('bcryptjs')
 
 const SignupPage = ({ setHomepage }) => {
   const [username, setUsername] = useState("");

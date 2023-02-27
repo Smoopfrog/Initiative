@@ -69,6 +69,7 @@ const CharacterBar = ({ character, removeChar }) => {
       })
     );
   };
+
   return (
     <li
       className={styles.container}
@@ -77,7 +78,9 @@ const CharacterBar = ({ character, removeChar }) => {
       <div
         style={{ backgroundColor: selectedColor }}
         className={styles.selected}
-      ></div>
+      >
+        {hp == 0 && <i class="fa-solid fa-skull"></i>}
+      </div>
       <div className={styles.character}>
         <input
           className={styles.input}
@@ -119,11 +122,7 @@ const CharacterBar = ({ character, removeChar }) => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <a
-          href={character.charSheet}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <a href={character.charSheet} target="_blank" rel="noreferrer noopener">
           <i className="fa-solid fa-eye"></i>{" "}
         </a>
         <div className={styles["delete-icon"]}>

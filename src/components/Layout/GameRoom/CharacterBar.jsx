@@ -1,14 +1,13 @@
 import styles from "./CharacterBar.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateInitiative } from "../../../slices/gameRoomSlice";
+import { updateCharacterInfo } from "../../../slices/gameRoomSlice";
 
 const CharacterBar = ({ character, removeChar }) => {
   const [initiative, setInitiative] = useState(character.initiative);
   const [hp, setHp] = useState(character.hp);
   const [name, setName] = useState(character.name);
   const dispatch = useDispatch();
-  console.log('character', character)
   let backgroundColor = "";
   let selectedColor = "";
 
@@ -29,9 +28,10 @@ const CharacterBar = ({ character, removeChar }) => {
     setInitiative(newInitiative);
 
     dispatch(
-      updateInitiative({
+      updateCharacterInfo({
         id: character.id,
-        initiative: Number(newInitiative),
+        info: "initiative",
+        value: Number(newInitiative),
       })
     );
   };
@@ -45,7 +45,17 @@ const CharacterBar = ({ character, removeChar }) => {
   };
 
   const changeName = (event) => {
-    setName(event.target.value);
+    const newName = event.target.value 
+
+    setName(newName);
+    
+    dispatch(
+      updateCharacterInfo({
+        id: character.id,
+        info: "name",
+        value: newName,
+      })
+    );
   };
 
   return (

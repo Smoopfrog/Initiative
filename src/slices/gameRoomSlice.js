@@ -12,17 +12,16 @@ export const gameRoomSlice = createSlice({
     setGameRoomCharactersNull: (state) => {
       state.characters = [];
     },
-    updateInitiative: (state, action) => {
-      const initcharacters = state.characters.map((character) => {
+    updateCharacterInfo: (state, action) => {
+      state.characters = state.characters.map((character) => {
         if (character.id === action.payload.id) {
           return {
             ...character,
-            initiative: action.payload.initiative,
+            [action.payload.info]: action.payload.value,
           };
         }
         return character;
       });
-      state.characters = initcharacters;
     },
   },
 });
@@ -30,7 +29,7 @@ export const gameRoomSlice = createSlice({
 export const {
   setGameRoomCharacters,
   setGameRoomCharactersNull,
-  updateInitiative,
+  updateCharacterInfo,
 } = gameRoomSlice.actions;
 export const selectGameRoomCharacters = (state) => state.gameRoom.characters;
 export default gameRoomSlice.reducer;

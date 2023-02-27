@@ -70,7 +70,9 @@ li:nth-child(2n) {
 
 .shield {
   flex: 1;
+  margin-left: 15px
 }
+
 .buttons-space {
   flex: 2;
 }

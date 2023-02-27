@@ -7,6 +7,8 @@ const CharacterBar = ({ character, removeChar }) => {
   const [initiative, setInitiative] = useState(character.initiative);
   const [hp, setHp] = useState(character.hp);
   const [name, setName] = useState(character.name);
+  const [ac, setAc] = useState(character.ac);
+
   const dispatch = useDispatch();
   let backgroundColor = "";
   let selectedColor = "";
@@ -36,19 +38,15 @@ const CharacterBar = ({ character, removeChar }) => {
     );
   };
 
-  // useEffect(() => {
-  // console.log("changeInit");
-  // }, [initiative]);
-
   const changeHp = (event) => {
     setHp(event.target.value);
   };
 
   const changeName = (event) => {
-    const newName = event.target.value 
+    const newName = event.target.value;
 
     setName(newName);
-    
+
     dispatch(
       updateCharacterInfo({
         id: character.id,
@@ -58,6 +56,19 @@ const CharacterBar = ({ character, removeChar }) => {
     );
   };
 
+  const changeAc = (event) => {
+    const newAc = event.target.value;
+
+    setAc(newAc);
+
+    dispatch(
+      updateCharacterInfo({
+        id: character.id,
+        info: "ac",
+        value: Number(newAc),
+      })
+    );
+  };
   return (
     <li
       className={styles.container}
@@ -97,7 +108,15 @@ const CharacterBar = ({ character, removeChar }) => {
           />
           <div style={{ color: hpColor }}>/{character.hp}</div>
         </div>
-        <div className={styles.ac}>{character.ac}</div>
+        <div className={styles.ac}>
+          <input
+            className={styles.input}
+            value={ac}
+            onChange={changeAc}
+            type="number"
+            step="1"
+          />
+        </div>
       </div>
       <div className={styles.buttons}>
         <a

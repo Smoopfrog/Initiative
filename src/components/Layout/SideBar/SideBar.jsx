@@ -5,7 +5,7 @@ import CharacterTab from "./Characters/CharacterTab";
 import ProfileTab from "./Profile/ProfileTab";
 import MonsterManualTab from "./MonsterManual/MonsterManualTab";
 
-const SideBar = () => {
+const SideBar = ({ setHomepage }) => {
   const [currentTab, setCurrentTab] = useState("characters");
 
   const tabHandler = (tabName) => {
@@ -20,7 +20,7 @@ const SideBar = () => {
       <Tabs onClick={tabHandler} currentTab={currentTab} />
       {currentTab === "characters" && <CharacterTab />}
       {currentTab === "monsterManual" && <MonsterManualTab />}
-      {currentTab === "profile" && <ProfileTab />}
+      {currentTab === "profile" && <ProfileTab setHomepage={setHomepage}/>}
     </div>
   );
 };

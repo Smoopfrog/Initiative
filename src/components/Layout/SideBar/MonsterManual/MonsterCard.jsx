@@ -30,7 +30,7 @@ const MonsterCard = ({ monster }) => {
     id: Date.now(),
     ac: monster["armor_class"]["0"].value,
     name: monster.name,
-    charSheetUrl: rollTwentyLink,
+    charSheet: rollTwentyLink,
     hp: monster.hit_points,
     initiative: 0,
     race: capitalize(monster.type),

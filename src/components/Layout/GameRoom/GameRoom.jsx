@@ -10,7 +10,6 @@ import CharacterBar from "./CharacterBar";
 const GameRoom = () => {
   const dispatch = useDispatch();
   const gameCharacters = useSelector(selectGameRoomCharacters);
-  console.log('gameCharacters', gameCharacters)
   const sortByInitiative = (characters) => {
     const copiedCharcters = [...gameCharacters];
 
@@ -18,7 +17,6 @@ const GameRoom = () => {
       (a, b) => b.initiative - a.initiative
     );
     dispatch(setGameRoomCharacters(sortedCharacters));
-    console.log("sortedCharacters", sortedCharacters);
   };
 
   const sortButtonHandler = () => {

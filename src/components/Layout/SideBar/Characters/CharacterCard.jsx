@@ -32,7 +32,7 @@ const CharacterCard = ({ character, user }) => {
       class: character.class,
       hp: character.hp,
       ac: character.ac,
-      charSheet: character.charSheet,
+      charSheet: character.charsheet,
       initiative: 0,
       selected: false,
     };
@@ -87,10 +87,10 @@ const CharacterCard = ({ character, user }) => {
               {character.ac}
             </p>
           </div>
-          {character.charSheet && (
+          {character.charsheet && (
             <h3>
               <a
-                href={character.charSheet}
+                href={character.charsheet}
                 target="_blank"
                 rel="noreferrer noopener"
               >

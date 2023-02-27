@@ -4,7 +4,6 @@ const router = express.Router();
 module.exports = (db) => {
   router.get("/characters", (req, res) => {
     const userId = req.query.userId;
-
     db.query(`SELECT * FROM characters WHERE user_id = $1`, [userId])
       .then((data) => {
         const characters = data.rows;

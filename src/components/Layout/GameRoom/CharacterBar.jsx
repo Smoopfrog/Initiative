@@ -120,7 +120,7 @@ const CharacterBar = ({ character, removeChar }) => {
       </div>
       <div className={styles.buttons}>
         <a
-          href={character.charSheetUrl}
+          href={character.charSheet}
           target="_blank"
           rel="noreferrer noopener"
         >

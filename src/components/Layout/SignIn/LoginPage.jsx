@@ -7,7 +7,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../../slices/userSlice";
 import { setCharacters } from "../../../slices/charactersSlice";
-import bcrypt from "bcryptjs";
 
 const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
   const [username, setUsername] = useState("");
@@ -109,7 +108,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
       <form className={styles.form}>
         <h1 className={styles.title}>Initiative</h1>
         <br />
-        <img src={chest} width="50" height="50" />
+        <img src={chest} width="50" height="50" alt="chest"/>
         <h2 className={styles.subtitle}>Sign in</h2>
         <div className={styles.inputs}>
           <Input

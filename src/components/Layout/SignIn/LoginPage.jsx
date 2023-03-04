@@ -100,14 +100,13 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
     }, 3000);
 
     return () => clearTimeout(errorTimer);
-  }, [credentialsError]);
+  }, [credentialsError]); 
 
   return (
     <div className={styles.page}>
       <div className={styles["home-image"]}></div>
       <form className={styles.form}>
         <h1 className={styles.title}>Initiative</h1>
-        <br />
         <img src={chest} width="50" height="50" alt="chest"/>
         <h2 className={styles.subtitle}>Sign in</h2>
         <div className={styles.inputs}>

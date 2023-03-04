@@ -117,8 +117,7 @@ const SignupPage = ({ setHomepage }) => {
     <div className={styles.page}>
       <div className={styles["home-image"]}></div>
       <form className={styles.form}>
-        <h1>Initiative</h1>
-        <br />
+        <h1 className={styles.title}>Initiative</h1>
         <img src={chest} width="50" height="50" alt="Orcus the great" />
         <h2 className={styles.subtitle}>Sign up</h2>
         <div className={styles.inputs}>

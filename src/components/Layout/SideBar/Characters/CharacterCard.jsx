@@ -71,7 +71,6 @@ const CharacterCard = ({ character, user }) => {
         />
       )}
       <div className={styles.character}>
-        {/* <img src={props.img} width="25%" /> */}
         <div className={styles.info}>
           <h1 className={styles["char-name"]}>
             <a
@@ -98,15 +97,15 @@ const CharacterCard = ({ character, user }) => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <Button onClick={editFormHandler}>
-          <i className="fa-solid fa-pen-to-square"></i>
-        </Button>
-        <Button style="green" onClick={addCharacter}>
-          <i className="fa-solid fa-plus"></i>
-        </Button>
-        <Button style="red" onClick={confirmationModalHandler}>
-          <i className="fa-solid fa-trash-can"></i>
-        </Button>
+        {/* <Button onClick={editFormHandler}> */}
+          <i className="fa-solid fa-pen-to-square" onClick={editFormHandler}></i>
+        {/* </Button> */}
+        {/* <Button style="green" onClick={addCharacter}> */}
+          <i className="fa-solid fa-plus" onClick={addCharacter}></i>
+        {/* </Button>
+        <Button style="red" onClick={confirmationModalHandler}> */}
+          <i className="fa-solid fa-trash-can" onClick={confirmationModalHandler}></i>
+        {/* </Button> */}
       </div>
     </div>
   );

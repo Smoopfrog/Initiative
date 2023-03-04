@@ -21,7 +21,6 @@ button {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-  margin: 5px;
 }
 
 button:hover,
@@ -58,7 +57,7 @@ button:active {
 
 .tab:hover {
   background-color: #777;
-  color: white
+  color: white;
 }
 
 .tab:active {
@@ -82,13 +81,17 @@ button:active {
 
 .tab-active:hover {
   background-color: #777;
-  color: white
+  color: white;
 }
 
 .green {
   background-color: green;
+  padding: 1px;
 }
 
 .red {
   background-color: red;
+  width: 16px;
+  height: 16px;
+  padding: 1px;
 }

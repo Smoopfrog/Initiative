@@ -17,7 +17,7 @@ const ProfileTab = ({ setHomepage }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.header}>Sign in as: <strong>{user.username}</strong></h2>
+      <h2 className={styles.header}>Signed in as: <strong>{user.username}</strong></h2>
       <Button onClick={handleSignOut}>Sign Out</Button>
     </div>
   )

@@ -1,16 +1,17 @@
 .side-bar {
-  width: 40vw;
+  width: 30vw;
   height: 100vh;
   background-color: whitesmoke;
   border-left: 2px solid brown;
   border-bottom: 2px solid brown;
 }
 
-.header {
+.header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 50px;
   background-color: brown;
   color: white;
+  font-size: 36px;
 }

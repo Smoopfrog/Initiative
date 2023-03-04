@@ -24,8 +24,17 @@
   justify-content: center;
 }
 
-.char-name {
+.char-name:link,
+.char-name:visited {
   font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+  /* border-bottom: 2px solid red; */
+}
+
+.char-name:hover {
+  color: grey;
 }
 
 .char-info {
@@ -55,6 +64,14 @@
   color: green;
 }
 
+.add-button:hover {
+  color: lightgreen;
+}
+
 .delete-button {
   color: red;
+}
+
+.delete-button:hover {
+  color: lightcoral;
 }

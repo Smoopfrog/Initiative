@@ -72,15 +72,16 @@ const CharacterCard = ({ character, user }) => {
       )}
       <div className={styles.character}>
         <div className={styles.info}>
-          <h1 className={styles["char-name"]}>
+          {/* <h1 className={styles["char-name"]}> */}
             <a
               href={character.charsheet}
               target="_blank"
               rel="noreferrer noopener"
+              className={styles["char-name"]}
             >
               {character.name}
             </a>
-          </h1>
+          {/* </h1> */}
           <div className={styles["char-details"]}>
             <p className={styles["char-info"]}>
               Lv. {character.level} {character.race} {character.class}

@@ -43,10 +43,18 @@
   color: brown;
 }
 
-.fa-trash-can {
-  color: red  
+.edit-button {
+  color: blue;
 }
 
-.fa-plus{
-  color: red
+.edit-button:hover {
+  color: lightblue;
+}
+
+.add-button {
+  color: green;
+}
+
+.delete-button {
+  color: red;
 }

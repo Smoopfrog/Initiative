@@ -97,15 +97,21 @@ const CharacterCard = ({ character, user }) => {
         </div>
       </div>
       <div className={styles.buttons}>
-        {/* <Button onClick={editFormHandler}> */}
-          <i className="fa-solid fa-pen-to-square" onClick={editFormHandler}></i>
-        {/* </Button> */}
-        {/* <Button style="green" onClick={addCharacter}> */}
+        <div className={styles["edit-button"]}>
+          <i
+            className="fa-solid fa-pen-to-square"
+            onClick={editFormHandler}
+          ></i>
+        </div>
+        <div className={styles["add-button"]}>
           <i className="fa-solid fa-plus" onClick={addCharacter}></i>
-        {/* </Button>
-        <Button style="red" onClick={confirmationModalHandler}> */}
-          <i className="fa-solid fa-trash-can" onClick={confirmationModalHandler}></i>
-        {/* </Button> */}
+        </div>
+        <div className={styles["delete-button"]}>
+          <i
+            className="fa-solid fa-trash-can"
+            onClick={confirmationModalHandler}
+          ></i>
+        </div>
       </div>
     </div>
   );

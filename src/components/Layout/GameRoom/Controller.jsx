@@ -4,8 +4,8 @@ import styles from "./Controller.module.css";
 const Controller = (props) => {
   return (
     <div className={styles.container}>
-      {props.playerTurn()}
-      <div>
+      <div className={styles["player-turn"]}>{props.playerTurn()}</div>
+      <div className={styles["controller-buttons"]}>
         <Button onClick={props.prevChar}>
           <i className="fa-solid fa-arrow-left"></i>
         </Button>

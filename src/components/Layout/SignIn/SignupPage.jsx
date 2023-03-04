@@ -164,9 +164,11 @@ const SignupPage = ({ setHomepage }) => {
           )}
         </div>
         <Button onClick={onSignUp}>Sign Up</Button>
-        <Button style="options-button" onClick={() => setHomepage("signin")}>
-          Already have an account? Sign In
-        </Button>
+        <div className={styles["signup-options"]}>
+          <Button style="options-button" onClick={() => setHomepage("signin")}>
+            Already have an account? Sign In
+          </Button>
+        </div>
       </form>
     </div>
   );

@@ -10,3 +10,12 @@
   margin-bottom: 30px;
   border: 2px black solid;
 }
+
+.player-turn{
+  margin-bottom: 10px;
+}
+
+.controller-buttons {
+  display: flex;
+  gap: 10px;
+}

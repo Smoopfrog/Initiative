@@ -19,7 +19,6 @@
 .subtitle {
   margin-bottom: 24px;
   font-size: 30px;
-
 }
 
 .inputs {
@@ -33,6 +32,13 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
+}
+
+.signup-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .home-image {

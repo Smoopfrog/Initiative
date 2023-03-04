@@ -6,22 +6,24 @@ module.exports = (db) => {
   router.get("/users", async (req, res) => {
     const username = req.query.username;
     const password = req.query.password;
+    let user;
 
     await db
       .query(`SELECT * FROM users WHERE username = $1`, [username])
       .then((data) => {
-        const user = data.rows[0];
-        const bcrypted = bcrypt.compare(password, user.password);
-
-        if (bcrypted) {
-          res.send(user);
-        } else {
-          res.send([])
-        }
+        user = data.rows[0];
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
+
+    const isValid = await bcrypt.compare(password, user.password);
+
+    if (!isValid) {
+      return res.send(false);
+    } else {
+      return res.send(user);
+    }
   });
 
   router.get("/loggedIn", (req, res) => {

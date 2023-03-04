@@ -73,7 +73,6 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
     axios
       .get("/users", { params })
       .then((res) => {
-        console.log(res.data)
         if (res.data) {
           localStorage.setItem("isLoggedIn", username);
           dispatch(logIn(res.data));

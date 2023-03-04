@@ -11,19 +11,6 @@ const MonsterCard = ({ monster }) => {
   const dispatch = useDispatch();
   const gameRoomCharacters = useSelector(selectGameRoomCharacters);
 
-  const capitalize = (str) => {
-    if (str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-    return "";
-  };
-
-  let subtype = monster.subtype;
-
-  if (subtype) {
-    subtype = `(${capitalize(subtype)})`;
-  }
-
   const rollTwentyLink = `https://roll20.net/compendium/dnd5e/${monster.name}`;
 
   const character = {
@@ -33,8 +20,8 @@ const MonsterCard = ({ monster }) => {
     charSheet: rollTwentyLink,
     hp: monster.hit_points,
     initiative: 0,
-    race: capitalize(monster.type),
-    class: subtype,
+    race: monster.type,
+    class: monster.subtype,
     selected: false,
   };
 
@@ -46,14 +33,18 @@ const MonsterCard = ({ monster }) => {
     <div className={styles.card}>
       <div className={styles.character}>
         <div className={styles.info}>
-          <h1>{monster.name}</h1>
-          <h3>
-            Lv.{monster.level} {monster.race} {monster.class}
-            {monster.size} {capitalize(monster.type)}
-            {monster.subtype && ` (${capitalize(monster.subtype)})`}{" "}
-            {`${capitalize(monster.alignment)}`}{" "}
-          </h3>
-          <div className={styles["stat-block"]}>
+          <h1 className={styles["char-name"]}>
+            <a href={rollTwentyLink} target="_blank" rel="noreferrer noopener">
+              {monster.name}
+            </a>
+          </h1>
+          <div className={styles["char-details"]}>
+            <p className={styles["char-info"]}>
+              Lv.{monster.level} {monster.race} {monster.class}
+              {monster.size} {monster.type}
+              {monster.subtype && ` (${monster.subtype})`}
+            </p>
+            <p className={styles["char-info"]}>{monster.alignment}</p>
             <p>
               <span className={styles["stat-title"]}>Hit Points </span>
               {monster.hit_points}
@@ -63,11 +54,6 @@ const MonsterCard = ({ monster }) => {
               {monster["armor_class"]["0"].value}
             </p>
           </div>
-          <h3>
-            <a href={rollTwentyLink} target="_blank" rel="noreferrer noopener">
-              Roll20
-            </a>
-          </h3>
         </div>
       </div>
       <div className={styles.buttons}>

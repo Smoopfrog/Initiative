@@ -24,17 +24,18 @@
   justify-content: center;
 }
 
-h1, h3 {
-  margin: 0;
+.char-name {
+  font-size: 24px;
 }
 
-.char-name{
-  /* font-family: serif; */
+.char-info {
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
 }
 
-.stat-block p {
-  text-align: left;
-  margin: 0;
+.char-details {
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .stat-title {

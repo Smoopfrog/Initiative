@@ -73,11 +73,19 @@ const CharacterCard = ({ character, user }) => {
       <div className={styles.character}>
         {/* <img src={props.img} width="25%" /> */}
         <div className={styles.info}>
-          <h1 className={styles["char-name"]}>{character.name}</h1>
-          <h3>
-            Lv.{character.level} {character.race} {character.class}
-          </h3>
-          <div className={styles["stat-block"]}>
+          <h1 className={styles["char-name"]}>
+            <a
+              href={character.charsheet}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {character.name}
+            </a>
+          </h1>
+          <div className={styles["char-details"]}>
+            <p className={styles["char-info"]}>
+              Lv. {character.level} {character.race} {character.class}
+            </p>
             <p>
               <span className={styles["stat-title"]}>Hit Points</span>{" "}
               {character.hp}
@@ -87,17 +95,6 @@ const CharacterCard = ({ character, user }) => {
               {character.ac}
             </p>
           </div>
-          {character.charsheet && (
-            <h3>
-              <a
-                href={character.charsheet}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Character Sheet
-              </a>
-            </h3>
-          )}
         </div>
       </div>
       <div className={styles.buttons}>

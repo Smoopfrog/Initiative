@@ -21,10 +21,17 @@ button {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
+  transition: all 0.3s ease 0s;
 }
 
-button:hover,
+button:hover {
+  box-shadow: 0 5px 3px 0 rgb(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
 button:active {
+  box-shadow: none;
+  transform: none;
   background-color: white;
   color: #1976d2;
 }
@@ -35,10 +42,14 @@ button:active {
   box-shadow: none;
 }
 
-.options-button:hover,
-.options-button:active {
+.options-button:hover {
   background-color: #1976d2;
   color: white;
+}
+
+.options-button:active {
+  background-color: #f5f5f5;
+  color: #1976d2;
 }
 
 .tab {
@@ -61,7 +72,7 @@ button:active {
 }
 
 .tab:active {
-  background-color: brown;
+  background-color: rgba(165, 42, 42, 0.678);
   color: white;
 }
 

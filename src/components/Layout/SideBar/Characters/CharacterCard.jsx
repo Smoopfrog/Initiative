@@ -6,7 +6,6 @@ import { selectGameRoomCharacters } from "../../../../slices/gameRoomSlice";
 import axios from "axios";
 import CharacterForm from "./CharacterForm";
 import ConfirmationModal from "../../../UI/ConfirmationModal";
-import Button from "../../../UI/Button";
 import styles from "./CharacterCard.module.css";
 
 const CharacterCard = ({ character, user }) => {

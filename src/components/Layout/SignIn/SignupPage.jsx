@@ -84,9 +84,7 @@ const SignupPage = ({ setHomepage }) => {
     axios
       .post("/users", userData)
       .then((response) => {
-        if (response.data.length) {
-          setUsernameError(true);
-        } else {
+        if (response.data) {
           dispatch(
             logIn({
               ...response.data,
@@ -94,6 +92,8 @@ const SignupPage = ({ setHomepage }) => {
             })
           );
           setHomepage("signedIn");
+        } else {
+          setUsernameError(true);
         }
       })
       .catch((error) => {

@@ -17,7 +17,14 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
 
-    const isValid = await bcrypt.compare(password, user.password);
+    let isValid;
+
+    if (!user) {
+      res.send(false);
+      return;
+    } else {
+      isValid = await bcrypt.compare(password, user.password);
+    }
 
     if (!isValid) {
       return res.send(false);
@@ -46,23 +53,37 @@ module.exports = (db) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
-    db.query(`SELECT * FROM users WHERE username = $1`, [username])
-      .then((data) => {
-        const users = data.rows;
+    let userExists;
 
-        if (users.length) {
-          res.send(users);
+    await db
+      .query(`SELECT * FROM users WHERE username = $1`, [username])
+      .then((data) => {
+        const user = data.rows;
+        if (user.length) {
+          res.send(false);
+          userExists = true;
         } else {
           db.query(`INSERT INTO users (username, password) VALUES ($1, $2)`, [
             username,
             hash,
           ]);
-          res.send({ username, password });
         }
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
+
+
+    if (!userExists) {
+      db.query(`SELECT * FROM users WHERE username = $1`, [username])
+        .then((data) => {
+          const users = data.rows[0];
+          res.send(users);
+        })
+        .catch((err) => {
+          res.status(500).json({ error: err.message });
+        });
+    }
   });
 
   return router;

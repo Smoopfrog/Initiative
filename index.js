@@ -20,9 +20,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "build")));
 }
 
-console.log(__dirname);
-console.log(path.join(__dirname, "build"));
-
 db.connect();
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,6 +31,6 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-// server.listen(3001, () => {
-//   console.log("SERVER RUNNING");
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build/index.html"));
+});

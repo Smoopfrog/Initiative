@@ -1,4 +1,10 @@
-CREATE DATABASE initiative
+-- CREATE DATABASE initiative
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  username VARCHAR(55) NOT NULL,
+  password VARCHAR(60) NOT NULL
+);
 
 CREATE TABLE characters (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -10,10 +16,4 @@ CREATE TABLE characters (
   hp INT NOT NULL,
   ac INT NOT NULL,
   charsheet VARCHAR(500)
-);
-
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY NOT NULL,
-  username VARCHAR(55) NOT NULL,
-  password VARCHAR(60) NOT NULL
 );

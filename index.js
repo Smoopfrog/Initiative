@@ -1,13 +1,14 @@
 const cors = require("cors");
 const express = require("express");
 const app = express();
-const http = require("http");
 const db = require("./db.js");
+const path = require("path");
+const port = process.env.PORT || 7001;
 const usersRoutes = require("./routers/usersRouter.js");
 const characterRoutes = require("./routers/charactersRouter.js");
-const path = require("path");
-const port = 7001;
-const server = http.createServer(app);
+
+// const http = require("http");
+// const server = http.createServer(app);
 
 // middleware
 app.use(cors());
@@ -18,7 +19,9 @@ if (process.env.NODE_ENV === "production") {
   //npm run build
   app.use(express.static(path.join(__dirname, "client/build")));
 }
-console.log(__dirname)
+
+console.log(__dirname);
+console.log(path.join(__dirname, "client/build"));
 
 db.connect();
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +34,6 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-server.listen(3001, () => {
-  console.log("SERVER RUNNING");
-});
+// server.listen(3001, () => {
+//   console.log("SERVER RUNNING");
+// });

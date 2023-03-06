@@ -1,3 +1,5 @@
+CREATE DATABASE initiative
+
 CREATE TABLE characters (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id),
@@ -8,4 +10,10 @@ CREATE TABLE characters (
   hp INT NOT NULL,
   ac INT NOT NULL,
   charsheet VARCHAR(500)
+);
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  username VARCHAR(55) NOT NULL,
+  password VARCHAR(60) NOT NULL
 );

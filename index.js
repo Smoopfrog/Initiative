@@ -17,11 +17,11 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   //server static content
   //npm run build
-  app.use(express.static(path.join(__dirname, "client/build")));
+  app.use(express.static(path.join(__dirname, "build")));
 }
 
 console.log(__dirname);
-console.log(path.join(__dirname, "client/build"));
+console.log(path.join(__dirname, "build"));
 
 db.connect();
 app.use(express.urlencoded({ extended: true }));

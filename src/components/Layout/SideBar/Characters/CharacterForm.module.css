@@ -25,13 +25,14 @@
   padding: 10px 0px 2px;
   text-transform: uppercase;
 }
-
+ 
 .title {
   display: flex;
   justify-content: center;
 }
 
 .buttonGroup {
+  width: 250px;
   margin-top: 10px;
   display: flex;
   justify-content: space-evenly;

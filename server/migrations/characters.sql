@@ -6,5 +6,6 @@ CREATE TABLE characters (
   race VARCHAR(55) NOT NULL,
   class VARCHAR(55) NOT NULL,
   hp INT NOT NULL,
-  ac INT NOT NULL
+  ac INT NOT NULL,
+  charsheet VARCHAR(500)
 );

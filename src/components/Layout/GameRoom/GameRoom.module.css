@@ -8,6 +8,14 @@
   width:max-content
 }
 
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  height: 30px;
+}
 
 .subtitle {
   display: flex;

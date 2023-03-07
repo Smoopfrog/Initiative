@@ -13,9 +13,9 @@ const GameRoom = () => {
   const sortByInitiative = (characters) => {
     const copiedCharcters = [...gameCharacters];
 
-    const sortedCharacters = copiedCharcters.slice().sort(
-      (a, b) => b.initiative - a.initiative
-    );
+    const sortedCharacters = copiedCharcters
+      .slice()
+      .sort((a, b) => b.initiative - a.initiative);
     dispatch(setGameRoomCharacters(sortedCharacters));
   };
 
@@ -150,7 +150,13 @@ const GameRoom = () => {
           </div>
           <div className={styles["buttons-space"]}></div>
         </li>
-        {inGameChars}
+        {gameCharacters.length !== 0 ? (
+          inGameChars
+        ) : (
+          <li className={styles.empty}>
+            Please add characters from the sidebar
+          </li>
+        )}
       </ul>
     </div>
   );

@@ -122,7 +122,12 @@ const CharacterBar = ({ character, removeChar }) => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <a href={character.charSheet} target="_blank" rel="noreferrer noopener">
+        <a
+          className={styles["eye-icon"]}
+          href={character.charSheet}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <i className="fa-solid fa-eye"></i>{" "}
         </a>
         <div className={styles["delete-icon"]}>

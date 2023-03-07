@@ -72,14 +72,14 @@ const CharacterCard = ({ character, user }) => {
       <div className={styles.character}>
         <div className={styles.info}>
           {/* <h1 className={styles["char-name"]}> */}
-            <a
-              href={character.charsheet}
-              target="_blank"
-              rel="noreferrer noopener"
-              className={styles["char-name"]}
-            >
-              {character.name}
-            </a>
+          <a
+            href={character.charsheet}
+            target="_blank"
+            rel="noreferrer noopener"
+            className={styles["char-name"]}
+          >
+            {character.name}
+          </a>
           {/* </h1> */}
           <div className={styles["char-details"]}>
             <p className={styles["char-info"]}>
@@ -97,20 +97,17 @@ const CharacterCard = ({ character, user }) => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <div className={styles["edit-button"]}>
-          <i
-            className="fa-solid fa-pen-to-square"
-            onClick={editFormHandler}
-          ></i>
+        <div className={styles["edit-button"]} onClick={editFormHandler}>
+          <i className="fa-solid fa-pen-to-square"></i>
         </div>
-        <div className={styles["add-button"]}>
-          <i className="fa-solid fa-plus" onClick={addCharacter}></i>
+        <div className={styles["add-button"]} onClick={addCharacter}>
+          <i className="fa-solid fa-plus"></i>
         </div>
-        <div className={styles["delete-button"]}>
-          <i
-            className="fa-solid fa-trash-can"
-            onClick={confirmationModalHandler}
-          ></i>
+        <div
+          className={styles["delete-button"]}
+          onClick={confirmationModalHandler}
+        >
+          <i className="fa-solid fa-trash-can"></i>
         </div>
       </div>
     </div>

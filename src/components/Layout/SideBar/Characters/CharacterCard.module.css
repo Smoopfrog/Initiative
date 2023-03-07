@@ -54,24 +54,51 @@
 
 .edit-button {
   color: blue;
+  transition: all 0.3s ease 0s;
 }
 
 .edit-button:hover {
   color: lightblue;
+  box-shadow: 0 5px 3px 0 rgb(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.edit-button:active {
+  box-shadow: none;
+  transform: none;
+  color: grey;
 }
 
 .add-button {
   color: green;
+  transition: all 0.3s ease 0s;
 }
 
 .add-button:hover {
   color: lightgreen;
+  box-shadow: 0 5px 3px 0 rgb(0, 0, 0, 0.3);
+  transform: translateY(-5px);
 }
 
-.delete-button {
+.add-button:active {
+  box-shadow: none;
+  transform: none;
+  color: grey;
+}
+
+.delete-button i {
   color: red;
+  transition: all 0.3s ease 0s;
 }
 
-.delete-button:hover {
+.delete-button:hover i {
   color: lightcoral;
+  box-shadow: 0 5px 3px 0 rgb(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.delete-button:active i {
+  box-shadow: none;
+  transform: none;
+  color: grey;
 }

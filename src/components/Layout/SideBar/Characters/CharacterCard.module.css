@@ -30,7 +30,7 @@
   font-weight: 600;
   text-decoration: none;
   color: black;
-  /* border-bottom: 2px solid red; */
+  margin-right: 15px
 }
 
 .char-name:hover {

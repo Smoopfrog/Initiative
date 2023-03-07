@@ -12,7 +12,7 @@ const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD
 //   port: process.env.PG_PORT,
 // };
 
-const proConfig = process.env.HEROKU_POSTGRESQL_OLIVE_URL; //heroku addon
+const proConfig = process.env.DATABASE_URL; //heroku addon
 
 const pool = new Pool({
   connectionString:

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import styles from './MonsterManualTab.module.css'
+import styles from "./MonsterManualTab.module.css";
 import MonsterCard from "./MonsterCard";
 import Button from "../../../UI/Button";
 import Input from "../../../UI/Input";
 
 const MonsterManualTab = () => {
   const [searchText, setSearchText] = useState("");
-  const [searchResults, setSearchResults] = useState();
+  const [searchResults, setSearchResults] = useState(false);
 
   const handleSearchTextChange = (event) => {
     setSearchText(event.target.value);
@@ -20,7 +20,7 @@ const MonsterManualTab = () => {
     const data = await response.json();
 
     if (!data.name) {
-      setSearchResults("notFound");
+      setSearchResults(false);
     } else {
       setSearchResults(data);
     }
@@ -29,20 +29,33 @@ const MonsterManualTab = () => {
   return (
     <div className={styles.container}>
       <div className={styles["search-bar"]}>
-        <Input
-          value={searchText}
-          handleOnChange={handleSearchTextChange}
-          label="Search"
-        />
-        <Button onClick={searchMonsterManual}>Search</Button>
+        <div>
+          <Input
+            value={searchText}
+            handleOnChange={handleSearchTextChange}
+            label="Search"
+          />
+        </div>
+        <div>
+          <Button onClick={searchMonsterManual}>Search</Button>
+        </div>
       </div>
       {searchResults !== "notFound" && searchResults && (
-        <MonsterCard
-          monster={searchResults}
-        />
+        <MonsterCard monster={searchResults} />
       )}
 
-      {searchResults === "notFound" && <h2>Monster not found</h2>}
+      {/* {!searchResults && ( */}
+      <div className={styles.warning}>
+        Search for any monster in the &nbsp;
+        <a
+          href="https://5thsrd.org/gamemaster_rules/monster_indexes/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Official 5th Edition SRD.
+        </a>
+      </div>
+      {/* )} */}
     </div>
   );
 };

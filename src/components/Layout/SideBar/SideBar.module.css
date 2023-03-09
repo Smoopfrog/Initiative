@@ -2,8 +2,8 @@
   width: 30vw;
   height: 100vh;
   background-color: whitesmoke;
-  border-left: 2px solid brown;
-  border-bottom: 2px solid brown;
+  border-left: 2px solid #0b7285;
+  border-bottom: 2px solid #0b7285;
 }
 
 .header h1 {
@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   height: 50px;
-  background-color: brown;
+  background-color: #0b7285;
   color: white;
   font-size: 36px;
 }

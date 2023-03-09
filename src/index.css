@@ -17,7 +17,7 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./images/background.png");
+  background: no-repeat center/cover url("./images/beholder-background.jpg");
 }
 
 code {

@@ -103,7 +103,7 @@ const GameRoom = () => {
         </div>
       );
     }
-    return <h1>Prepare for battle!</h1>;
+    return <h1 className={styles["prepare-text"]}>Prepare for battle!</h1>;
   };
 
   const removeChar = (id) => {

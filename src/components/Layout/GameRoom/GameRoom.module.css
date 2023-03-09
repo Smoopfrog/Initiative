@@ -5,7 +5,7 @@
   align-items: center;
   flex-direction: column;
   margin-top: 20vh;
-  width:max-content
+  width: max-content;
 }
 
 .empty {
@@ -22,6 +22,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 80px;
+}
+
+.prepare-text {
+  text-align: center;
+  height: 80px;
 }
 
 .initiative-tracker {
@@ -79,7 +85,7 @@ li:nth-child(2n) {
 
 .shield {
   flex: 1;
-  margin-left: 15px
+  margin-left: 15px;
 }
 
 .buttons-space {

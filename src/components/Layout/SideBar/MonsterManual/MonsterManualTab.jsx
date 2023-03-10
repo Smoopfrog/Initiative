@@ -1,4 +1,10 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectMonsterManual,
+  setMonster,
+  setMonsterNull,
+} from "../../../../slices/monsterManualSlice";
 import styles from "./MonsterManualTab.module.css";
 import MonsterCard from "./MonsterCard";
 import Button from "../../../UI/Button";
@@ -6,8 +12,9 @@ import Input from "../../../UI/Input";
 
 const MonsterManualTab = () => {
   const [searchText, setSearchText] = useState("");
-  const [searchResults, setSearchResults] = useState(false);
   const [searchError, setSearchError] = useState(false);
+  const dispatch = useDispatch();
+  const monster = useSelector(selectMonsterManual);
 
   const handleSearchTextChange = (event) => {
     setSearchText(event.target.value);
@@ -22,9 +29,10 @@ const MonsterManualTab = () => {
 
     if (!data.name) {
       setSearchError(true);
-      setSearchResults(false);
+      dispatch(setMonster());
     } else {
-      setSearchResults(data);
+      console.log(data);
+      dispatch(setMonster(data));
     }
   };
 
@@ -63,11 +71,16 @@ const MonsterManualTab = () => {
           <Button onClick={searchMonsterManual}>Search</Button>
         </div>
       </div>
-      {searchResults && <MonsterCard monster={searchResults} />}
+      {monster && <MonsterCard monster={monster} />}
       <div className={styles.warning}>
-        {searchError && (
+        {searchError && searchText && (
           <div className={styles["not-found"]}>
             "{searchText}" not found. Please Try again.
+          </div>
+        )}
+        {searchError && !searchText && (
+          <div className={styles["not-found"]}>
+            Search for a monster by name above.
           </div>
         )}
         Search for any monster in the &nbsp;

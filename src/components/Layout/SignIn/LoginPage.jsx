@@ -21,7 +21,12 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
         .get("/loggedIn", { params })
         .then(function (response) {
           if (response.data.length) {
-            dispatch(logIn(response.data[0]));
+            dispatch(
+              logIn({
+                id: response.data[0].id,
+                username: response.data[0].username,
+              })
+            );
             getUserCharacters(response.data[0].id);
             setHomepage("signedIn");
             return;
@@ -75,7 +80,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
       .then((res) => {
         if (res.data) {
           localStorage.setItem("isLoggedIn", username);
-          dispatch(logIn(res.data));
+          dispatch(logIn({ id: res.data.id, username: res.data.username }));
           getUserCharacters(res.data.id);
           setHomepage("signedIn");
           return;
@@ -99,14 +104,20 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
     }, 3000);
 
     return () => clearTimeout(errorTimer);
-  }, [credentialsError]); 
+  }, [credentialsError]);
 
   return (
     <div className={styles.page}>
       <div className={styles["home-image"]}></div>
       <form className={styles.form}>
         <h1 className={styles.title}>Initiative</h1>
-        <img className={styles.chest} src={chest} width="50" height="50" alt="chest"/>
+        <img
+          className={styles.chest}
+          src={chest}
+          width="50"
+          height="50"
+          alt="chest"
+        />
         <h2 className={styles.subtitle}>Sign in</h2>
         <div className={styles.inputs}>
           <Input

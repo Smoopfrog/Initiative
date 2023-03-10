@@ -8,6 +8,7 @@ const Input = (props) => {
         type={props.type}
         value={props.value}
         onChange={props.handleOnChange}
+        onKeyDown={props.onKeyDown}
         required
         id={props.label}
         name={props.label}
@@ -21,7 +22,7 @@ const Input = (props) => {
         <div className={styles["text"]}>{props.label}</div>
       </label>
     </div>
-  );
+  ); 
 };
 
 export default Input;

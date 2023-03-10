@@ -26,6 +26,12 @@ const MonsterManualTab = () => {
     }
   };
 
+  const onEnterHandler = (event) => {
+    if (event.key === 'Enter') {
+      searchMonsterManual()
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles["search-bar"]}>
@@ -33,6 +39,7 @@ const MonsterManualTab = () => {
           <Input
             value={searchText}
             handleOnChange={handleSearchTextChange}
+            onKeyDown={onEnterHandler}
             label="Search"
           />
         </div>

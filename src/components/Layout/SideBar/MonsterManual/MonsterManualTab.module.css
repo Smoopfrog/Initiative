@@ -24,3 +24,8 @@
   border: 1px solid rgb(139, 139, 139);
   box-shadow: 0px 5px 3px rgb(124, 124, 124);
 }
+
+.not-found {
+  color: red;
+  text-align: center;
+}

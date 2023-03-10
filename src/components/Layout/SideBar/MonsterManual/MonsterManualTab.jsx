@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./MonsterManualTab.module.css";
 import MonsterCard from "./MonsterCard";
 import Button from "../../../UI/Button";
@@ -7,6 +7,7 @@ import Input from "../../../UI/Input";
 const MonsterManualTab = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState(false);
+  const [searchError, setSearchError] = useState(false);
 
   const handleSearchTextChange = (event) => {
     setSearchText(event.target.value);
@@ -20,6 +21,7 @@ const MonsterManualTab = () => {
     const data = await response.json();
 
     if (!data.name) {
+      setSearchError(true);
       setSearchResults(false);
     } else {
       setSearchResults(data);
@@ -27,10 +29,24 @@ const MonsterManualTab = () => {
   };
 
   const onEnterHandler = (event) => {
-    if (event.key === 'Enter') {
-      searchMonsterManual()
+    if (event.key === "Enter") {
+      searchMonsterManual();
     }
   };
+
+  useEffect(() => {
+    if (!searchError) {
+      return;
+    }
+
+    setSearchError(true);
+
+    const errorTimer = setTimeout(() => {
+      setSearchError(false);
+    }, 3000);
+
+    return () => clearTimeout(errorTimer);
+  }, [searchError]);
 
   return (
     <div className={styles.container}>
@@ -47,12 +63,13 @@ const MonsterManualTab = () => {
           <Button onClick={searchMonsterManual}>Search</Button>
         </div>
       </div>
-      {searchResults !== "notFound" && searchResults && (
-        <MonsterCard monster={searchResults} />
-      )}
-
-      {/* {!searchResults && ( */}
+      {searchResults && <MonsterCard monster={searchResults} />}
       <div className={styles.warning}>
+        {searchError && (
+          <div className={styles["not-found"]}>
+            "{searchText}" not found. Please Try again.
+          </div>
+        )}
         Search for any monster in the &nbsp;
         <a
           href="https://5thsrd.org/gamemaster_rules/monster_indexes/"

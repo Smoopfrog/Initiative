@@ -28,6 +28,8 @@
 .prepare-text {
   text-align: center;
   height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 .initiative-tracker {

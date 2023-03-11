@@ -37,6 +37,9 @@
   padding-inline-start: 0;
   border: 2px solid black;
   width: 90%;
+  height: 50vh;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 li:nth-child(2n) {

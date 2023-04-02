@@ -32,6 +32,7 @@
   align-items: center;
 }
 
+
 .initiative-tracker {
   list-style-type: none;
   padding-inline-start: 0;
@@ -40,6 +41,13 @@
   margin-bottom: 50px;
   overflow: auto;
   overflow-y: scroll;
+}
+
+.initiative-header {
+  list-style-type: none;
+  padding-inline-start: 0;
+  border: 2px solid black;
+  width: 90%;
 }
 
 .initiative-tracker::-webkit-scrollbar-track {

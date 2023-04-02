@@ -131,7 +131,7 @@ const GameRoom = () => {
         sortButtonHandler={sortButtonHandler}
         nextChar={nextChar}
       />
-      <ul className={styles["initiative-tracker"]}>
+      <div className={styles["initiative-header"]}>
         <li className={styles["li-titles"]}>
           <div className={styles["selected-space"]}></div>
           <div className={styles["intiative-name"]}>
@@ -150,6 +150,8 @@ const GameRoom = () => {
           </div>
           <div className={styles["buttons-space"]}></div>
         </li>
+      </div>
+      <ul className={styles["initiative-tracker"]}>
         {gameCharacters.length !== 0 ? (
           inGameChars
         ) : (

@@ -48,18 +48,19 @@ i:hover {
   cursor: pointer;
 }
 
-.input {
+.input, .initiative-input {
   background-color: transparent;
   width: 30px;
   border: none;
   padding: 0;
   font-size: 16px;
   text-align: right;
+  align-self: flex-end;
 }
 
 .name-input {
   background-color: transparent;
-  width: auto;
+  width: max-content;
   /* height: 30px; */
   border: none;
   padding: 0;
@@ -85,7 +86,6 @@ i:hover {
   color: grey;
 }
 
-
 .delete-icon {
   padding: 0 5px;
   color: red;
@@ -98,4 +98,29 @@ i:hover {
 
 .delete-icon:active {
   color: grey;
+}
+
+@media (max-width: 480px) {
+  .character {
+    width: 10px;
+  }
+  
+  .selected {
+    width: 5px;
+  }
+  .stats{
+    flex: none;
+  }
+
+  .hp {
+    flex: none;
+  }
+  .initiative-input {
+    text-align: center;
+    width: 20px;
+  }
+  
+  .name-input {
+    width: 48vw;
+  }
 }

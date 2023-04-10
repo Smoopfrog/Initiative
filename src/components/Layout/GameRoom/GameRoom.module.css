@@ -127,4 +127,15 @@ li:nth-child(2n) {
   .page {
     margin-top: 10vh;
   }
+
+  .initiative-tracker, .initiative-header {
+    width: 100%;
+  }
+
+  .li-titles {
+    width: 100%;
+  }
+  .intiative-name {
+    width: max-content;
+  }
 }

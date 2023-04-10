@@ -83,7 +83,7 @@ const CharacterBar = ({ character, removeChar }) => {
       </div>
       <div className={styles.character}>
         <input
-          className={styles.input}
+          className={styles['initiative-input']}
           value={initiative}
           onChange={changeInitiative}
           type="number"

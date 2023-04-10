@@ -2,16 +2,42 @@
   width: 30vw;
   height: 100vh;
   background-color: whitesmoke;
-  box-shadow: 5px 0 8px 6px #0b7285;
+  /* box-shadow: 5px 0 8px 6px #0b7285; */
   border-bottom: 2px solid #0b7285;
 }
 
-.header h1 {
+.header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 50px;
   background-color: #0b7285;
   color: white;
   font-size: 36px;
+  font-weight: 600;
+}
+
+.btn-container {
+  flex: 1;
+}
+
+.title {
+  flex: 5;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .side-bar {
+    position: absolute;
+    width: 100%;
+    height: auto;
+  }
+
+  .header {
+    height: 7vh;
+  }
+
+  .tab-container {
+    height: 93vh;
+  }
 }

@@ -60,5 +60,16 @@
 @media (max-width: 480px) {
   .form {
     width: 80vw;
+    overflow: hidden;
+    overflow-y: scroll;
+    gap: 5px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+  
+  .inputs {
+    gap: 5px
   }
 }

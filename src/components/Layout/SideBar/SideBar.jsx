@@ -1,6 +1,6 @@
 import Tabs from "./Tabs";
 import styles from "./SideBar.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CharacterTab from "./Characters/CharacterTab";
 import ProfileTab from "./Profile/ProfileTab";
 import MonsterManualTab from "./MonsterManual/MonsterManualTab";
@@ -9,6 +9,12 @@ import Button from "../../UI/Button";
 const SideBar = ({ setHomepage }) => {
   const [currentTab, setCurrentTab] = useState("characters");
   const [showSideBar, setShowSideBar] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth > 480) {
+      setShowSideBar(true);
+    }
+  }, []);
 
   const tabHandler = (tabName) => {
     setCurrentTab(tabName);

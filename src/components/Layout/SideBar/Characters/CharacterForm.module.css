@@ -1,7 +1,7 @@
 .form {
   position: fixed;
   z-index: 100;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,10 +25,11 @@
   padding: 10px 0px 2px;
   text-transform: uppercase;
 }
- 
+
 .title {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .buttonGroup {
@@ -54,4 +55,10 @@
 
 .error-message {
   text-transform: capitalize;
+}
+
+@media (max-width: 480px) {
+  .form {
+    width: 80vw;
+  }
 }

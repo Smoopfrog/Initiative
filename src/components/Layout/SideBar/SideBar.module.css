@@ -2,7 +2,6 @@
   width: 30vw;
   height: 100vh;
   background-color: whitesmoke;
-  /* box-shadow: 5px 0 8px 6px #0b7285; */
   border-bottom: 2px solid #0b7285;
 }
 
@@ -31,10 +30,11 @@
     position: absolute;
     width: 100%;
     height: auto;
+    border-bottom: none;
   }
 
   .header {
-    height: 7vh;
+    height: 6.6vh;
   }
 
   .tab-container {

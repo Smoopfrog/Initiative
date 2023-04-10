@@ -102,3 +102,27 @@ button:active {
 .red {
   background-color: red;
 }
+
+@media (max-width: 480px) {
+  .login-button {
+    background-color: #fcc419;
+  }
+
+  .login-button:active {
+    color: #fcc419;
+  }
+
+  .options-button {
+    background-color: transparent;
+    color: #fcc419;
+  }
+
+  .options-button:hover {
+    background-color: #fcc419;
+  }
+
+  .options-button:active {
+    background-color: transparent;
+    color: #fcc419;
+  }
+}

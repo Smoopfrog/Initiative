@@ -83,20 +83,15 @@
   .form {
     width: 100%;
     height:100%;
-    padding: 0;
   }
+  
   .options {
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
     width: 50%;
   }
 
   .title, .subtitle {
     color: #fcc419
-  }
-
-  .subtitle {
-    margin-bottom: 100px;
   }
 }

@@ -67,7 +67,7 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
       });
   };
 
-  const login = async (e) => {
+  const login = (e) => {
     e.preventDefault();
 
     const params = {

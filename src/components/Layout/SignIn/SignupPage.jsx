@@ -14,7 +14,7 @@ const SignupPage = ({ setHomepage }) => {
   const [usernameError, setUsernameError] = useState(false);
   const [passwordMatchError, setPasswordMatchError] = useState(false);
   const [passwordLengthError, setPasswordLengthError] = useState(false);
-
+  const [emptyInputError, setEmptyInputError] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,6 +30,20 @@ const SignupPage = ({ setHomepage }) => {
 
     return () => clearTimeout(errorTimer);
   }, [usernameError]);
+
+  useEffect(() => {
+    if (!emptyInputError) {
+      return;
+    }
+
+    setEmptyInputError(true);
+
+    const errorTimer = setTimeout(() => {
+      setEmptyInputError(false);
+    }, 3000);
+
+    return () => clearTimeout(errorTimer);
+  }, [emptyInputError]);
 
   useEffect(() => {
     if (!passwordMatchError) {
@@ -66,6 +80,11 @@ const SignupPage = ({ setHomepage }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
 
+    if (!password) {
+      setEmptyInputError(true);
+      return;
+    }
+    
     if (password !== confirmPassword) {
       setPasswordMatchError(true);
       return;
@@ -146,12 +165,21 @@ const SignupPage = ({ setHomepage }) => {
             label="Confirm Password"
             type="password"
           />
+        </div>
           {passwordMatchError && (
             <div className={styles.error}>
               <span className={styles["error-icon"]}>
                 <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
               </span>
-              <span>Passwords do not match!</span>
+              <span>Passwords do not match</span>
+            </div>
+          )}
+          {emptyInputError && (
+            <div className={styles.error}>
+              <span className={styles["error-icon"]}>
+                <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
+              </span>
+              <span>Fill in all the fields</span>
             </div>
           )}
           {passwordLengthError && (
@@ -159,11 +187,12 @@ const SignupPage = ({ setHomepage }) => {
               <span className={styles["error-icon"]}>
                 <i className="fa-sharp fa-solid fa-circle-exclamation"></i>
               </span>
-              <span>Password not long enough!</span>
+              <span>Password not long enough</span>
             </div>
           )}
-        </div>
-        <Button onClick={onSignUp}>Sign Up</Button>
+        <Button style="login-button" onClick={onSignUp}>
+          Sign Up
+        </Button>
         <div className={styles["signup-options"]}>
           <Button style="options-button" onClick={() => setHomepage("signin")}>
             Already have an account? Sign In

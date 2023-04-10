@@ -59,6 +59,9 @@
   padding: 10px 16px;
   background-color: rgb(253, 237, 237);
   color: rgb(95, 33, 32);
+  margin-bottom: 20px;
+  border: 1px solid #ef5350;
+  border-radius: 4px;
 }
 
 .error-icon {
@@ -77,21 +80,22 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
   }
-  
+
   .form {
     width: 100%;
-    height:100%;
+    height: 100%;
   }
-  
+
   .options {
     display: flex;
     flex-direction: column;
     width: 50%;
+    gap: 5px;
   }
 
-  .title, .subtitle {
-    color: #fcc419
+  .title,
+  .subtitle {
+    color: #fcc419;
   }
 }

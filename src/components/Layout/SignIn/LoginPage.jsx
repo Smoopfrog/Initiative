@@ -140,12 +140,14 @@ const LoginPage = ({ setHomepage, setPlayerCharacters }) => {
             </div>
           )}
         </div>
-        <Button style="login-button" onClick={login}>Sign In</Button>
+        <Button style="login-button" onClick={login}>
+          Sign In
+        </Button>
         <div className={styles.options}>
-          <Button style="options-button">Forgot your password?</Button>
           <Button style="options-button" onClick={() => setHomepage("signup")}>
             Don't have an account? Sign Up
           </Button>
+          <Button style="options-button">Forgot your password?</Button>
         </div>
       </form>
     </div>

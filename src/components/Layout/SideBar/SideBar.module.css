@@ -2,7 +2,6 @@
   width: 30vw;
   height: 100vh;
   background-color: whitesmoke;
-  border-bottom: 2px solid #0b7285;
 }
 
 .header {
@@ -30,7 +29,9 @@
     position: absolute;
     width: 100%;
     height: auto;
-    border-bottom: none;
+    border-bottom: 2px solid #0b7285;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 
   .header {
@@ -38,6 +39,6 @@
   }
 
   .tab-container {
-    height: 93vh;
+    padding-bottom: 20px;
   }
 }
